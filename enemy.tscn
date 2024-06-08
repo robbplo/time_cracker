@@ -1,0 +1,124 @@
+[gd_scene load_steps=23 format=3 uid="uid://d1k55f81hhw1c"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_45oqa"]
+[ext_resource type="Script" path="res://EnemyCharacterBody.gd" id="2_jmlmm"]
+[ext_resource type="Texture2D" uid="uid://dfrbq758ji7i" path="res://sprites/Characters/EnemySmall2.png" id="3_w6leo"]
+[ext_resource type="Script" path="res://Attack.gd" id="4_g7d4g"]
+[ext_resource type="Texture2D" uid="uid://chujxb4e6pk0g" path="res://sprites/Animations/AttackAnim1.png" id="5_14m1h"]
+[ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://sprites/Animations/AttackAnim2.png" id="6_flk04"]
+[ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://sprites/Animations/AttackAnim3 2.png" id="7_hv8q8"]
+[ext_resource type="Texture2D" uid="uid://b5o78h5iial6g" path="res://sprites/Animations/AttackAnim4.png" id="8_pyws7"]
+[ext_resource type="Texture2D" uid="uid://4qspmbnqkk0g" path="res://sprites/Animations/AttackAnim5.png" id="9_f08ix"]
+[ext_resource type="Texture2D" uid="uid://dyyawlyfqicph" path="res://sprites/Animations/AttackAnim6.png" id="10_qiyec"]
+[ext_resource type="Texture2D" uid="uid://db5ftdh1diapq" path="res://sprites/Animations/AttackSpikeAnim-1.png" id="11_u8loq"]
+[ext_resource type="Texture2D" uid="uid://fx34knry35ji" path="res://sprites/Animations/AttackSpikeAnim-2.png" id="12_kumkp"]
+[ext_resource type="Texture2D" uid="uid://t46ucktc8r24" path="res://sprites/Animations/AttackSpikeAnim-3.png" id="13_xajot"]
+[ext_resource type="Texture2D" uid="uid://conqyupcapmvr" path="res://sprites/Animations/AttackSpikeAnim-4.png" id="14_iwuwo"]
+[ext_resource type="Texture2D" uid="uid://ckoyppydf0d61" path="res://sprites/Animations/AttackSpikeAnim-5.png" id="15_wpbh5"]
+[ext_resource type="Texture2D" uid="uid://cbn5uafmb02c3" path="res://sprites/Animations/AttackSpikeAnim-6.png" id="16_rkfov"]
+[ext_resource type="Texture2D" uid="uid://ccfpgn7wjm4r8" path="res://sprites/Animations/AttackSpikeAnim-7.png" id="17_xxik1"]
+[ext_resource type="Texture2D" uid="uid://cpfcasbveh2f3" path="res://sprites/Animations/AttackSpikeAnim-8.png" id="18_3st66"]
+[ext_resource type="Texture2D" uid="uid://bxslj0kd4kixd" path="res://sprites/Animations/AttackSpikeAnim-9.png" id="19_mugju"]
+[ext_resource type="Texture2D" uid="uid://onps1uun7k2m" path="res://sprites/Animations/AttackSpikeAnim-10.png" id="20_78rhj"]
+[ext_resource type="Texture2D" uid="uid://b5bq35yt13ayy" path="res://sprites/Animations/AttackSpikeAnim-11.png" id="21_b3twh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4upl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_14m1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_flk04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hv8q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pyws7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f08ix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qiyec")
+}],
+"loop": true,
+"name": &"AttackAnimation",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_u8loq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kumkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xajot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_iwuwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wpbh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rkfov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xxik1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3st66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_mugju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_78rhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_b3twh")
+}],
+"loop": true,
+"name": &"AttackSpike",
+"speed": 18.0
+}]
+
+[node name="Enemy" type="Node2D"]
+position = Vector2(838, 256)
+script = ExtResource("1_45oqa")
+
+[node name="EnemyCharacterBody" type="CharacterBody2D" parent="."]
+script = ExtResource("2_jmlmm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyCharacterBody"]
+visible = false
+polygon = PackedVector2Array(1, -48, 16, -23, 17, 4, -4, 42, -10, 32, -13, -25, -10, -39)
+
+[node name="StepTimer" type="Timer" parent="EnemyCharacterBody"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyCharacterBody"]
+texture = ExtResource("3_w6leo")
+
+[node name="Attack" type="CharacterBody2D" parent="EnemyCharacterBody"]
+position = Vector2(0, -21)
+script = ExtResource("4_g7d4g")
+
+[node name="Animation" type="AnimatedSprite2D" parent="EnemyCharacterBody/Attack"]
+rotation = 3.14159
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_j4upl")
+animation = &"AttackSpike"
+frame_progress = 0.623196
+offset = Vector2(-40, 2)
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="EnemyCharacterBody/Attack"]
+rotation = 1.5708
+monitoring = false
+
+[connection signal="timeout" from="EnemyCharacterBody/StepTimer" to="EnemyCharacterBody" method="_on_step_timer_timeout"]
+[connection signal="animation_looped" from="EnemyCharacterBody/Attack/Animation" to="EnemyCharacterBody/Attack" method="_on_animation_animation_looped"]
