@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bewq4tgxkjv3e"]
+
+[ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
+[ext_resource type="Script" path="res://EnemyCharacterBody.gd" id="2_4wqmw"]
+[ext_resource type="Script" path="res://Player.gd" id="3_rajg3"]
+[ext_resource type="Script" path="res://Enemy.gd" id="4_5g1bq"]
+[ext_resource type="Texture2D" uid="uid://c8t2hs4cynp2j" path="res://sprites/hagstone.png" id="4_ihehu"]
+[ext_resource type="Texture2D" uid="uid://dby7up3p458h" path="res://sprites/smallboy_1.png" id="5_xkhil"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TimeContext" parent="." instance=ExtResource("1_hq7c1")]
+
+[node name="Player" type="CharacterBody2D" parent="TimeContext"]
+position = Vector2(122, 236)
+script = ExtResource("3_rajg3")
+
+[node name="Sprite2D" type="Sprite2D" parent="TimeContext/Player"]
+texture = ExtResource("4_ihehu")
+
+[node name="Enemy" type="Node2D" parent="TimeContext"]
+position = Vector2(838, 256)
+script = ExtResource("4_5g1bq")
+
+[node name="EnemyCharacterBody" type="CharacterBody2D" parent="TimeContext/Enemy"]
+script = ExtResource("2_4wqmw")
+
+[node name="StepTimer" type="Timer" parent="TimeContext/Enemy/EnemyCharacterBody"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TimeContext/Enemy"]
+texture = ExtResource("5_xkhil")
+
+[connection signal="timeout" from="TimeContext/Enemy/EnemyCharacterBody/StepTimer" to="TimeContext/Enemy/EnemyCharacterBody" method="_on_step_timer_timeout"]
