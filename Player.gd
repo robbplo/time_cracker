@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-@onready var attackSwish = $Attack/AttackSwish
-
 @export var speed = 400
 
 func get_input():
@@ -20,4 +18,6 @@ func _unhandled_input(event):
 			var SfxPitch = randf_range(0.95,1.1)
 			$Attack/AttackSwish.set_pitch_scale(SfxPitch)
 			$Attack/AttackSwish.play(0.10)
-		
+
+func _on_attack_attack_hit(body: Node):
+	body.find_child("HealthPool").subtract(1)

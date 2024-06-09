@@ -13,6 +13,6 @@ func beat():
 		actions[cursor].call()
 		cursor = (cursor + 1) % actions.size()
 	
-func set_actions(actions): 
-	self.actions = actions 
+func set_actions(value): 
+	self.actions = value 
 	
