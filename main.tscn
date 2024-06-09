@@ -364,12 +364,19 @@ script = ExtResource("1_dnaoa")
 [node name="Player" parent="TimeContext" instance=ExtResource("2_d6wur")]
 position = Vector2(221, 284)
 
-[node name="Enemy" parent="TimeContext" instance=ExtResource("4_yp0ec")]
-position = Vector2(506, 296)
+[node name="Camera2D" type="Camera2D" parent="TimeContext/Player"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
-[node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext"]
+[node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext/Player"]
+position = Vector2(0, 2)
 stream = ExtResource("4_ft8ud")
 autoplay = true
+attenuation = 1e-05
+
+[node name="Enemy" parent="TimeContext" instance=ExtResource("4_yp0ec")]
+position = Vector2(506, 296)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
