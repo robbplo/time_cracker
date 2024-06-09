@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bewq4tgxkjv3e"]
+[gd_scene load_steps=22 format=3 uid="uid://bewq4tgxkjv3e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dnaoa"]
 [ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://sprites/FloorTiles/Sigil-1.png" id="8_4npgl"]
 [ext_resource type="Texture2D" uid="uid://dyhlr3b2kgxnt" path="res://sprites/FloorTiles/Sigil-2.png" id="9_rn4mf"]
 [ext_resource type="Texture2D" uid="uid://bua2dfogkphkn" path="res://sprites/FloorTiles/Sigil-3.png" id="10_w3ubo"]
+[ext_resource type="PackedScene" uid="uid://da1tacyxgqx7p" path="res://ProceduralGen.tscn" id="11_rhg72"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htib1"]
 texture = ExtResource("8_4npgl")
@@ -421,6 +422,8 @@ shape = SubResource("WorldBoundaryShape2D_7lg6q")
 position = Vector2(-10000, 2.08165e-12)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_un6hs")
+
+[node name="ProceduralGen" parent="." instance=ExtResource("11_rhg72")]
 
 [connection signal="attack_hit" from="TimeContext/Player" to="TimeContext/Enemy" method="_on_player_attack_hit"]
 [connection signal="attack_hit" from="TimeContext/Enemy" to="TimeContext/Player" method="_on_enemy_attack_hit"]
