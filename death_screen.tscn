@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6sfi4an3qrm0"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vxr5q"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_7lg1a"]
+events = [SubResource("InputEventKey_vxr5q")]
+
+[sub_resource type="GDScript" id="GDScript_n72hk"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_pressed():
+	get_tree().change_scene_to_file(\"res://main.tscn\")
+	pass # Replace with function body.
+"
+
+[node name="Death Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -490.5
+offset_top = -228.0
+offset_right = 490.5
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "if only you had some more time"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.5
+offset_top = 7.5
+offset_right = 190.5
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+shortcut = SubResource("Shortcut_7lg1a")
+text = "restart"
+script = SubResource("GDScript_n72hk")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

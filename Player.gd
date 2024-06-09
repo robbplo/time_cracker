@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name Player
 
 signal attack_hit
 
@@ -15,8 +14,8 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 func attack():
-	var distance = $"/root/Main/TimeContext".distance_to_beat()
-	if distance > (75 * .001):
+	if $"/root/Main/TimeContext".is_on_time(75):
+		# reduce remaining time by 1 second
 		var time = $"/root/Main/Label/GameTime".time_left
 		$"/root/Main/Label/GameTime".start(time - 1.0)
 		return false
@@ -39,4 +38,4 @@ func _on_enemy_attack_hit(damage):
 	$HealthPool.subtract(damage)
 
 func _on_health_pool_die():
-	queue_free()
+	get_tree().change_scene_to_file("res://death_screen.tscn")

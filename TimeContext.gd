@@ -12,6 +12,9 @@ func _ready():
 
 func beat():
 	get_tree().call_group("TimedNodes", "beat")
+	
+func is_on_time(ms: int) -> bool:
+	return distance_to_beat() * 1000 < ms
 
 ## Returns the 'distance' to the beat in seconds relative to the current timer.
 ## If it's .01s before or after the beat, returns .01

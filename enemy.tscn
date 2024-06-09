@@ -180,6 +180,7 @@ offset = Vector2(-40, 2)
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="Attack"]
+visible = false
 rotation = 1.5708
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D"]
