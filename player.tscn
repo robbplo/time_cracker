@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://4qspmbnqkk0g" path="res://sprites/Animations/AttackAnim5.png" id="8_3rtbw"]
 [ext_resource type="Texture2D" uid="uid://dyyawlyfqicph" path="res://sprites/Animations/AttackAnim6.png" id="9_psfnf"]
 [ext_resource type="Texture2D" uid="uid://cxlylusoy40wj" path="res://sprites/Characters/CharacterCursor.png" id="11_mvpm4"]
-[ext_resource type="PackedScene" uid="uid://5qh7cbtr6d8a" path="res://health_pool.tscn" id="11_qak4c"]
+[ext_resource type="PackedScene" uid="uid://c0cfkpl4s5pvp" path="res://health_pool.tscn" id="11_qak4c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dk842"]
 animations = [{
