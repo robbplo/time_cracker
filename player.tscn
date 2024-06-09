@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://22hjgugr4bg3"]
+[gd_scene load_steps=17 format=3 uid="uid://22hjgugr4bg3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_nvb10"]
+[ext_resource type="Shader" path="res://hover.gdshader" id="2_6qxoj"]
 [ext_resource type="Texture2D" uid="uid://brgn0v2dlo1aw" path="res://sprites/Characters/Character1.png" id="2_eo7b2"]
 [ext_resource type="Script" path="res://Attack.gd" id="3_m3bif"]
+[ext_resource type="Script" path="res://HoverSprite.gd" id="4_455be"]
 [ext_resource type="AudioStream" uid="uid://cjhlyk5slw3am" path="res://SFX/Swish_51_SP.wav" id="4_573gc"]
 [ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://sprites/Animations/AttackAnim2.png" id="5_rdspu"]
 [ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://sprites/Animations/AttackAnim3 2.png" id="6_3vnk7"]
@@ -11,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://dyyawlyfqicph" path="res://sprites/Animations/AttackAnim6.png" id="9_psfnf"]
 [ext_resource type="Texture2D" uid="uid://cxlylusoy40wj" path="res://sprites/Characters/CharacterCursor.png" id="11_mvpm4"]
 [ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://health_pool.tscn" id="11_qak4c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_82wfn"]
+shader = ExtResource("2_6qxoj")
+shader_parameter/amplitude = 4.0
+shader_parameter/bpm = 50.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dk842"]
 animations = [{
@@ -47,7 +54,9 @@ position = Vector2(169, 253)
 script = ExtResource("1_nvb10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_82wfn")
 texture = ExtResource("2_eo7b2")
+script = ExtResource("4_455be")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

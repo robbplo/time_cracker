@@ -1,8 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://d1k55f81hhw1c"]
+[gd_scene load_steps=35 format=3 uid="uid://d1k55f81hhw1c"]
 
 [ext_resource type="Script" path="res://EnemyCharacterBody.gd" id="2_jmlmm"]
+[ext_resource type="Shader" path="res://hover.gdshader" id="2_yui0p"]
 [ext_resource type="Texture2D" uid="uid://dfrbq758ji7i" path="res://sprites/Characters/EnemySmall2.png" id="3_w6leo"]
 [ext_resource type="Script" path="res://Attack.gd" id="4_g7d4g"]
+[ext_resource type="Script" path="res://HoverSprite.gd" id="4_ikkdp"]
 [ext_resource type="Texture2D" uid="uid://chujxb4e6pk0g" path="res://sprites/Animations/AttackAnim1.png" id="5_14m1h"]
 [ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://sprites/Animations/AttackAnim2.png" id="6_flk04"]
 [ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://sprites/Animations/AttackAnim3 2.png" id="7_hv8q8"]
@@ -27,6 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://dxpolj2bhdjl3" path="res://sprites/Animations/OnBeatPingAnim4.png" id="24_dsl5f"]
 [ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://sprites/Animations/OnBeatPingAnim5.png" id="25_q2dsx"]
 [ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://sprites/Animations/OnBeatPingAnim6.png" id="26_ivk2p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkqwu"]
+shader = ExtResource("2_yui0p")
+shader_parameter/amplitude = 7.727
+shader_parameter/bpm = 50.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j4upl"]
 animations = [{
@@ -156,7 +163,9 @@ polygon = PackedVector2Array(1, -48, 16, -23, 17, 4, -4, 42, -10, 32, -13, -25, 
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wkqwu")
 texture = ExtResource("3_w6leo")
+script = ExtResource("4_ikkdp")
 
 [node name="Attack" type="CharacterBody2D" parent="."]
 position = Vector2(0, -21)
