@@ -11,3 +11,4 @@
 [node name="Player" parent="TimeContext" instance=ExtResource("2_d6wur")]
 
 [node name="Enemy" parent="TimeContext" instance=ExtResource("4_yp0ec")]
+position = Vector2(776, 256)

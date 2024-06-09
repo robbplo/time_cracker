@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 600
+## Fraction of the beat in which the movement occurs.
+@export var movement_duration = 1.0/4
 var moving = false
 
 func get_input():
@@ -8,13 +10,13 @@ func get_input():
 	var direction = self.global_position.direction_to(player.global_position)
 	velocity = direction * speed
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if moving:
 		get_input()
 		move_and_slide()
 
 func step(distance):
-	var step_time = $"/root/Main/TimeContext".get_timer().wait_time / 4
+	var step_time = $"/root/Main/TimeContext".get_timer().wait_time * movement_duration
 	speed = distance / step_time
 	moving = true
 	$StepTimer.start(step_time)
