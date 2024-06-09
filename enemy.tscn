@@ -27,6 +27,13 @@
 [ext_resource type="Texture2D" uid="uid://dxpolj2bhdjl3" path="res://sprites/Animations/OnBeatPingAnim4.png" id="24_dsl5f"]
 [ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://sprites/Animations/OnBeatPingAnim5.png" id="25_q2dsx"]
 [ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://sprites/Animations/OnBeatPingAnim6.png" id="26_ivk2p"]
+[ext_resource type="Texture2D" uid="uid://cxe2gxrraghxn" path="res://sprites/Animations/OnBeatPingAnim1.png" id="21_s8r10"]
+[ext_resource type="PackedScene" uid="uid://5qh7cbtr6d8a" path="res://health_pool.tscn" id="21_taojo"]
+[ext_resource type="Texture2D" uid="uid://yowqn22xipkv" path="res://sprites/Animations/OnBeatPingAnim2.png" id="22_i1frw"]
+[ext_resource type="Texture2D" uid="uid://bcvefb6k2im2r" path="res://sprites/Animations/OnBeatPingAnim3.png" id="23_0j2fv"]
+[ext_resource type="Texture2D" uid="uid://dxpolj2bhdjl3" path="res://sprites/Animations/OnBeatPingAnim4.png" id="24_dsl5f"]
+[ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://sprites/Animations/OnBeatPingAnim5.png" id="25_q2dsx"]
+[ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://sprites/Animations/OnBeatPingAnim6.png" id="26_ivk2p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j4upl"]
 animations = [{
@@ -100,7 +107,7 @@ script/source = "extends TimedNode2D
 func _ready():
 	super._ready()
 	set_actions([
-		func(): 
+		func():
 			if get_parent().target:
 				$\"../Attack\".start(get_parent().target.global_position),
 		func(): get_parent().step(50),
