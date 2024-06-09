@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bewq4tgxkjv3e"]
+[gd_scene load_steps=5 format=3 uid="uid://bewq4tgxkjv3e"]
 
 [ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="2_d6wur"]
+[ext_resource type="AudioStream" uid="uid://cto6eafiyq3oa" path="res://Music/Track_TenderCircuits.wav" id="4_ft8ud"]
 [ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://enemy.tscn" id="4_yp0ec"]
 
 [node name="Main" type="Node2D"]
@@ -12,3 +13,8 @@
 
 [node name="Enemy" parent="TimeContext" instance=ExtResource("4_yp0ec")]
 position = Vector2(776, 256)
+
+[node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext"]
+stream = ExtResource("4_ft8ud")
+volume_db = -6.0
+autoplay = true

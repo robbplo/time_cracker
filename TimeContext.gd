@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var bpm = 80
+@export var bpm = 125
 @export var running = false
 
 # Called when the node enters the scene tree for the first time.
