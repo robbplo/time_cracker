@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1k55f81hhw1c"]
+[gd_scene load_steps=32 format=3 uid="uid://d1k55f81hhw1c"]
 
 [ext_resource type="Script" path="res://EnemyCharacterBody.gd" id="2_jmlmm"]
 [ext_resource type="Texture2D" uid="uid://dfrbq758ji7i" path="res://sprites/Characters/EnemySmall2.png" id="3_w6leo"]
@@ -20,6 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://bxslj0kd4kixd" path="res://sprites/Animations/AttackSpikeAnim-9.png" id="19_mugju"]
 [ext_resource type="Texture2D" uid="uid://onps1uun7k2m" path="res://sprites/Animations/AttackSpikeAnim-10.png" id="20_78rhj"]
 [ext_resource type="Texture2D" uid="uid://b5bq35yt13ayy" path="res://sprites/Animations/AttackSpikeAnim-11.png" id="21_b3twh"]
+[ext_resource type="Texture2D" uid="uid://cxe2gxrraghxn" path="res://sprites/Animations/OnBeatPingAnim1.png" id="21_s8r10"]
+[ext_resource type="PackedScene" uid="uid://5qh7cbtr6d8a" path="res://health_pool.tscn" id="21_taojo"]
+[ext_resource type="Texture2D" uid="uid://yowqn22xipkv" path="res://sprites/Animations/OnBeatPingAnim2.png" id="22_i1frw"]
+[ext_resource type="Texture2D" uid="uid://bcvefb6k2im2r" path="res://sprites/Animations/OnBeatPingAnim3.png" id="23_0j2fv"]
+[ext_resource type="Texture2D" uid="uid://dxpolj2bhdjl3" path="res://sprites/Animations/OnBeatPingAnim4.png" id="24_dsl5f"]
+[ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://sprites/Animations/OnBeatPingAnim5.png" id="25_q2dsx"]
+[ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://sprites/Animations/OnBeatPingAnim6.png" id="26_ivk2p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j4upl"]
 animations = [{
@@ -100,7 +107,40 @@ func _ready():
 	])
 "
 
-[node name="EnemyCharacterBody" type="CharacterBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xh55y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_s8r10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_i1frw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_0j2fv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_dsl5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_q2dsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ivk2p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_jw3hv"]
+script/source = "extends AnimatedSprite2D
+
+func _on_animation_looped():
+	stop()
+"
+
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("2_jmlmm")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -128,11 +168,22 @@ flip_h = true
 
 [node name="Area2D" type="Area2D" parent="Attack"]
 rotation = 1.5708
-monitoring = false
 
-[node name="Enemy" type="Node2D" parent="."]
+[node name="TimedNode2D" type="Node2D" parent="."]
 position = Vector2(838, 256)
 script = SubResource("GDScript_k82y8")
 
+[node name="HealthPool" parent="." instance=ExtResource("21_taojo")]
+position = Vector2(0, -62)
+max_health = 2.0
+
+[node name="HurtAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_xh55y")
+script = SubResource("GDScript_jw3hv")
+
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]
+[connection signal="die" from="HealthPool" to="." method="_on_health_pool_die"]
+[connection signal="animation_looped" from="HurtAnimation" to="HurtAnimation" method="_on_animation_looped"]

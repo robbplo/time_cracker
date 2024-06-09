@@ -1,5 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bewq4tgxkjv3e"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_dnaoa"]
 [ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="2_d6wur"]
 [ext_resource type="AudioStream" uid="uid://cto6eafiyq3oa" path="res://Music/Track_TenderCircuits.wav" id="4_ft8ud"]
@@ -353,6 +354,7 @@ distance = -4.16329e-12
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_un6hs"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_dnaoa")
 
 [node name="TimeContext" parent="." instance=ExtResource("1_hq7c1")]
 

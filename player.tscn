@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://22hjgugr4bg3"]
+[gd_scene load_steps=13 format=3 uid="uid://22hjgugr4bg3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_nvb10"]
 [ext_resource type="Texture2D" uid="uid://brgn0v2dlo1aw" path="res://sprites/Characters/Character1.png" id="2_eo7b2"]
 [ext_resource type="Script" path="res://Attack.gd" id="3_m3bif"]
 [ext_resource type="AudioStream" uid="uid://cjhlyk5slw3am" path="res://SFX/Swish_51_SP.wav" id="4_573gc"]
-[ext_resource type="Texture2D" uid="uid://chujxb4e6pk0g" path="res://sprites/Animations/AttackAnim1.png" id="4_mofgj"]
 [ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://sprites/Animations/AttackAnim2.png" id="5_rdspu"]
 [ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://sprites/Animations/AttackAnim3 2.png" id="6_3vnk7"]
 [ext_resource type="Texture2D" uid="uid://b5o78h5iial6g" path="res://sprites/Animations/AttackAnim4.png" id="7_mn2ks"]
@@ -15,9 +14,6 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_dk842"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_mofgj")
-}, {
 "duration": 1.0,
 "texture": ExtResource("5_rdspu")
 }, {
@@ -35,7 +31,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"AttackAnimation",
-"speed": 12.0
+"speed": 18.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_0a75v"]
@@ -60,7 +56,6 @@ polygon = PackedVector2Array(30, 23, 37, 52, 38, 67, 34, 87, 27, 99, 14, 103, 2,
 [node name="TimedNode2D" type="Node2D" parent="."]
 
 [node name="Attack" type="CharacterBody2D" parent="."]
-visible = false
 script = ExtResource("3_m3bif")
 
 [node name="AttackSwish" type="AudioStreamPlayer2D" parent="Attack"]
@@ -68,20 +63,19 @@ stream = ExtResource("4_573gc")
 volume_db = -6.0
 
 [node name="Animation" type="AnimatedSprite2D" parent="Attack"]
+visible = false
 position = Vector2(-3.33786e-06, -2.98023e-06)
 rotation = 1.5708
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_dk842")
 animation = &"AttackAnimation"
-frame = 2
 offset = Vector2(0, -40)
 
 [node name="Area2D" type="Area2D" parent="Attack"]
-monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D"]
 position = Vector2(88, 0)
-polygon = PackedVector2Array(12, -22, 12, 17, 9, 39, -7, 65, -22, 56, -14, 11, -15, -27, -39, -64, -28, -78, -9, -62)
+polygon = PackedVector2Array(12, -22, 12, 17, 9, 39, -7, 65, -22, 56, -51, 41, -62, -37, -39, -64, -28, -78, -9, -62)
 
 [node name="CharacterCursor" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
@@ -90,5 +84,5 @@ offset = Vector2(80, 0)
 script = SubResource("GDScript_0a75v")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]
-[connection signal="body_entered" from="Attack/Area2D" to="Attack" method="_on_area_2d_body_entered"]
