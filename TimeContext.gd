@@ -7,6 +7,7 @@ extends Node2D
 func _ready():
 	$Timer.wait_time = 60.0 / bpm
 	$Timer.start()
+	running = true
 
 func beat():
 	get_tree().call_group("TimedNodes", "beat")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bewq4tgxkjv3e"]
+[gd_scene load_steps=7 format=3 uid="uid://bewq4tgxkjv3e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dnaoa"]
 [ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="2_d6wur"]
 [ext_resource type="AudioStream" uid="uid://cto6eafiyq3oa" path="res://Music/Track_TenderCircuits.wav" id="4_ft8ud"]
 [ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://enemy.tscn" id="4_yp0ec"]
+[ext_resource type="Script" path="res://TimerLaber.gd" id="6_x3n3h"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dnaoa")
@@ -20,3 +21,11 @@ position = Vector2(776, 256)
 stream = ExtResource("4_ft8ud")
 volume_db = -6.0
 autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_x3n3h")
+
+[connection signal="attack_hit" from="TimeContext/Player" to="TimeContext/Enemy" method="_on_player_attack_hit"]
+[connection signal="attack_hit" from="TimeContext/Enemy" to="TimeContext/Player" method="_on_enemy_attack_hit"]

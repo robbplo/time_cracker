@@ -1,6 +1,10 @@
 extends CharacterBody2D
+class_name Player
+
+signal attack_hit
 
 @export var speed = 400
+@export var damage = 1
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -20,4 +24,10 @@ func _unhandled_input(event):
 			$Attack/AttackSwish.play(0.10)
 
 func _on_attack_attack_hit(body: Node):
-	body.find_child("HealthPool").subtract(1)
+	emit_signal("attack_hit", body, damage)
+
+func _on_enemy_attack_hit(damage):
+	$HealthPool.subtract(damage)
+
+func _on_health_pool_die():
+	queue_free()
