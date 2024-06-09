@@ -1,3 +1,4 @@
+@tool
 extends TileMap
 
 var rng = RandomNumberGenerator.new()
@@ -16,13 +17,10 @@ func _ready():
 		for _j in range (0,300):
 			_k = _noise.get_noise_2d(_i, _j)
 			if  _k < -0.2 :
-				set_cell(0,Vector2i(_i,_j), 0, Vector2i(0,0))
+				set_cell(0,Vector2i(_i,_j), 0, Vector2i(rng.randi_range(0, 7), rng.randi_range(0, 7)))
 				_lo += 1
 			elif _k > 0.3:
-				set_cell(0,Vector2i(_i,_j,), 0, Vector2i(0,1))
+				set_cell(0,Vector2i(_i,_j,), 0, Vector2i(rng.randi_range(0, 7), rng.randi_range(0, 7)))
 				_hi += 1
 			else:
-				set_cell(0, Vector2i(_i, _j,), 0, Vector2i(0,2))
-								
-	print(_lo)
-	print(_hi)
+				set_cell(0, Vector2i(_i, _j,), 0, Vector2i(rng.randi_range(0, 7), rng.randi_range(0, 7)))
