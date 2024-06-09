@@ -47,5 +47,4 @@ func _on_player_attack_hit(body, damage):
 
 func _on_attack_attack_hit(body):
 	if body.name == "Player":
-		print("emit player hit")
 		emit_signal("attack_hit", damage)

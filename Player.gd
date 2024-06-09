@@ -13,15 +13,24 @@ func get_input():
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
+	
+func attack():
+	var distance = $"/root/Main/TimeContext".distance_to_beat()
+	if distance > (75 * .001):
+		var time = $"/root/Main/Label/GameTime".time_left
+		$"/root/Main/Label/GameTime".start(time - 1.0)
+		return false
+	if !$Attack.start(get_global_mouse_position()):
+		return false
+	var SfxPitch = randf_range(0.95,1.1)
+	$Attack/AttackSwish.set_pitch_scale(SfxPitch)
+	$Attack/AttackSwish.play(0.10)
 
 func _unhandled_input(event):
 	if event is InputEventMouse \
 	and event.button_mask == MOUSE_BUTTON_LEFT \
 	and event.is_pressed():
-		if $Attack.start(get_global_mouse_position()):
-			var SfxPitch = randf_range(0.95,1.1)
-			$Attack/AttackSwish.set_pitch_scale(SfxPitch)
-			$Attack/AttackSwish.play(0.10)
+		attack()
 
 func _on_attack_attack_hit(body: Node):
 	emit_signal("attack_hit", body, damage)
