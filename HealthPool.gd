@@ -16,12 +16,13 @@ func subtract(amount):
 	if dead:
 		return
 	var new_health = max(0, health - amount)
+	health = new_health
+	update_bar()
+	print("hit", amount)
 	if new_health == 0:
 		dead = true
 		emit_signal("die")
 		return
-	health = new_health
-	update_bar()
 	emit_signal("health_changed", -amount)
 	
 func update_bar():

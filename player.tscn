@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://22hjgugr4bg3"]
+[gd_scene load_steps=14 format=3 uid="uid://22hjgugr4bg3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_nvb10"]
 [ext_resource type="Texture2D" uid="uid://brgn0v2dlo1aw" path="res://sprites/Characters/Character1.png" id="2_eo7b2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://4qspmbnqkk0g" path="res://sprites/Animations/AttackAnim5.png" id="8_3rtbw"]
 [ext_resource type="Texture2D" uid="uid://dyyawlyfqicph" path="res://sprites/Animations/AttackAnim6.png" id="9_psfnf"]
 [ext_resource type="Texture2D" uid="uid://cxlylusoy40wj" path="res://sprites/Characters/CharacterCursor.png" id="11_mvpm4"]
+[ext_resource type="PackedScene" uid="uid://5qh7cbtr6d8a" path="res://health_pool.tscn" id="11_qak4c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dk842"]
 animations = [{
@@ -83,6 +84,12 @@ texture = ExtResource("11_mvpm4")
 offset = Vector2(80, 0)
 script = SubResource("GDScript_0a75v")
 
+[node name="HealthPool" parent="." instance=ExtResource("11_qak4c")]
+position = Vector2(-3, -73)
+health = 5.0
+max_health = 5.0
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]
+[connection signal="die" from="HealthPool" to="." method="_on_health_pool_die"]

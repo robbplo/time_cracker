@@ -1,16 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://5qh7cbtr6d8a"]
 
-[sub_resource type="GDScript" id="GDScript_a06h3"]
-resource_name = "HealthPool"
-script/source = "extends HealthPool
-
-func _on_health_changed(change):
-	$\"../HurtAnimation\".play()
-"
+[ext_resource type="Script" path="res://HealthPool.gd" id="1_kogpv"]
 
 [node name="HealthPool" type="Node2D"]
-script = SubResource("GDScript_a06h3")
-health = 2.0
+script = ExtResource("1_kogpv")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0, 0, 1)
