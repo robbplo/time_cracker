@@ -16,8 +16,8 @@ func _ready():
 	var _noise = FastNoiseLite.new()
 	_noise.seed = rng.randf_range(0,999999)
 
-	for _i in range(200):
-		for _j in range (0,300):
+	for _i in range(-200, 200):
+		for _j in range (-300,300):
 			_k = _noise.get_noise_2d(_i, _j)
 			if  _k < -0.5 :
 				set_cell(0,Vector2i(_i,_j), 0, Vector2i(randf_range(-1,7),randf_range(-1,7)))

@@ -18,7 +18,7 @@ func attack():
 		# reduce remaining time by 1 second
 		var time = $"/root/Main/Label/GameTime".time_left
 		$"/root/Main/Label/GameTime".start(time - 1.0)
-		return false
+		#return false
 	if !$Attack.start(get_global_mouse_position()):
 		return false
 	var SfxPitch = randf_range(0.95,1.1)
