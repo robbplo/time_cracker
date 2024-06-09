@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var bpm = 125
+@export var bpm = 112
 @export var running = false
 var beat_time = 60.0 / bpm
 
