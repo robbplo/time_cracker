@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://main.gd" id="1_dnaoa"]
 [ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="2_d6wur"]
-[ext_resource type="AudioStream" uid="uid://cto6eafiyq3oa" path="res://Music/Track_TenderCircuits.wav" id="4_ft8ud"]
 [ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://enemy.tscn" id="4_yp0ec"]
+[ext_resource type="AudioStream" uid="uid://b8ahyp4ifueex" path="res://Music/Track_DELEND.mp3" id="5_vvk12"]
 [ext_resource type="Script" path="res://TimerLaber.gd" id="6_x3n3h"]
 [ext_resource type="Script" path="res://GameTime.gd" id="7_gvwmo"]
 [ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://sprites/FloorTiles/Sigil-1.png" id="8_4npgl"]
@@ -368,7 +368,7 @@ position = Vector2(221, 284)
 position = Vector2(506, 296)
 
 [node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext"]
-stream = ExtResource("4_ft8ud")
+stream = ExtResource("5_vvk12")
 autoplay = true
 
 [node name="Label" type="Label" parent="."]
