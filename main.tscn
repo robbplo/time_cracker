@@ -1,16 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://bewq4tgxkjv3e"]
+[gd_scene load_steps=22 format=3 uid="uid://bewq4tgxkjv3e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dnaoa"]
 [ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="2_d6wur"]
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="4_wxfv2"]
 [ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://enemy.tscn" id="4_yp0ec"]
-[ext_resource type="AudioStream" uid="uid://b8ahyp4ifueex" path="res://Music/Track_DELEND.mp3" id="5_vvk12"]
 [ext_resource type="Script" path="res://TimerLaber.gd" id="6_x3n3h"]
 [ext_resource type="Script" path="res://GameTime.gd" id="7_gvwmo"]
 [ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://sprites/FloorTiles/Sigil-1.png" id="8_4npgl"]
 [ext_resource type="Texture2D" uid="uid://dyhlr3b2kgxnt" path="res://sprites/FloorTiles/Sigil-2.png" id="9_rn4mf"]
 [ext_resource type="Texture2D" uid="uid://bua2dfogkphkn" path="res://sprites/FloorTiles/Sigil-3.png" id="10_w3ubo"]
-[ext_resource type="PackedScene" uid="uid://da1tacyxgqx7p" path="res://ProceduralGen.tscn" id="11_rhg72"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="12_p38w3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htib1"]
@@ -372,7 +371,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext"]
-stream = ExtResource("5_vvk12")
+stream = ExtResource("4_wxfv2")
 autoplay = true
 attenuation = 1e-05
 
@@ -430,8 +429,6 @@ shape = SubResource("WorldBoundaryShape2D_7lg6q")
 position = Vector2(-10000, 2.08165e-12)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_un6hs")
-
-[node name="ProceduralGen" parent="." instance=ExtResource("11_rhg72")]
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("12_p38w3")

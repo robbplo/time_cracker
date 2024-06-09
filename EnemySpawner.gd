@@ -31,6 +31,25 @@ func spawn():
 	player.connect("attack_hit", new_enemy._on_player_attack_hit)
 	new_enemy.connect("attack_hit", player._on_enemy_attack_hit)
 	enemy_count += 1
+	var pos = spawn_position()
+	print(pos)
+	new_enemy.position = pos
 	root.add_child(new_enemy)
 	delay = 0
 	return true
+
+func spawn_position():
+	var center = camera.get_screen_center_position()
+	var min_x = center.x + 1000
+	var max_x = center.x + 1500
+	var min_y = center.y + 1000
+	var max_y = center.y + 1500
+	if randf() > 0.5:
+		min_x *= -1
+	if randf() > 0.5:
+		max_x *= -1
+	if randf() > 0.5:
+		min_y *= -1
+	if randf() > 0.5:
+		max_y *= -1
+	return Vector2(randi_range(min_x, max_x), randi_range(min_y, max_y))
