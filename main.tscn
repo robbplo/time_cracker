@@ -433,7 +433,5 @@ shape = SubResource("WorldBoundaryShape2D_un6hs")
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("12_p38w3")
 
-[node name="Node" parent="." instance=ExtResource("11_rhg72")]
-
 [connection signal="attack_hit" from="TimeContext/Player" to="TimeContext/Enemy" method="_on_player_attack_hit"]
 [connection signal="attack_hit" from="TimeContext/Enemy" to="TimeContext/Player" method="_on_enemy_attack_hit"]
