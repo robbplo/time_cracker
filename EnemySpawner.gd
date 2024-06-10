@@ -32,7 +32,6 @@ func spawn():
 	new_enemy.connect("attack_hit", player._on_enemy_attack_hit)
 	enemy_count += 1
 	var pos = spawn_position()
-	print(pos)
 	new_enemy.position = pos
 	root.add_child(new_enemy)
 	delay = 0

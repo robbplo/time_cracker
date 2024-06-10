@@ -1,13 +1,11 @@
 extends CharacterBody2D
 class_name Enemy
 
-signal attack_hit
+signal attack_hit(damage: int)
 
 @onready var target = $"/root/Main/TimeContext/Player"
 ## Movement speed, overridden by movement duration
 @export var speed = 600
-## Fraction of the beat in which the movement occurs.
-@export var movement_duration = 1.0/4
 @export var damage = 2
 var moving = false
 
@@ -27,7 +25,7 @@ func _physics_process(_delta):
 		move_and_slide()
 
 func step(distance):
-	var step_time = $"/root/Main/TimeContext".get_timer().wait_time * movement_duration
+	var step_time = $"/root/Main/TimeContext".get_timer().wait_time
 	speed = distance / step_time
 	moving = true
 	$StepTimer.start(step_time)
@@ -47,4 +45,12 @@ func _on_player_attack_hit(body, damage):
 
 func _on_attack_attack_hit(body):
 	if body.name == "Player":
-		emit_signal("attack_hit", damage)
+		attack_hit.emit(damage)
+
+func _on_time_proxy_beat(current_beat):
+	match current_beat % 16:
+		0: $Attack.check_hit()
+		4: step(50)
+		8: step(50)
+		12: step(150)
+		13: $Attack.start_attack(target.global_position)

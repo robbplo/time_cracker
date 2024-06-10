@@ -1,7 +1,7 @@
 extends Node2D
 class_name HealthPool
 
-signal health_changed
+signal health_changed(amount)
 signal die
 
 var dead = false
@@ -20,9 +20,9 @@ func subtract(amount):
 	update_bar()
 	if new_health == 0:
 		dead = true
-		emit_signal("die")
+		die.emit()
 		return
-	emit_signal("health_changed", -amount)
+	health_changed.emit(-amount)
 	
 func update_bar():
 	$"ProgressBar".value = health / max_health * 100

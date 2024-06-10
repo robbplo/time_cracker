@@ -1,8 +1,18 @@
 extends Node2D
+class_name TimeContext
+
+signal beat(current_beat: int)
 
 @export var bpm = 112
 @export var running = false
-var beat_time = 60.0 / bpm
+var current_beat = 0
+var subdivisions = 16
+var meter = 4
+var beat_time = 60.0 / bpm / (subdivisions / meter)
+
+# move cursor to context
+# add subdivisons variable
+# create signal for beat
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,9 +20,6 @@ func _ready():
 	$Timer.start()
 	running = true
 
-func beat():
-	get_tree().call_group("TimedNodes", "beat")
-	
 func is_on_time(ms: int) -> bool:
 	return distance_to_beat() * 1000 < ms
 
@@ -28,7 +35,9 @@ func distance_to_beat() -> float:
 		return abs(beat_time - time_left)
 
 func _on_timer_timeout():
-	beat()
+	beat.emit(current_beat)
+	print(current_beat)
+	current_beat += 1
 
 func get_timer():
 	return $Timer
