@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bewq4tgxkjv3e"]
+[gd_scene load_steps=24 format=3 uid="uid://bewq4tgxkjv3e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dnaoa"]
 [ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="2_d6wur"]
+[ext_resource type="Texture2D" uid="uid://dg5fycu2k8f05" path="res://sprites/Util/Light_Spot.png" id="4_o5aat"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="4_wxfv2"]
 [ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://enemy.tscn" id="4_yp0ec"]
 [ext_resource type="Script" path="res://TimerLaber.gd" id="6_x3n3h"]
@@ -371,6 +372,12 @@ position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
+[node name="PointLight2D" type="PointLight2D" parent="TimeContext/Player"]
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("4_o5aat")
+texture_scale = 2.0
+
 [node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext"]
 stream = ExtResource("4_wxfv2")
 autoplay = true
@@ -435,6 +442,9 @@ shape = SubResource("WorldBoundaryShape2D_un6hs")
 script = ExtResource("12_p38w3")
 
 [node name="Node" parent="." instance=ExtResource("11_rhg72")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.201527, 0.201527, 0.201527, 1)
 
 [connection signal="attack_hit" from="TimeContext/Player" to="TimeContext/Enemy" method="_on_player_attack_hit"]
 [connection signal="attack_hit" from="TimeContext/Enemy" to="TimeContext/Player" method="_on_enemy_attack_hit"]

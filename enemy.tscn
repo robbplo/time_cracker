@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d1k55f81hhw1c"]
+[gd_scene load_steps=36 format=3 uid="uid://d1k55f81hhw1c"]
 
 [ext_resource type="Script" path="res://EnemyCharacterBody.gd" id="2_jmlmm"]
 [ext_resource type="Shader" path="res://hover.gdshader" id="2_yui0p"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dxpolj2bhdjl3" path="res://sprites/Animations/OnBeatPingAnim4.png" id="24_dsl5f"]
 [ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://sprites/Animations/OnBeatPingAnim5.png" id="25_q2dsx"]
 [ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://sprites/Animations/OnBeatPingAnim6.png" id="26_ivk2p"]
+[ext_resource type="Texture2D" uid="uid://dg5fycu2k8f05" path="res://sprites/Util/Light_Spot.png" id="30_6xj7c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wkqwu"]
 shader = ExtResource("2_yui0p")
@@ -200,6 +201,11 @@ max_health = 2.0
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xh55y")
 script = SubResource("GDScript_jw3hv")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("30_6xj7c")
 
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
