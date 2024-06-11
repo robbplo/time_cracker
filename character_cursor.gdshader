@@ -5,8 +5,9 @@ uniform float flash_mix : hint_range(0.0, 1.0, 0.1) = 0.0;
 uniform vec3 flash_rgb : source_color = vec3(1.0);
 
 void vertex() {
-    float time = TIME * (PI / 60.0 * bpm * 2.0);
-    float offset = sin(time) * 2.0;
+    	float beat = 60.0 / bpm;
+    float time = mod(TIME, beat) * -1.0 + beat;
+    float offset = time * 3.0;
 	float x = max(1, offset);
 	VERTEX = VERTEX * vec2(x);
 	

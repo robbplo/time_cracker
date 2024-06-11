@@ -74,17 +74,20 @@ uniform vec3 flash_rgb : source_color = vec3(1.0);
 
 void vertex() {
 	float beat = 60.0 / bpm;
-    float time = mod(TIME, beat);
-    float scale = time * 2.0;
+    float time = mod(TIME, beat) * -1.0 + beat;
+    float scale = time * 3.0;
 	//float x = max(1, offset);
-	VERTEX = VERTEX * vec2(1.0/scale);
+	VERTEX = VERTEX * vec2(scale);
 	
 }
 
 void fragment() {
-	vec4 color = texture(TEXTURE, UV);
-	color.rgb = mix(color.rgb, vec3(1).rgb, flash_mix);
-	COLOR = color;
+	float beat = 60.0 / bpm;
+    float time = mod(TIME, beat) * -1.0 + beat;
+	//COLOR.a = .5;
+	//vec4 color = texture(TEXTURE, UV);
+	//color.rgb = mix(color.rgb, vec3(1).rgb, flash_mix);
+	//COLOR = color;
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l8s87"]
@@ -148,7 +151,7 @@ texture = ExtResource("11_mvpm4")
 [node name="Ring" type="Sprite2D" parent="PlayerCursor"]
 z_index = -5
 material = SubResource("ShaderMaterial_l8s87")
-position = Vector2(96, -4)
+position = Vector2(96, -3)
 texture = ExtResource("15_wf412")
 
 [connection signal="hurt" from="." to="Sprite2D" method="_on_player_hurt"]
