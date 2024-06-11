@@ -1,20 +1,17 @@
-[gd_scene load_steps=23 format=3 uid="uid://bewq4tgxkjv3e"]
+[gd_scene load_steps=20 format=3 uid="uid://bdchrad6r4dr7"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_dnaoa"]
-[ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="1_hq7c1"]
-[ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="2_d6wur"]
-[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="4_wxfv2"]
-[ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://enemy.tscn" id="4_yp0ec"]
-[ext_resource type="Script" path="res://TimerLaber.gd" id="6_x3n3h"]
-[ext_resource type="Script" path="res://GameTime.gd" id="7_gvwmo"]
-[ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://sprites/FloorTiles/Sigil-1.png" id="8_4npgl"]
-[ext_resource type="Texture2D" uid="uid://dyhlr3b2kgxnt" path="res://sprites/FloorTiles/Sigil-2.png" id="9_rn4mf"]
-[ext_resource type="Texture2D" uid="uid://bua2dfogkphkn" path="res://sprites/FloorTiles/Sigil-3.png" id="10_w3ubo"]
-[ext_resource type="PackedScene" uid="uid://da1tacyxgqx7p" path="res://ProceduralGen.tscn" id="12_iw0pj"]
-[ext_resource type="Script" path="res://EnemySpawner.gd" id="12_p38w3"]
+[ext_resource type="Script" path="res://main.gd" id="1_m1cg6"]
+[ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="2_n07s0"]
+[ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="3_jsvw3"]
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="4_d5tst"]
+[ext_resource type="Script" path="res://TimerLaber.gd" id="6_4wvix"]
+[ext_resource type="Script" path="res://GameTime.gd" id="7_ohc0p"]
+[ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://sprites/FloorTiles/Sigil-1.png" id="8_ulq5a"]
+[ext_resource type="Texture2D" uid="uid://dyhlr3b2kgxnt" path="res://sprites/FloorTiles/Sigil-2.png" id="9_ooo7e"]
+[ext_resource type="Texture2D" uid="uid://bua2dfogkphkn" path="res://sprites/FloorTiles/Sigil-3.png" id="10_g3cfs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htib1"]
-texture = ExtResource("8_4npgl")
+texture = ExtResource("8_ulq5a")
 7:0/0 = 0
 8:0/0 = 0
 6:1/0 = 0
@@ -89,7 +86,7 @@ texture = ExtResource("8_4npgl")
 8:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjkvy"]
-texture = ExtResource("9_rn4mf")
+texture = ExtResource("9_ooo7e")
 7:0/0 = 0
 8:0/0 = 0
 6:1/0 = 0
@@ -199,7 +196,7 @@ texture = ExtResource("9_rn4mf")
 8:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vdaw"]
-texture = ExtResource("10_w3ubo")
+texture = ExtResource("10_g3cfs")
 5:0/0 = 0
 6:0/0 = 0
 7:0/0 = 0
@@ -358,11 +355,11 @@ distance = -4.16329e-12
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_un6hs"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_dnaoa")
+script = ExtResource("1_m1cg6")
 
-[node name="TimeContext" parent="." instance=ExtResource("1_hq7c1")]
+[node name="TimeContext" parent="." instance=ExtResource("2_n07s0")]
 
-[node name="Player" parent="TimeContext" instance=ExtResource("2_d6wur")]
+[node name="Player" parent="TimeContext" instance=ExtResource("3_jsvw3")]
 position = Vector2(221, 284)
 
 [node name="Camera2D" type="Camera2D" parent="TimeContext/Player"]
@@ -372,23 +369,20 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext"]
-stream = ExtResource("4_wxfv2")
+stream = ExtResource("4_d5tst")
 autoplay = true
 attenuation = 1e-05
-
-[node name="Enemy" parent="TimeContext" instance=ExtResource("4_yp0ec")]
-position = Vector2(506, 296)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-script = ExtResource("6_x3n3h")
+script = ExtResource("6_4wvix")
 
 [node name="GameTime" type="Timer" parent="Label"]
 wait_time = 120.0
 one_shot = true
 autostart = true
-script = ExtResource("7_gvwmo")
+script = ExtResource("7_ohc0p")
 
 [node name="Worldmap" type="Node" parent="."]
 
@@ -430,11 +424,3 @@ shape = SubResource("WorldBoundaryShape2D_7lg6q")
 position = Vector2(-10000, 2.08165e-12)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_un6hs")
-
-[node name="EnemySpawner" type="Node2D" parent="."]
-script = ExtResource("12_p38w3")
-
-[node name="Node" parent="." instance=ExtResource("12_iw0pj")]
-
-[connection signal="attack_hit" from="TimeContext/Player" to="TimeContext/Enemy" method="_on_player_attack_hit"]
-[connection signal="attack_hit" from="TimeContext/Enemy" to="TimeContext/Player" method="_on_enemy_attack_hit"]

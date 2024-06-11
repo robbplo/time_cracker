@@ -9,7 +9,6 @@ var is_attacking = false
 func start(target: Vector2):
 	start_attack(target)
 	check_hit()
-	
 	return true
 
 func start_attack(target: Vector2):

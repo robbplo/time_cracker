@@ -1,8 +1,6 @@
 extends Sprite2D
 
 func _ready():
-	
-	material.set_shader_parameter("bpm", $"/root/Main/TimeContext".bpm)
 	material.set_shader_parameter("flash_mix", 0)
 
 func _on_player_hurt(damage):
