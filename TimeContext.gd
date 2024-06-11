@@ -35,8 +35,7 @@ func distance_to_beat() -> float:
 		return abs(beat_time - time_left)
 
 func _on_timer_timeout():
-	beat.emit(current_beat)
-	print(current_beat)
+	beat.emit(current_beat % subdivisions)
 	current_beat += 1
 
 func get_timer():

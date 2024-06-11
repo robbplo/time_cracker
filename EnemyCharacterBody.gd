@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 signal attack_hit(damage: int)
+signal hurt(damage: int)
 
 @onready var target = $"/root/Main/TimeContext/Player"
 ## Movement speed, overridden by movement duration
@@ -41,6 +42,7 @@ func _on_health_pool_die():
 
 func _on_player_attack_hit(body, damage):
 	if body == self:
+		hurt.emit(damage)
 		$HealthPool.subtract(damage)
 
 func _on_attack_attack_hit(body):
@@ -48,7 +50,7 @@ func _on_attack_attack_hit(body):
 		attack_hit.emit(damage)
 
 func _on_time_proxy_beat(current_beat):
-	match current_beat % 16:
+	match current_beat:
 		0: $Attack.check_hit()
 		4: step(50)
 		8: step(50)

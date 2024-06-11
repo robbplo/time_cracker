@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal attack_hit
+signal hurt(damage: int)
 
 @export var speed = 400
 @export var damage = 1
@@ -32,9 +33,10 @@ func _unhandled_input(event):
 		attack()
 
 func _on_attack_attack_hit(body: Node):
-	emit_signal("attack_hit", body, damage)
+	attack_hit.emit(body, damage)
 
 func _on_enemy_attack_hit(damage):
+	hurt.emit(damage)
 	$HealthPool.subtract(damage)
 
 func _on_health_pool_die():

@@ -4,8 +4,8 @@
 [ext_resource type="Shader" path="res://hover.gdshader" id="2_6qxoj"]
 [ext_resource type="Texture2D" uid="uid://brgn0v2dlo1aw" path="res://sprites/Characters/Character1.png" id="2_eo7b2"]
 [ext_resource type="Script" path="res://Attack.gd" id="3_m3bif"]
-[ext_resource type="Script" path="res://HoverSprite.gd" id="4_455be"]
 [ext_resource type="AudioStream" uid="uid://cjhlyk5slw3am" path="res://SFX/Swish_51_SP.wav" id="4_573gc"]
+[ext_resource type="Script" path="res://PlayerSprite.gd" id="4_q1ewa"]
 [ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://sprites/Animations/AttackAnim2.png" id="5_rdspu"]
 [ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://sprites/Animations/AttackAnim3 2.png" id="6_3vnk7"]
 [ext_resource type="Texture2D" uid="uid://b5o78h5iial6g" path="res://sprites/Animations/AttackAnim4.png" id="7_mn2ks"]
@@ -17,7 +17,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_82wfn"]
 shader = ExtResource("2_6qxoj")
 shader_parameter/amplitude = 4.0
-shader_parameter/bpm = 50.0
+shader_parameter/flash_mix = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dk842"]
 animations = [{
@@ -54,8 +54,9 @@ script = ExtResource("1_nvb10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_82wfn")
+position = Vector2(-1, 0)
 texture = ExtResource("2_eo7b2")
-script = ExtResource("4_455be")
+script = ExtResource("4_q1ewa")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -81,6 +82,7 @@ animation = &"AttackAnimation"
 offset = Vector2(0, -50)
 
 [node name="Area2D" type="Area2D" parent="Attack"]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D"]
 position = Vector2(97, -1)
@@ -97,6 +99,7 @@ position = Vector2(-3, -73)
 health = 5.0
 max_health = 5.0
 
+[connection signal="hurt" from="." to="Sprite2D" method="_on_player_hurt"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]

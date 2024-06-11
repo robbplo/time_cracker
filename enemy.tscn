@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://hover.gdshader" id="2_yui0p"]
 [ext_resource type="Texture2D" uid="uid://dfrbq758ji7i" path="res://sprites/Characters/EnemySmall2.png" id="3_w6leo"]
 [ext_resource type="Script" path="res://Attack.gd" id="4_g7d4g"]
-[ext_resource type="Script" path="res://HoverSprite.gd" id="4_ikkdp"]
+[ext_resource type="Script" path="res://EnemySprite.gd" id="4_vktkb"]
 [ext_resource type="Texture2D" uid="uid://chujxb4e6pk0g" path="res://sprites/Animations/AttackAnim1.png" id="5_14m1h"]
 [ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://sprites/Animations/AttackAnim2.png" id="6_flk04"]
 [ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://sprites/Animations/AttackAnim3 2.png" id="7_hv8q8"]
@@ -34,7 +34,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wkqwu"]
 shader = ExtResource("2_yui0p")
 shader_parameter/amplitude = 7.727
-shader_parameter/bpm = 50.0
+shader_parameter/flash_mix = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j4upl"]
 animations = [{
@@ -149,7 +149,7 @@ one_shot = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wkqwu")
 texture = ExtResource("3_w6leo")
-script = ExtResource("4_ikkdp")
+script = ExtResource("4_vktkb")
 
 [node name="Attack" type="CharacterBody2D" parent="."]
 position = Vector2(0, -21)
@@ -186,6 +186,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xh55y")
 script = SubResource("GDScript_jw3hv")
 
+[connection signal="hurt" from="." to="Sprite2D" method="_on_enemy_hurt"]
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]

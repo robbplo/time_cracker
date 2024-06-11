@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [input]
 
 up={
@@ -51,3 +55,10 @@ left={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[shader_globals]
+
+bpm={
+"type": "float",
+"value": 112.0
+}
