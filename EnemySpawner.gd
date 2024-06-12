@@ -3,7 +3,7 @@ extends Node2D
 const ENEMY = preload("res://enemy.tscn")
 
 ## Node that enemies will be added to
-@onready var root = $"/root/Main/TimeContext"
+@onready var root = get_parent()
 @onready var player = root.get_node("Player")
 @onready var camera: Camera2D = player.get_node("Camera2D")
 
@@ -26,18 +26,18 @@ func spawn():
 	if enemy_count >= max_enemies:
 		return false
 	var new_enemy = ENEMY.instantiate()
-	
+
 	new_enemy.tree_exited.connect(func(): enemy_count -= 1)
-	new_enemy.attack_hit.connect(player._on_enemy_attack_hit)	
+	new_enemy.attack_hit.connect(player._on_enemy_attack_hit)
 	player.attack_hit.connect(new_enemy._on_player_attack_hit)
-	
+
 	# duplicate the material so parameters are separated
 	var sprite = new_enemy.get_node("Sprite2D")
 	var original_material = sprite.material
 	if original_material and original_material is ShaderMaterial:
 		var new_material = original_material.duplicate()
 		sprite.material = new_material
-	
+
 	enemy_count += 1
 	var pos = spawn_position()
 	new_enemy.position = pos

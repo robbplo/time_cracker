@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d1k55f81hhw1c"]
+[gd_scene load_steps=34 format=3 uid="uid://d1k55f81hhw1c"]
 
 [ext_resource type="Script" path="res://EnemyCharacterBody.gd" id="2_jmlmm"]
 [ext_resource type="Shader" path="res://hover.gdshader" id="2_yui0p"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://health_pool.tscn" id="21_taojo"]
 [ext_resource type="Texture2D" uid="uid://yowqn22xipkv" path="res://sprites/Animations/OnBeatPingAnim2.png" id="22_i1frw"]
 [ext_resource type="Texture2D" uid="uid://bcvefb6k2im2r" path="res://sprites/Animations/OnBeatPingAnim3.png" id="23_0j2fv"]
-[ext_resource type="Script" path="res://TimeProxy.gd" id="23_oy2x6"]
 [ext_resource type="Texture2D" uid="uid://dxpolj2bhdjl3" path="res://sprites/Animations/OnBeatPingAnim4.png" id="24_dsl5f"]
 [ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://sprites/Animations/OnBeatPingAnim5.png" id="25_q2dsx"]
 [ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://sprites/Animations/OnBeatPingAnim6.png" id="26_ivk2p"]
@@ -172,10 +171,6 @@ rotation = 1.5708
 position = Vector2(88, -7.27596e-12)
 polygon = PackedVector2Array(-98.0005, -131, -79.0005, -131, -79, 5.99997, -98, 6.00004)
 
-[node name="TimeProxy" type="Node2D" parent="."]
-position = Vector2(838, 256)
-script = ExtResource("23_oy2x6")
-
 [node name="HealthPool" parent="." instance=ExtResource("21_taojo")]
 position = Vector2(0, -62)
 health = 2.0
@@ -190,7 +185,6 @@ script = SubResource("GDScript_jw3hv")
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]
-[connection signal="beat" from="TimeProxy" to="." method="_on_time_proxy_beat"]
 [connection signal="die" from="HealthPool" to="." method="_on_health_pool_die"]
 [connection signal="health_changed" from="HealthPool" to="HurtAnimation" method="_on_health_pool_health_changed"]
 [connection signal="animation_looped" from="HurtAnimation" to="HurtAnimation" method="_on_animation_looped"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdchrad6r4dr7"]
+[gd_scene load_steps=21 format=3 uid="uid://v81snc18ntys"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_m1cg6"]
-[ext_resource type="PackedScene" uid="uid://4jldp2mcoda0" path="res://time_context.tscn" id="2_n07s0"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://player.tscn" id="3_jsvw3"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="4_d5tst"]
+[ext_resource type="Script" path="res://scenes/sandbox/16thCounter.gd" id="5_x3g15"]
 [ext_resource type="Script" path="res://TimerLaber.gd" id="6_4wvix"]
+[ext_resource type="Script" path="res://scenes/sandbox/4thCounter.gd" id="6_dky0v"]
 [ext_resource type="Script" path="res://GameTime.gd" id="7_ohc0p"]
 [ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://sprites/FloorTiles/Sigil-1.png" id="8_ulq5a"]
 [ext_resource type="Texture2D" uid="uid://dyhlr3b2kgxnt" path="res://sprites/FloorTiles/Sigil-2.png" id="9_ooo7e"]
@@ -356,22 +357,35 @@ distance = -4.16329e-12
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_m1cg6")
+metadata/_edit_vertical_guides_ = [-96.0]
 
-[node name="TimeContext" parent="." instance=ExtResource("2_n07s0")]
+[node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_d5tst")
+autoplay = true
+attenuation = 1e-05
 
-[node name="Player" parent="TimeContext" instance=ExtResource("3_jsvw3")]
+[node name="Player" parent="." instance=ExtResource("3_jsvw3")]
 position = Vector2(221, 284)
 
-[node name="Camera2D" type="Camera2D" parent="TimeContext/Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="TimeContext"]
-stream = ExtResource("4_d5tst")
-autoplay = true
-attenuation = 1e-05
+[node name="16thCounter" type="Label" parent="."]
+offset_left = 188.0
+offset_top = 122.0
+offset_right = 228.0
+offset_bottom = 145.0
+script = ExtResource("5_x3g15")
+
+[node name="4thCounter" type="Label" parent="."]
+offset_left = 187.0
+offset_top = 148.0
+offset_right = 227.0
+offset_bottom = 171.0
+script = ExtResource("6_dky0v")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

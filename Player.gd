@@ -13,9 +13,9 @@ func get_input():
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
-	
+
 func attack():
-	if !$"/root/Main/TimeContext".is_on_time(75):
+	if not GlobalTimer.is_on_time(75):
 		# reduce remaining time by 1 second
 		var time = $"/root/Main/Label/GameTime".time_left
 		$"/root/Main/Label/GameTime".start(time - 1.0)
@@ -32,8 +32,8 @@ func _unhandled_input(event):
 func _on_attack_attack_hit(body: Node):
 	attack_hit.emit(body, damage)
 
-func _on_enemy_attack_hit(damage):
-	hurt.emit(damage)
+func _on_enemy_attack_hit(amount):
+	hurt.emit(amount)
 	$HealthPool.subtract(damage)
 
 func _on_health_pool_die():
