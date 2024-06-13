@@ -32,21 +32,16 @@ func step(distance):
 	var step_time = GlobalTimer.quarter_note_duration / 1000.0 / 2.0
 	speed = distance / step_time
 	moving = true
-	$StepTimer.start(step_time)
-
-func die():
-	queue_free()
-
-func _on_step_timer_timeout():
+	await get_tree().create_timer(step_time).timeout
 	moving = false
 
 func _on_health_pool_die():
-	die()
+	queue_free()
 
-func _on_player_attack_hit(body, damage):
+func _on_player_attack_hit(body, amount):
 	if body == self:
-		hurt.emit(damage)
-		$HealthPool.subtract(damage)
+		hurt.emit(amount)
+		$HealthPool.subtract(amount)
 
 func _on_attack_attack_hit(body):
 	if body.name == "Player":
@@ -58,4 +53,14 @@ func _on_sixteenth_note(index):
 		4: step(50)
 		8: step(50)
 		12: step(150)
-		13: $Attack.start_attack(target.global_position)
+		13: attack()
+		14: play_attack_sound()
+
+func play_attack_sound():
+	if $Attack.is_attacking:
+		await get_tree().create_timer(.02).timeout
+		$"Attack/Sound".play()
+
+func attack():
+	if self.global_position.distance_to(target.global_position) < 600:
+		$Attack.start_attack(target.global_position)

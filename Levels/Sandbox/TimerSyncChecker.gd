@@ -11,6 +11,10 @@ func start():
 	print("Global timer is ahead by: %s" % (global_time - music_time))
 	print("Elapsed 16ths: %s" % floor(GlobalTimer.elapsed_time / GlobalTimer.sixteenth_note_duration))
 	print("Counted 16ths: %s" % GlobalTimer.total_sixteenth_notes)
+	print("Elapsed 4ths: %s" % floor(GlobalTimer.elapsed_time / GlobalTimer.quarter_note_duration))
+	print("Counted 4ths: %s" % GlobalTimer.total_quarter_notes)
+	print("Counted 16ths mod 4: %s" % floor(GlobalTimer.total_sixteenth_notes / 4))
+
 	await(get_tree().create_timer(1).timeout)
 	start()
 

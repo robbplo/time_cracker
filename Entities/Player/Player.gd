@@ -37,4 +37,4 @@ func _on_enemy_attack_hit(amount):
 	$HealthPool.subtract(damage)
 
 func _on_health_pool_die():
-	get_tree().change_scene_to_file("res://death_screen.tscn")
+	get_tree().change_scene_to_file("res://Levels/death_screen.tscn")

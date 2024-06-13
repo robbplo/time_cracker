@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bewq4tgxkjv3e"]
+[gd_scene load_steps=21 format=3 uid="uid://bewq4tgxkjv3e"]
 
 [ext_resource type="Script" path="res://Levels/Main/main.gd" id="1_mul5t"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="2_hh2ob"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="3_67w27"]
-[ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://Entities/Enemy/enemy.tscn" id="4_w1x8k"]
 [ext_resource type="Script" path="res://Engine/TimerLaber.gd" id="5_3w78j"]
 [ext_resource type="Script" path="res://Engine/GameTime.gd" id="6_pyv62"]
 [ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://Sprites/FloorTiles/Sigil-1.png" id="7_gpgna"]
@@ -11,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bua2dfogkphkn" path="res://Sprites/FloorTiles/Sigil-3.png" id="9_lvr52"]
 [ext_resource type="Script" path="res://Engine/EnemySpawner.gd" id="10_l5fth"]
 [ext_resource type="PackedScene" uid="uid://da1tacyxgqx7p" path="res://Engine/ProceduralGen.tscn" id="11_jq1nr"]
-[ext_resource type="Script" path="res://Levels/Sandbox/TimerSyncChecker.gd" id="12_g6hjg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htib1"]
 texture = ExtResource("7_gpgna")
@@ -360,13 +358,11 @@ distance = -4.16329e-12
 [node name="Main" type="Node2D"]
 script = ExtResource("1_mul5t")
 
-[node name="SongTenderCircuits" type="AudioStreamPlayer2D" parent="."]
+[node name="Song" type="AudioStreamPlayer" parent="."]
+process_priority = 5
+process_physics_priority = 5
 stream = ExtResource("2_hh2ob")
-autoplay = true
-attenuation = 1e-05
-
-[node name="Node" type="Node" parent="SongTenderCircuits"]
-script = ExtResource("12_g6hjg")
+volume_db = -7.495
 
 [node name="Player" parent="." instance=ExtResource("3_67w27")]
 position = Vector2(221, 284)
@@ -376,9 +372,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="Enemy" parent="." instance=ExtResource("4_w1x8k")]
-position = Vector2(506, 296)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
@@ -433,9 +426,7 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_un6hs")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
+position = Vector2(1, 0)
 script = ExtResource("10_l5fth")
 
 [node name="ProceduralGen" parent="." instance=ExtResource("11_jq1nr")]
-
-[connection signal="attack_hit" from="Player" to="Enemy" method="_on_player_attack_hit"]
-[connection signal="attack_hit" from="Enemy" to="Player" method="_on_enemy_attack_hit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d1k55f81hhw1c"]
+[gd_scene load_steps=35 format=3 uid="uid://d1k55f81hhw1c"]
 
 [ext_resource type="Script" path="res://Entities/Enemy/EnemyCharacterBody.gd" id="1_go7an"]
 [ext_resource type="Shader" path="res://Entities/Player/hover.gdshader" id="2_todol"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dxpolj2bhdjl3" path="res://Sprites/Animations/OnBeatPingAnim4.png" id="27_b2rwd"]
 [ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://Sprites/Animations/OnBeatPingAnim5.png" id="28_8sqrj"]
 [ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://Sprites/Animations/OnBeatPingAnim6.png" id="29_u11nq"]
+[ext_resource type="AudioStream" uid="uid://d2vvf44p47efx" path="res://SFX/SFX_laserspike.mp3" id="30_y14b0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wkqwu"]
 shader = ExtResource("2_todol")
@@ -142,9 +143,6 @@ script = ExtResource("1_go7an")
 visible = false
 polygon = PackedVector2Array(1, -48, 16, -23, 17, 4, -4, 42, -10, 32, -13, -25, -10, -39)
 
-[node name="StepTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wkqwu")
 texture = ExtResource("3_opfre")
@@ -164,12 +162,15 @@ offset = Vector2(-40, 2)
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="Attack"]
-visible = false
 rotation = 1.5708
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D"]
 position = Vector2(88, -7.27596e-12)
 polygon = PackedVector2Array(-98.0005, -131, -79.0005, -131, -79, 5.99997, -98, 6.00004)
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="Attack"]
+position = Vector2(0, 21)
+stream = ExtResource("30_y14b0")
 
 [node name="HealthPool" parent="." instance=ExtResource("23_jeuvx")]
 position = Vector2(0, -62)
@@ -181,8 +182,6 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xh55y")
 script = SubResource("GDScript_jw3hv")
 
-[connection signal="hurt" from="." to="Sprite2D" method="_on_enemy_hurt"]
-[connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]
 [connection signal="die" from="HealthPool" to="." method="_on_health_pool_die"]
