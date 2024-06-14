@@ -3,8 +3,8 @@ extends CharacterBody2D
 signal attack_hit
 signal hurt(damage: int)
 
-@export var speed = 400
-@export var damage = 1
+var speed = 400
+var damage = 1
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -15,10 +15,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func attack():
-	if not GlobalTimer.is_on_time(75):
-		# reduce remaining time by 1 second
-		var time = $"/root/Main/Label/GameTime".time_left
-		$"/root/Main/Label/GameTime".start(time - 1.0)
+	if not GlobalTimer.is_on_time():
 		return false
 	if !$Attack.start(get_global_mouse_position()):
 		return false

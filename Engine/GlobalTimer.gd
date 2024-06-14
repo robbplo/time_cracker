@@ -4,15 +4,14 @@ signal started
 signal quarter_note(index: int)
 signal sixteenth_note(index: int)
 
-var running = false
-@export var bpm = 112
+## If the timer is currently active
+var running: bool = false
+## Bpm of the song
+@export var bpm: float = 112.0
 ## Duration of a quarter note in milliseconds
 var quarter_note_duration: float = 60.0 / bpm * 1000
 ## Duration of a sixteenth note in milliseconds
 var sixteenth_note_duration: float = quarter_note_duration / 4.0
-
-## In milliseconds
-var start_time: float = 0
 ## In milliseconds
 var elapsed_time: float = 0
 ## Amount of quarter notes since starting
@@ -23,6 +22,9 @@ var total_sixteenth_notes: int = 0
 @onready var output_latency: float = AudioServer.get_output_latency()
 @onready var player: AudioStreamPlayer = get_tree().root.get_child(-1).find_child("Song")
 
+const COMPENSATE_FRAMES = 2
+const COMPENSATE_HZ = 60.0
+
 
 func _ready():
 	player.play()
@@ -32,11 +34,9 @@ func _process(_delta):
 	if not running:
 		return
 
-	get_tree().get_frame()
-	elapsed_time = player.get_playback_position()
-	elapsed_time += AudioServer.get_time_since_last_mix()
-	elapsed_time -= output_latency
-	elapsed_time *= 1000.0
+	elapsed_time = player.get_playback_position() + AudioServer.get_time_since_last_mix() \
+	- output_latency + ((1 / COMPENSATE_HZ) * COMPENSATE_FRAMES)
+	elapsed_time *= 1000
 
 	var new_quarter_notes = floor(elapsed_time / quarter_note_duration)
 	if new_quarter_notes > total_quarter_notes:
@@ -60,5 +60,17 @@ func _add_sixteenth_note():
 	total_sixteenth_notes += 1
 	sixteenth_note.emit(total_sixteenth_notes % 16)
 
-func is_on_time(_n):
-	return true
+## Considered on time when within a sixteenth note of the quarter note
+func is_on_time():
+	var distance = distance_to_quarter_note()
+	print(distance)
+	return abs(distance) < sixteenth_note_duration
+
+## Returns the 'distance' in milliseconds to the nearest quarter note.
+## The value is negative if called just before the note and positive if called just after.
+func distance_to_quarter_note() -> float:
+	var offset = fmod(elapsed_time, quarter_note_duration)
+	if offset < quarter_note_duration / 2:
+		return offset
+	else:
+		return offset - quarter_note_duration
