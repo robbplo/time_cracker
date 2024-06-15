@@ -10,7 +10,7 @@ var running: bool = false
 @export var bpm: float = 112.0
 ## Duration of a quarter note in milliseconds
 var quarter_note_duration: float = 60.0 / bpm * 1000
-## Duration of a sixteenth note in milliseconds
+## Duration of a sixteenth note in millisecondsw
 var sixteenth_note_duration: float = quarter_note_duration / 4.0
 ## In milliseconds
 var elapsed_time: float = 0

@@ -21,15 +21,6 @@ process_physics_priority = 5
 stream = ExtResource("2_ic05v")
 volume_db = -7.495
 
-[node name="Player" parent="." instance=ExtResource("3_jsvw3")]
-position = Vector2(221, 284)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
 [node name="16thCounter" type="Label" parent="."]
 offset_left = 188.0
 offset_top = 122.0
@@ -58,6 +49,20 @@ script = ExtResource("7_ohc0p")
 [node name="ProceduralGen" parent="." instance=ExtResource("10_cwkm0")]
 
 [node name="Enemy" parent="." instance=ExtResource("11_3igyj")]
+position = Vector2(349, 310)
+
+[node name="Player" parent="." instance=ExtResource("3_jsvw3")]
+position = Vector2(267, 308)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="Debuggy" type="Node2D" parent="."]
 script = ExtResource("10_5iqxk")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(221, 284)
+color = Color(0.655585, 0.304827, 0.632234, 1)

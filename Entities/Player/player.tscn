@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://22hjgugr4bg3"]
+[gd_scene load_steps=24 format=3 uid="uid://22hjgugr4bg3"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_nvb10"]
 [ext_resource type="Shader" path="res://Entities/Player/hover.gdshader" id="2_6qxoj"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://Entities/health_pool.tscn" id="11_qak4c"]
 [ext_resource type="Shader" path="res://Entities/Player/character_cursor.gdshader" id="12_qno53"]
 [ext_resource type="Texture2D" uid="uid://c66m6yr0htalo" path="res://Sprites/Characters/CharacterCursorRing.png" id="15_wf412"]
+[ext_resource type="Texture2D" uid="uid://cxgpni1gkphvf" path="res://Sprites/Lights/Spotlight.png" id="16_tre60"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_82wfn"]
 shader = ExtResource("2_6qxoj")
@@ -27,7 +28,7 @@ script/source = "extends AudioStreamPlayer2D
 func _on_attack_attack_start():
 	var SfxPitch = randf_range(0.95,1.1)
 	set_pitch_scale(SfxPitch)
-	play(0.10)
+	play(0.20)
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dk842"]
@@ -96,6 +97,7 @@ shader_parameter/flash_mix = 0.0
 shader_parameter/flash_rgb = Color(1, 1, 1, 1)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 10
 script = ExtResource("1_nvb10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -151,6 +153,11 @@ z_index = -5
 material = SubResource("ShaderMaterial_l8s87")
 position = Vector2(96, -3)
 texture = ExtResource("15_wf412")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+blend_mode = 2
+texture = ExtResource("16_tre60")
+height = 100.0
 
 [connection signal="hurt" from="." to="Sprite2D" method="_on_player_hurt"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

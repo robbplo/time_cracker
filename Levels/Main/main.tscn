@@ -430,3 +430,7 @@ position = Vector2(1, 0)
 script = ExtResource("10_l5fth")
 
 [node name="ProceduralGen" parent="." instance=ExtResource("11_jq1nr")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.655585, 0.304827, 0.632234, 1)
