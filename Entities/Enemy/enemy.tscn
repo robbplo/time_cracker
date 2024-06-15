@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d1k55f81hhw1c"]
+[gd_scene load_steps=35 format=3 uid="uid://d1k55f81hhw1c"]
 
 [ext_resource type="Script" path="res://Entities/Enemy/EnemyCharacterBody.gd" id="1_go7an"]
 [ext_resource type="Shader" path="res://Entities/Player/hover.gdshader" id="2_todol"]
@@ -30,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://dibusnnrtsag7" path="res://Sprites/Animations/OnBeatPingAnim5.png" id="28_8sqrj"]
 [ext_resource type="Texture2D" uid="uid://brtassgl2hj48" path="res://Sprites/Animations/OnBeatPingAnim6.png" id="29_u11nq"]
 [ext_resource type="AudioStream" uid="uid://d2vvf44p47efx" path="res://SFX/SFX_laserspike.mp3" id="30_y14b0"]
-[ext_resource type="Texture2D" uid="uid://cxgpni1gkphvf" path="res://Sprites/Lights/Spotlight.png" id="31_6f82q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wkqwu"]
 shader = ExtResource("2_todol")
@@ -138,7 +137,7 @@ func _on_health_pool_health_changed(_amount):
 "
 
 [node name="Enemy" type="CharacterBody2D"]
-z_index = -10
+texture_filter = 1
 script = ExtResource("1_go7an")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -183,21 +182,6 @@ max_health = 2.0
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_xh55y")
 script = SubResource("GDScript_jw3hv")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-color = Color(0.610682, 0.265471, 0, 1)
-blend_mode = 2
-texture = ExtResource("31_6f82q")
-texture_scale = 2.0
-height = 200.0
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-color = Color(0.610682, 0.265471, 0, 1)
-blend_mode = 2
-texture = ExtResource("31_6f82q")
-texture_scale = 2.0
-height = 200.0
 
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]

@@ -98,6 +98,7 @@ shader_parameter/flash_rgb = Color(1, 1, 1, 1)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
+texture_filter = 1
 script = ExtResource("1_nvb10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
