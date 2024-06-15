@@ -22,9 +22,8 @@ var total_sixteenth_notes: int = 0
 @onready var output_latency: float = AudioServer.get_output_latency()
 @onready var player: AudioStreamPlayer = get_tree().root.get_child(-1).find_child("Song")
 
-const COMPENSATE_FRAMES = 2
+const COMPENSATE_FRAMES = -4
 const COMPENSATE_HZ = 60.0
-
 
 func _ready():
 	player.play()
@@ -34,8 +33,11 @@ func _process(_delta):
 	if not running:
 		return
 
-	elapsed_time = player.get_playback_position() + AudioServer.get_time_since_last_mix() \
-	- output_latency + ((1 / COMPENSATE_HZ) * COMPENSATE_FRAMES)
+	elapsed_time = player.get_playback_position() \
+		+ AudioServer.get_time_since_last_mix() \
+		- output_latency \
+		+ ((1 / COMPENSATE_HZ) * COMPENSATE_FRAMES)
+
 	elapsed_time *= 1000
 
 	var new_quarter_notes = floor(elapsed_time / quarter_note_duration)
@@ -63,7 +65,7 @@ func _add_sixteenth_note():
 ## Considered on time when within a sixteenth note of the quarter note
 func is_on_time():
 	var distance = distance_to_quarter_note()
-	print(distance)
+	print(str("distance to quarter note: ", distance, " ms"))
 	return abs(distance) < sixteenth_note_duration
 
 ## Returns the 'distance' in milliseconds to the nearest quarter note.
