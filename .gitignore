@@ -2,3 +2,5 @@
 .godot/
 
 godothost
+.DS_store
+**/.DS_store
