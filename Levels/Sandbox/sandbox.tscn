@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://Engine/TimerLaber.gd" id="6_4wvix"]
 [ext_resource type="Script" path="res://Levels/Sandbox/4thCounter.gd" id="6_dky0v"]
 [ext_resource type="Script" path="res://Engine/GameTime.gd" id="7_ohc0p"]
-[ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="10_5fq8l"]
 [ext_resource type="Script" path="res://Levels/Sandbox/Debuggy.gd" id="10_5iqxk"]
 [ext_resource type="PackedScene" uid="uid://da1tacyxgqx7p" path="res://Engine/ProceduralGen.tscn" id="10_cwkm0"]
+[ext_resource type="PackedScene" uid="uid://d1k55f81hhw1c" path="res://Entities/Enemy/enemy.tscn" id="11_3igyj"]
 
 [node name="Sandbox" type="Node2D"]
 script = ExtResource("1_m1cg6")
@@ -19,7 +19,7 @@ metadata/_edit_vertical_guides_ = [-96.0]
 process_priority = 5
 process_physics_priority = 5
 stream = ExtResource("2_ic05v")
-volume_db = -10.929
+volume_db = -7.495
 
 [node name="16thCounter" type="Label" parent="."]
 offset_left = 188.0
@@ -48,6 +48,9 @@ script = ExtResource("7_ohc0p")
 
 [node name="ProceduralGen" parent="." instance=ExtResource("10_cwkm0")]
 
+[node name="Enemy" parent="." instance=ExtResource("11_3igyj")]
+position = Vector2(349, 310)
+
 [node name="Player" parent="." instance=ExtResource("3_jsvw3")]
 position = Vector2(267, 308)
 
@@ -63,6 +66,3 @@ script = ExtResource("10_5iqxk")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(221, 284)
 color = Color(0.655585, 0.304827, 0.632234, 1)
-
-[node name="SmallEnemy" parent="." instance=ExtResource("10_5fq8l")]
-position = Vector2(467, 291)
