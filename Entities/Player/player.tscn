@@ -98,6 +98,7 @@ shader_parameter/flash_rgb = Color(1, 1, 1, 1)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
+texture_filter = 1
 script = ExtResource("1_nvb10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -157,6 +158,7 @@ texture = ExtResource("15_wf412")
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 blend_mode = 2
 texture = ExtResource("16_tre60")
+texture_scale = 2.0
 height = 100.0
 
 [connection signal="hurt" from="." to="Sprite2D" method="_on_player_hurt"]

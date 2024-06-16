@@ -26,11 +26,12 @@ const COMPENSATE_FRAMES = -4
 const COMPENSATE_HZ = 60.0
 
 func _ready():
-	player.play()
-	start()
+	if player:
+		player.play()
+		start()
 
 func _process(_delta):
-	if not running:
+	if not running or not player:
 		return
 
 	elapsed_time = player.get_playback_position() \
