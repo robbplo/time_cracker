@@ -48,22 +48,17 @@ func _on_attack_attack_hit(body):
 
 func _on_sixteenth_note(index):
 	match index:
-		0: $Attack.fire()
+		# 0: $Attack.fire()
 		4: step(150)
 		8:
 			$Attack.charge(target.global_position)
 			$AnimationPlayer.play("open")
 			$AnimationPlayer.queue("loop_charging")
 		15:
-			var delay = GlobalTimer.sixteenth_note_duration / 1000.0 * .25
+			var delay = GlobalTimer.sixteenth_note_duration / 1000.0 * .75
 			await get_tree().create_timer(delay).timeout
-			$AnimationPlayer.queue("idle")
 			$AnimationPlayer.play("fire")
-			play_attack_sound()
-
-func play_attack_sound():
-	if $Attack.is_attacking:
-		$"Attack/Sound".play(.15)
+			$AnimationPlayer.queue("idle")
 
 func attack():
 	if self.global_position.distance_to(target.global_position) < 600:
