@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bewq4tgxkjv3e"]
 
 [ext_resource type="Script" path="res://Levels/Main/main.gd" id="1_mul5t"]
-[ext_resource type="AudioStream" uid="uid://b8ahyp4ifueex" path="res://Music/Track_DELEND.mp3" id="2_hh2ob"]
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="2_4h8g5"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="3_67w27"]
 [ext_resource type="Script" path="res://Engine/TimerLaber.gd" id="5_3w78j"]
 [ext_resource type="Script" path="res://Engine/GameTime.gd" id="6_pyv62"]
@@ -359,9 +359,8 @@ distance = -4.16329e-12
 script = ExtResource("1_mul5t")
 
 [node name="Song" type="AudioStreamPlayer" parent="."]
-process_priority = 5
 process_physics_priority = 5
-stream = ExtResource("2_hh2ob")
+stream = ExtResource("2_4h8g5")
 volume_db = -7.495
 
 [node name="Player" parent="." instance=ExtResource("3_67w27")]

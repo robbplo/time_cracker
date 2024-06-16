@@ -1,6 +1,6 @@
 extends Node2D
 
-const ENEMY = preload("res://Entities/Enemy/enemy.tscn")
+const ENEMY = preload("res://Entities/SmallEnemy/small_enemy.tscn")
 
 ## Node that enemies will be added to
 @onready var root = get_parent()
@@ -32,7 +32,7 @@ func spawn():
 	player.attack_hit.connect(new_enemy._on_player_attack_hit)
 
 	# duplicate the material so parameters are separated
-	var sprite = new_enemy.get_node("Sprite2D")
+	var sprite = new_enemy.get_node("AnimatedSprite")
 	var original_material = sprite.material
 	if original_material and original_material is ShaderMaterial:
 		var new_material = original_material.duplicate()
