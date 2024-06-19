@@ -715,7 +715,7 @@ position = Vector2(-1, 0)
 texture = ExtResource("3_slgta")
 hframes = 10
 vframes = 9
-frame = 67
+frame = 58
 script = ExtResource("4_q1ewa")
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
@@ -803,8 +803,8 @@ parameters/conditions/Attack = false
 parameters/conditions/Idle = false
 parameters/conditions/is_moving = false
 parameters/Idle/blend_position = Vector2(0, 0)
-parameters/Run/blend_position = Vector2(-0.0247453, -0.589744)
-parameters/Slash1/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(-0.00144511, -0.0086956)
+parameters/Slash1/blend_position = Vector2(-0.696532, -0.480969)
 
 [connection signal="hurt" from="." to="Sprite2D" method="_on_player_hurt"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

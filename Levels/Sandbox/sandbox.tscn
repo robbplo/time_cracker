@@ -27,7 +27,7 @@ metadata/_edit_vertical_guides_ = [-96.0]
 process_priority = 5
 process_physics_priority = 5
 stream = ExtResource("2_ic05v")
-volume_db = -7.495
+volume_db = -29.556
 
 [node name="16thCounter" type="Label" parent="."]
 offset_left = 188.0
@@ -73,7 +73,7 @@ scale = Vector2(0.113417, -0.514364)
 color = Color(0.277528, 0.277528, 0.277528, 1)
 
 [node name="SmallEnemy" parent="." instance=ExtResource("10_5fq8l")]
-position = Vector2(570, 284)
+position = Vector2(566, 224)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k5mep")
