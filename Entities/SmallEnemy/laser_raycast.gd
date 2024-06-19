@@ -1,24 +1,31 @@
 extends RayCast2D
 
 var is_casting = false
-
-func _ready():
-	set_physics_process(false)
-	$Line2D.points[1] = Vector2.ZERO
+var should_collide = false
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_mask = MOUSE_BUTTON_LEFT
+	if event is InputEventMouseButton:
+		if event.pressed and not is_casting:
+			fire()
 
+# only runs when casting
 func _physics_process(_delta):
 	var cast_point = target_position
-
-	# is this necessary?
-	force_raycast_update()
 	if is_colliding():
-		cast_point = get_collision_normal()
+		if not is_casting:
+			cast_point = to_local(get_collision_point())
 	$Line2D.points[1] = cast_point
+	$Line2D2.points[1] = cast_point
 
-func set_is_casting(cast):
-	is_casting = cast
-	set_physics_process(is_casting)
+func fire():
+	is_casting = true
+	var tween = create_tween()
+	tween.tween_property($Line2D, "width", 40, .02)
+	tween.parallel().tween_property($Line2D2, "width", 35, .02)
+
+	tween.tween_property($Line2D, "width", 0, .4)
+	tween.parallel().tween_property($Line2D2, "width", 0, .4)
+	tween.tween_callback(func(): is_casting = false)
+
+
+
