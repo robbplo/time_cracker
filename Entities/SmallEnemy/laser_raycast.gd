@@ -3,11 +3,6 @@ extends RayCast2D
 var is_casting = false
 var should_collide = false
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.pressed and not is_casting:
-			fire()
-
 # only runs when casting
 func _physics_process(_delta):
 	var cast_point = target_position
@@ -26,6 +21,4 @@ func fire():
 	tween.tween_property($Line2D, "width", 0, .4)
 	tween.parallel().tween_property($Line2D2, "width", 0, .4)
 	tween.tween_callback(func(): is_casting = false)
-
-
 
