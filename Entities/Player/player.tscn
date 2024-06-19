@@ -715,7 +715,7 @@ position = Vector2(-1, 0)
 texture = ExtResource("3_slgta")
 hframes = 10
 vframes = 9
-frame = 58
+frame = 31
 script = ExtResource("4_q1ewa")
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,

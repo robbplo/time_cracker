@@ -305,7 +305,6 @@ animations = [{
 [node name="SmallEnemy" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_5hhm5")
-damage = null
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

@@ -51,9 +51,10 @@ func _on_sixteenth_note(index):
 		# 0: $Attack.fire()
 		4: step(150)
 		8:
-			$Attack.charge(target.global_position)
+			$Attack.charge(target)
 			$AnimationPlayer.play("open")
 			$AnimationPlayer.queue("loop_charging")
+		14: $Attack.stop_tracking()
 		15:
 			var delay = GlobalTimer.sixteenth_note_duration / 1000.0 * .75
 			await get_tree().create_timer(delay).timeout
