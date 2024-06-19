@@ -1,0 +1,441 @@
+[gd_scene load_steps=21 format=3 uid="uid://bewq4tgxkjv3e"]
+
+[ext_resource type="Script" path="res://Levels/Main/main.gd" id="1_mul5t"]
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="2_4h8g5"]
+[ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="3_67w27"]
+[ext_resource type="Script" path="res://Engine/TimerLaber.gd" id="5_3w78j"]
+[ext_resource type="Script" path="res://Engine/GameTime.gd" id="6_pyv62"]
+[ext_resource type="Texture2D" uid="uid://lcgps8ppnhsk" path="res://Sprites/FloorTiles/Sigil-1.png" id="7_gpgna"]
+[ext_resource type="Texture2D" uid="uid://dyhlr3b2kgxnt" path="res://Sprites/FloorTiles/Sigil-2.png" id="8_biphl"]
+[ext_resource type="Texture2D" uid="uid://bua2dfogkphkn" path="res://Sprites/FloorTiles/Sigil-3.png" id="9_lvr52"]
+[ext_resource type="Script" path="res://Engine/EnemySpawner.gd" id="10_l5fth"]
+[ext_resource type="PackedScene" uid="uid://da1tacyxgqx7p" path="res://Engine/ProceduralGen.tscn" id="11_jq1nr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htib1"]
+texture = ExtResource("7_gpgna")
+7:0/0 = 0
+8:0/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+3:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjkvy"]
+texture = ExtResource("8_biphl")
+7:0/0 = 0
+8:0/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vdaw"]
+texture = ExtResource("9_lvr52")
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+5:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+5:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+5:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+15:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+15:9/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vgj1u"]
+sources/0 = SubResource("TileSetAtlasSource_htib1")
+sources/1 = SubResource("TileSetAtlasSource_cjkvy")
+sources/2 = SubResource("TileSetAtlasSource_0vdaw")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5ay2t"]
+distance = 2.13163e-14
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o2u5q"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7lyky"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80xod"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7lg6q"]
+distance = -4.16329e-12
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_un6hs"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_mul5t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(221, 284)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Song" type="AudioStreamPlayer" parent="."]
+process_physics_priority = 5
+stream = ExtResource("2_4h8g5")
+volume_db = -7.495
+
+[node name="Player" parent="." instance=ExtResource("3_67w27")]
+position = Vector2(221, 284)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Worldmap" type="Node" parent="."]
+
+[node name="TileMap2" type="TileMap" parent="Worldmap"]
+z_index = -1
+position = Vector2(6, -5)
+tile_set = SubResource("TileSet_vgj1u")
+format = 2
+layer_0/tile_data = PackedInt32Array(983080, 0, 7, 1048616, 0, 8, 917545, 65536, 6, 983081, 65536, 7, 1048617, 65536, 8, 1114153, 65536, 9, 852010, 131072, 5, 917546, 131072, 6, 1114154, 131072, 9, 1179690, 131072, 10, 720939, 196608, 3, 786475, 196608, 4, 852011, 196608, 5, 1179691, 196608, 10, 1245227, 196608, 11, 1310763, 196608, 12, 1376299, 196608, 13, 720940, 262144, 3, 786476, 262144, 4, 1245228, 262144, 11, 1310764, 262144, 12, 655405, 327680, 2, 720941, 327680, 3, 786477, 327680, 4, 1245229, 327680, 11, 1310765, 327680, 12, 1376301, 327680, 13, 589870, 393216, 1, 655406, 393216, 2, 1376302, 393216, 13, 1441838, 393216, 14, 524335, 458752, 0, 589871, 458752, 1, 655407, 458752, 2, 1441839, 458752, 14, 1507375, 458752, 15, 524336, 524288, 0, 589872, 524288, 1, 1441840, 524288, 14, 1507376, 524288, 15, 589873, 589824, 1, 655409, 589824, 2, 1376305, 589824, 13, 1441841, 589824, 14, 655410, 655360, 2, 720946, 655360, 3, 1310770, 655360, 12, 1376306, 655360, 13, 655411, 720896, 2, 720947, 720896, 3, 786483, 720896, 4, 852019, 720896, 5, 1245235, 720896, 11, 1310771, 720896, 12, 720948, 786432, 3, 786484, 786432, 4, 852020, 786432, 5, 1179700, 786432, 10, 1245236, 786432, 11, 1310772, 786432, 12, 786485, 851968, 4, 852021, 851968, 5, 917557, 851968, 6, 1114165, 851968, 9, 1179701, 851968, 10, 852022, 917504, 5, 917558, 917504, 6, 983094, 917504, 7, 1048630, 917504, 8, 1114166, 917504, 9, 983095, 983040, 7, 1048631, 983040, 8)
+
+[node name="WorldEdges" type="StaticBody2D" parent="Worldmap"]
+
+[node name="TopRight" type="CollisionShape2D" parent="Worldmap/WorldEdges"]
+position = Vector2(-1, -12000)
+rotation = 3.57792
+shape = SubResource("WorldBoundaryShape2D_5ay2t")
+
+[node name="TopLeft" type="CollisionShape2D" parent="Worldmap/WorldEdges"]
+position = Vector2(2.08165e-12, -12000)
+rotation = 2.70701
+shape = SubResource("WorldBoundaryShape2D_o2u5q")
+
+[node name="BottomRight" type="CollisionShape2D" parent="Worldmap/WorldEdges"]
+position = Vector2(2.08165e-12, 12000)
+rotation = -0.436332
+shape = SubResource("WorldBoundaryShape2D_7lyky")
+
+[node name="BottomLeft" type="CollisionShape2D" parent="Worldmap/WorldEdges"]
+position = Vector2(1, 12000)
+rotation = 0.436332
+shape = SubResource("WorldBoundaryShape2D_80xod")
+
+[node name="Right" type="CollisionShape2D" parent="Worldmap/WorldEdges"]
+position = Vector2(10000, 2.08165e-12)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_7lg6q")
+
+[node name="Left" type="CollisionShape2D" parent="Worldmap/WorldEdges"]
+position = Vector2(-10000, 2.08165e-12)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_un6hs")
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+position = Vector2(1, 0)
+script = ExtResource("10_l5fth")
+
+[node name="ProceduralGen" parent="." instance=ExtResource("11_jq1nr")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.655585, 0.304827, 0.632234, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("5_3w78j")
+
+[node name="GameTime" type="Timer" parent="CanvasLayer/Label"]
+wait_time = 120.0
+one_shot = true
+autostart = true
+script = ExtResource("6_pyv62")
