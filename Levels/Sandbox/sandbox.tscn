@@ -77,3 +77,5 @@ position = Vector2(566, 224)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k5mep")
+
+[connection signal="attack_hit" from="Player" to="SmallEnemy" method="_on_player_attack_hit"]

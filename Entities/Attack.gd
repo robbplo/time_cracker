@@ -20,14 +20,17 @@ func start_attack(_target: Vector2):
 	return true
 
 func check_hit():
-	if not is_attacking:
-		return false
-	for body in $Area2D.get_overlapping_bodies():
-		if not body.is_ancestor_of(self):
-			attack_hit.emit(body)
+	pass
 
 func _on_animation_tree_animation_finished(anim_name:StringName):
 	if anim_name in ["R_Slash1", "L_Slash1"]:
 		attack_end.emit()
 		is_attacking = false
 
+
+
+func _on_area_2d_body_entered(body):
+	if not is_attacking:
+		return false
+	if not body.is_ancestor_of(self):
+		attack_hit.emit(body)
