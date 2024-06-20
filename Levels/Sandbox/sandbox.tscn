@@ -57,7 +57,7 @@ script = ExtResource("7_ohc0p")
 [node name="ProceduralGen" parent="." instance=ExtResource("10_cwkm0")]
 
 [node name="Player" parent="." instance=ExtResource("3_jsvw3")]
-position = Vector2(283, 137)
+position = Vector2(200, 217)
 scale = Vector2(0.8, 0.8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

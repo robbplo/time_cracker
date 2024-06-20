@@ -46,15 +46,17 @@ func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 
-func attack():
+func attack() -> bool:
 	if not GlobalTimer.is_on_time():
 		return false
 	if !$Attack.start(get_global_mouse_position()):
 		return false
+	return true
 
 func _unhandled_input(_event):
 	if (Input.is_action_just_pressed("Attack")):
-		attack()
+		if attack():
+			animation_tree["parameters/Slash1/blend_position"] = get_local_mouse_position().normalized()
 
 func _on_attack_attack_hit(body: Node):
 	attack_hit.emit(body, damage)
@@ -71,20 +73,13 @@ func _on_health_pool_die():
 
 
 func update_animations():
+	var is_idle = velocity == Vector2.ZERO
+	animation_tree["parameters/conditions/Idle"] = is_idle
+	animation_tree["parameters/conditions/is_moving"] = not is_idle
 
-	if (velocity == Vector2.ZERO):
-		animation_tree["parameters/conditions/Idle"] = true
-		animation_tree["parameters/conditions/is_moving"] = false
-	else:
-		animation_tree["parameters/conditions/Idle"] = false
-		animation_tree["parameters/conditions/is_moving"] = true
+	animation_tree["parameters/conditions/Attack"] = $Attack.is_attacking
 
-	if (Input.is_action_just_pressed("Attack")):
-		animation_tree["parameters/conditions/Attack"] = true
-	else:
-		animation_tree["parameters/conditions/Attack"] = false
-
-	if(input_direction != Vector2.ZERO):
-		animation_tree["parameters/Idle/blend_position"] = input_direction
-		animation_tree["parameters/Run/blend_position"] = input_direction
-		animation_tree["parameters/Slash1/blend_position"] = input_direction
+	if not $Attack.is_attacking:
+		if input_direction != Vector2.ZERO:
+			animation_tree["parameters/Idle/blend_position"] = input_direction
+			animation_tree["parameters/Run/blend_position"] = input_direction

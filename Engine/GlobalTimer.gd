@@ -66,7 +66,7 @@ func _add_sixteenth_note():
 ## Considered on time when within a sixteenth note of the quarter note
 func is_on_time():
 	var distance = distance_to_quarter_note()
-	print(str("distance to quarter note: ", distance, " ms"))
+	# print(str("distance to quarter note: ", distance, " ms"))
 	return abs(distance) < sixteenth_note_duration
 
 ## Returns the 'distance' in milliseconds to the nearest quarter note.

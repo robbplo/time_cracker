@@ -1,15 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://22hjgugr4bg3"]
+[gd_scene load_steps=54 format=3 uid="uid://22hjgugr4bg3"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_nvb10"]
 [ext_resource type="Script" path="res://Entities/Attack.gd" id="3_m3bif"]
 [ext_resource type="Texture2D" uid="uid://uecjaior7y8b" path="res://Entities/Player/Runwalk3.png" id="3_slgta"]
 [ext_resource type="AudioStream" uid="uid://cjhlyk5slw3am" path="res://SFX/Swish_51_SP.wav" id="4_573gc"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSprite.gd" id="4_q1ewa"]
-[ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://Sprites/Animations/AttackAnim2.png" id="5_rdspu"]
-[ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://Sprites/Animations/AttackAnim3 2.png" id="6_3vnk7"]
-[ext_resource type="Texture2D" uid="uid://b5o78h5iial6g" path="res://Sprites/Animations/AttackAnim4.png" id="7_mn2ks"]
-[ext_resource type="Texture2D" uid="uid://4qspmbnqkk0g" path="res://Sprites/Animations/AttackAnim5.png" id="8_3rtbw"]
-[ext_resource type="Texture2D" uid="uid://dyyawlyfqicph" path="res://Sprites/Animations/AttackAnim6.png" id="9_psfnf"]
 [ext_resource type="Texture2D" uid="uid://cxlylusoy40wj" path="res://Sprites/Characters/CharacterCursor.png" id="11_mvpm4"]
 [ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://Entities/health_pool.tscn" id="11_qak4c"]
 [ext_resource type="Shader" path="res://Entities/Player/character_cursor.gdshader" id="12_qno53"]
@@ -24,29 +19,6 @@ func _on_attack_attack_start():
 	set_pitch_scale(SfxPitch)
 	play(0.20)
 "
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dk842"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_rdspu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_3vnk7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_mn2ks")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_3rtbw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_psfnf")
-}],
-"loop": false,
-"name": &"AttackAnimation",
-"speed": 18.0
-}]
 
 [sub_resource type="GDScript" id="GDScript_kfik7"]
 script/source = "extends Node2D
@@ -663,6 +635,7 @@ blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_m88ih")
 blend_point_1/pos = Vector2(1, 2.08167e-14)
 blend_mode = 1
+sync = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3axxs"]
 advance_mode = 2
@@ -673,6 +646,7 @@ advance_mode = 2
 advance_condition = &"Attack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xsivi"]
+reset = false
 switch_mode = 2
 advance_mode = 2
 advance_condition = &"is_moving"
@@ -696,11 +670,12 @@ advance_condition = &"Idle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1knbg"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_8xytf")
-states/Idle/position = Vector2(402, 100)
+states/Idle/position = Vector2(404.667, 99.9506)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_qim6q")
 states/Run/position = Vector2(630, 100)
 states/Slash1/node = SubResource("AnimationNodeBlendSpace2D_yh70p")
 states/Slash1/position = Vector2(515, 10)
+states/Start/position = Vector2(201.333, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3axxs"), "Idle", "Slash1", SubResource("AnimationNodeStateMachineTransition_vag2j"), "Slash1", "Run", SubResource("AnimationNodeStateMachineTransition_xsivi"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_0x2gi"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_v5yvt"), "Run", "Slash1", SubResource("AnimationNodeStateMachineTransition_pdrn1"), "Slash1", "Idle", SubResource("AnimationNodeStateMachineTransition_p8jv7")]
 graph_offset = Vector2(-73, -100)
 
@@ -708,6 +683,11 @@ graph_offset = Vector2(-73, -100)
 z_index = 10
 texture_filter = 1
 script = ExtResource("1_nvb10")
+base_speed = null
+damage = null
+dash_speed_factor = null
+dash_duration = null
+dash_cooldown = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -747,16 +727,6 @@ script = ExtResource("3_m3bif")
 stream = ExtResource("4_573gc")
 volume_db = -6.0
 script = SubResource("GDScript_d2r8w")
-
-[node name="Animation" type="AnimatedSprite2D" parent="Attack"]
-position = Vector2(-3.33786e-06, -2.98023e-06)
-rotation = 1.5708
-scale = Vector2(1.3, 1.3)
-sprite_frames = SubResource("SpriteFrames_dk842")
-animation = &"AttackAnimation"
-frame = 4
-frame_progress = 1.0
-offset = Vector2(0, -50)
 
 [node name="Area2D" type="Area2D" parent="Attack"]
 
@@ -802,13 +772,14 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Attack = false
 parameters/conditions/Idle = false
 parameters/conditions/is_moving = false
-parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(-0.0689388, 0.0812855)
 parameters/Run/blend_position = Vector2(-0.00144511, -0.0086956)
-parameters/Slash1/blend_position = Vector2(-0.696532, -0.480969)
+parameters/Slash1/blend_position = Vector2(-0.186677, -0.1569)
 
 [connection signal="hurt" from="." to="Sprite2D" method="_on_player_hurt"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="attack_start" from="Attack" to="Attack/AttackSwish" method="_on_attack_attack_start"]
-[connection signal="animation_looped" from="Attack/Animation" to="Attack" method="_on_animation_animation_looped"]
 [connection signal="die" from="HealthPool" to="." method="_on_health_pool_die"]
+[connection signal="animation_finished" from="AnimationPlayer" to="Attack" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="Attack" method="_on_animation_tree_animation_finished"]

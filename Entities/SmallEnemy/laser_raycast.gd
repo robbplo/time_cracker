@@ -9,15 +9,15 @@ func _physics_process(_delta):
 	var local_target
 	if target != null:
 		# get local position of target node
-		local_target = to_local(target.global_position)
+		local_target = target.global_position
 
 	var cast_point = target_position
 	if is_colliding():
 		# only collide with objects when not casting
 		if not is_casting:
 			cast_point = to_local(get_collision_point())
-	elif local_target != null:
-		var direction = position.direction_to(local_target)
+	if local_target != null:
+		var direction = global_position.direction_to(local_target)
 		# extend past target node by distance of 1000
 		target_position = direction * 1000
 

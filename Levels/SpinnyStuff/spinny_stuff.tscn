@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2m8p4t80bgai"]
+
+[ext_resource type="Script" path="res://Levels/SpinnyStuff/spinny_stuff.gd" id="1_uhypv"]
+[ext_resource type="PackedScene" uid="uid://dekxuqddee516" path="res://Entities/SmallEnemy/laser_raycast.tscn" id="2_p1gya"]
+[ext_resource type="Script" path="res://Levels/SpinnyStuff/SpinnyCube.gd" id="2_t118n"]
+[ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="3_2160p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gase"]
+
+[node name="SpinnyStuff" type="Node2D"]
+script = ExtResource("1_uhypv")
+
+[node name="SpinnyCube" type="StaticBody2D" parent="."]
+position = Vector2(351, 152)
+script = ExtResource("2_t118n")
+target = NodePath("../Cube2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpinnyCube"]
+shape = SubResource("RectangleShape2D_3gase")
+
+[node name="ColorRect" type="ColorRect" parent="SpinnyCube"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0, 0.817976, 0.8207, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Cube2" type="StaticBody2D" parent="."]
+position = Vector2(350, 152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cube2"]
+shape = SubResource("RectangleShape2D_3gase")
+
+[node name="ColorRect" type="ColorRect" parent="Cube2"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(1, 0.576471, 0.576471, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Cube3" type="StaticBody2D" parent="."]
+position = Vector2(350, 152)
+
+[node name="ColorRect" type="ColorRect" parent="Cube3"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(1, 0.576471, 0.576471, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="LaserRaycast" parent="." instance=ExtResource("2_p1gya")]
+position = Vector2(256, 288)
+
+[node name="Player" parent="." instance=ExtResource("3_2160p")]
