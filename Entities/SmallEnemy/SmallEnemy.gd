@@ -3,17 +3,22 @@ extends CharacterBody2D
 signal attack_hit(damage: int)
 signal hurt(damage: int)
 
-@onready var target = get_parent().get_node("Player")
-## Movement speed, overridden by movement duration
-var speed = 600
-@export var damage = 2
-var moving = false
+var target = null
+## Movement speed, controlled by movement duration
+var speed = 0
+var is_moving = false
+@export var damage = 2.0
+## Starts attacking if target is within n pixels
+@export var attack_range: int = 400
 
 func _ready():
+	target = get_parent().get_node("Player")
+	$Attack.set_target(target)
+
 	GlobalTimer.sixteenth_note.connect(_on_sixteenth_note)
 
 func get_target():
-	if is_instance_valid(target):
+	if target != null && is_instance_valid(target):
 		return target
 
 func get_input():
@@ -23,16 +28,16 @@ func get_input():
 		velocity = direction * speed
 
 func _physics_process(_delta):
-	if moving:
+	if is_moving:
 		get_input()
 		move_and_slide()
 
 func step(distance):
 	var step_time = GlobalTimer.quarter_note_duration / 1000.0 / 2.0
 	speed = distance / step_time
-	moving = true
+	is_moving = true
 	await get_tree().create_timer(step_time).timeout
-	moving = false
+	is_moving = false
 
 func _on_health_pool_die():
 	queue_free()
@@ -48,20 +53,22 @@ func _on_attack_attack_hit(body):
 
 func _on_sixteenth_note(index):
 	match index:
-		# 0: $Attack.fire()
 		4: step(150)
-		8:
-			$Attack.charge(target)
-			$AnimationPlayer.play("open")
-			$AnimationPlayer.queue("loop_charging")
-		14: $Attack.stop_tracking()
-		15:
-			var delay = GlobalTimer.sixteenth_note_duration / 1000.0 * .75
-			await get_tree().create_timer(delay).timeout
-			$AnimationPlayer.play("fire")
-			$AnimationPlayer.queue("idle")
+		8: charge_attack()
+		14: $Attack/LaserRaycast.stop_tracking()
+		15: fire_attack()
 
-func attack():
-	if self.global_position.distance_to(target.global_position) < 600:
-		$Attack.start(target.global_position)
-	return true
+## Start charging attack
+func charge_attack():
+	var global_distance = self.global_position.distance_to(target.global_position)
+	if global_distance < attack_range:
+		$Attack.charge()
+		$AnimationPlayer.play("open")
+		$AnimationPlayer.queue("loop_charging")
+
+## Fire attack after a short delay
+func fire_attack():
+	var delay = GlobalTimer.sixteenth_note_duration / 1000.0 * .75
+	await get_tree().create_timer(delay).timeout
+	$AnimationPlayer.play("fire")
+	$AnimationPlayer.queue("idle")

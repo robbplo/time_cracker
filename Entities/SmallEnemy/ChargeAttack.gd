@@ -8,15 +8,16 @@ signal attack_hit(body: CharacterBody2D)
 
 var is_attacking = false
 
-func charge(target: Node):
+func set_target(node: Node2D):
+	$LaserRaycast.target = node
+
+func charge():
 	if is_attacking:
 		return false
 	attack_charge.emit()
-	$LaserRaycast.track_target(target)
+	$LaserRaycast.start_tracking()
 	is_attacking = true
-
-func stop_tracking():
-	$LaserRaycast.target = null
+	return true
 
 func fire():
 	if not is_attacking:
@@ -24,6 +25,7 @@ func fire():
 	$LaserRaycast.fire()
 	check_hit()
 	is_attacking = false
+	return true
 
 func check_hit():
 	var body = $LaserRaycast.get_collider()

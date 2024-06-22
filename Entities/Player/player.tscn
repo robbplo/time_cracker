@@ -341,6 +341,45 @@ tracks/1/keys = {
 "values": [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
 }
 
+[sub_resource type="Animation" id="Animation_n186i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Attack/Area2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Attack/Area2D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [67]
+}
+
 [sub_resource type="Animation" id="Animation_gc67n"]
 length = 0.525
 loop_mode = 1
@@ -617,45 +656,6 @@ tracks/1/keys = {
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_n186i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Attack/Area2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Attack/Area2D:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = false
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [67]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cuf8a"]
 _data = {
 "Down_run": SubResource("Animation_5ip61"),
@@ -767,7 +767,6 @@ states/Run/node = SubResource("AnimationNodeBlendSpace2D_qim6q")
 states/Run/position = Vector2(630, 100)
 states/Slash1/node = SubResource("AnimationNodeBlendSpace2D_yh70p")
 states/Slash1/position = Vector2(515, 10)
-states/Start/position = Vector2(200, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3axxs"), "Idle", "Slash1", SubResource("AnimationNodeStateMachineTransition_vag2j"), "Slash1", "Run", SubResource("AnimationNodeStateMachineTransition_xsivi"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_0x2gi"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_v5yvt"), "Run", "Slash1", SubResource("AnimationNodeStateMachineTransition_pdrn1"), "Slash1", "Idle", SubResource("AnimationNodeStateMachineTransition_p8jv7")]
 graph_offset = Vector2(-73, -100)
 
@@ -828,8 +827,6 @@ shape = SubResource("RectangleShape2D_wws6q")
 
 [node name="HealthPool" parent="." instance=ExtResource("11_qak4c")]
 position = Vector2(-3, -73)
-health = 5.0
-max_health = 5.0
 
 [node name="PlayerCursor" type="Node2D" parent="."]
 visible = false

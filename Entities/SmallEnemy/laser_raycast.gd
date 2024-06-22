@@ -1,39 +1,47 @@
 extends RayCast2D
 
 var is_casting = false
-var should_collide = false
+var is_tracking = true
 var target: Node2D = null
 
-# only runs when casting
-func _physics_process(_delta):
-	var local_target
-	if target != null:
-		# get local position of target node
-		local_target = target.global_position
+func _process(_delta):
+	update_laser()
 
+## enable tracking beam and follow the target
+func start_tracking():
+	is_tracking = true
+	# update immediately so laser will not appear in last position
+	update_laser()
+	$Line2D.width = 2
+
+## stop following the target
+func stop_tracking():
+	is_tracking = false
+
+## update laser position based on target location
+func update_laser():
 	var cast_point = target_position
-	if is_colliding():
-		# only collide with objects when not casting
-		if not is_casting:
-			cast_point = to_local(get_collision_point())
-	if local_target != null:
-		var direction = global_position.direction_to(local_target)
+
+	if is_tracking && target:
+		var direction = global_position.direction_to(target.global_position)
 		# extend past target node by distance of 1000
 		target_position = direction * 1000
+		if is_colliding():
+			cast_point = to_local(get_collision_point())
 
 	$Line2D.points[1] = cast_point
 	$Line2D2.points[1] = cast_point
 
-func track_target(node: Node2D):
-	target = node
-	$Line2D.width = 2
-
+## fire laser animations
 func fire():
 	is_casting = true
 	var tween = create_tween()
+	# grow laser
 	tween.tween_property($Line2D, "width", 40, .02)
 	tween.parallel().tween_property($Line2D2, "width", 35, .02)
+	# shrink laser
 	tween.tween_property($Line2D, "width", 0, .4)
 	tween.parallel().tween_property($Line2D2, "width", 0, .4)
-	tween.tween_callback(func(): is_casting = false)
-
+	# stop casting and tracking
+	tween.tween_property(self, "is_casting", false, .0)
+	tween.parallel().tween_property(self, "is_tracking", false, .0)
