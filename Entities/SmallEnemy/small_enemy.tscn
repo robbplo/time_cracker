@@ -1,19 +1,9 @@
-[gd_scene load_steps=51 format=3 uid="uid://6ugc0tg5jb2e"]
+[gd_scene load_steps=42 format=3 uid="uid://6ugc0tg5jb2e"]
 
 [ext_resource type="Script" path="res://Entities/SmallEnemy/SmallEnemy.gd" id="1_5hhm5"]
 [ext_resource type="Shader" path="res://Entities/Player/hover.gdshader" id="2_uevhu"]
-[ext_resource type="Texture2D" uid="uid://chujxb4e6pk0g" path="res://Sprites/Animations/AttackAnim1.png" id="6_ttnx7"]
-[ext_resource type="Texture2D" uid="uid://bp11a7a475jro" path="res://Sprites/Animations/AttackAnim2.png" id="7_v558m"]
-[ext_resource type="Texture2D" uid="uid://b4labx8lkuv6l" path="res://Sprites/Animations/AttackAnim3 2.png" id="8_kxlke"]
-[ext_resource type="Texture2D" uid="uid://b5o78h5iial6g" path="res://Sprites/Animations/AttackAnim4.png" id="9_nw50l"]
-[ext_resource type="Texture2D" uid="uid://4qspmbnqkk0g" path="res://Sprites/Animations/AttackAnim5.png" id="10_q7guj"]
-[ext_resource type="Texture2D" uid="uid://dyyawlyfqicph" path="res://Sprites/Animations/AttackAnim6.png" id="11_0vum0"]
 [ext_resource type="PackedScene" uid="uid://dekxuqddee516" path="res://Entities/SmallEnemy/laser_raycast.tscn" id="13_3dlbd"]
 [ext_resource type="Script" path="res://Entities/SmallEnemy/AnimatedSprite.gd" id="16_53bbl"]
-[ext_resource type="Texture2D" uid="uid://cpfcasbveh2f3" path="res://Sprites/Animations/AttackSpikeAnim-8.png" id="19_ffq7s"]
-[ext_resource type="Texture2D" uid="uid://bxslj0kd4kixd" path="res://Sprites/Animations/AttackSpikeAnim-9.png" id="20_rxgl6"]
-[ext_resource type="Texture2D" uid="uid://onps1uun7k2m" path="res://Sprites/Animations/AttackSpikeAnim-10.png" id="21_uy8tg"]
-[ext_resource type="Texture2D" uid="uid://b5bq35yt13ayy" path="res://Sprites/Animations/AttackSpikeAnim-11.png" id="22_5jskh"]
 [ext_resource type="AudioStream" uid="uid://d2vvf44p47efx" path="res://SFX/SFX_laserspike.mp3" id="23_5jktk"]
 [ext_resource type="Texture2D" uid="uid://c3nid5d5ux6d6" path="res://Sprites/Characters/Small_enemy_windup/Small_enemy_windup_Full1.png" id="23_7cux6"]
 [ext_resource type="Texture2D" uid="uid://dp52pskxrpb6q" path="res://Sprites/Characters/Small_enemy_windup/Small_enemy_windup_Full2.png" id="24_e3p0h"]
@@ -37,67 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://cf2phi4hu4w6i" path="res://Sprites/Characters/Small_enemy_windup/Small_enemy_windup_Full12.png" id="34_jkdgx"]
 [ext_resource type="Texture2D" uid="uid://8us5xqtbuj10" path="res://Sprites/Characters/Small_enemy_windup/Small_enemy_windup_Full13.png" id="35_24hxf"]
 [ext_resource type="Texture2D" uid="uid://dibt1la16shuf" path="res://Sprites/Characters/Small_enemy_windup/Small_enemy_windup_Full14.png" id="36_kvqvm"]
+[ext_resource type="Script" path="res://Engine/TimedAnimation.gd" id="39_7b776"]
 [ext_resource type="Texture2D" uid="uid://cxgpni1gkphvf" path="res://Sprites/Lights/Spotlight.png" id="50_bgvho"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j4upl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_ttnx7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_v558m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_kxlke")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_nw50l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_q7guj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_0vum0")
-}],
-"loop": true,
-"name": &"AttackAnimation",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_ffq7s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_rxgl6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_uy8tg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_5jskh")
-}],
-"loop": true,
-"name": &"AttackSpike",
-"speed": 12.0
-}]
-
-[sub_resource type="GDScript" id="GDScript_q24g6"]
-script/source = "extends AnimatedSprite2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="Animation" id="Animation_2uktc"]
 length = 0.001
@@ -105,7 +36,7 @@ length = 0.001
 [sub_resource type="Animation" id="Animation_fh50i"]
 resource_name = "fire"
 length = 0.416675
-step = 0.0833333
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -113,7 +44,7 @@ tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.416667),
+"times": PackedFloat32Array(0.0625, 0.3125),
 "transitions": PackedFloat32Array(0.4, 1),
 "update": 0,
 "values": [10, 14]
@@ -127,7 +58,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.1483,
+"start_offset": 0.165,
 "stream": ExtResource("23_5jktk")
 }],
 "times": PackedFloat32Array(0)
@@ -140,7 +71,7 @@ tracks/2/path = NodePath("Attack")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.0833333),
+"times": PackedFloat32Array(0.0625),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -185,7 +116,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_sqhs7"]
 resource_name = "open"
 length = 0.416675
-step = 0.0833333
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -302,6 +233,50 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_5kkds"]
+resource_name = "pulse"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"fire_attack"
+}, {
+"args": [150],
+"method": &"step"
+}, {
+"args": [],
+"method": &"charge_attack"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack/LaserRaycast")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.875),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_tracking"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lidq3"]
+_data = {
+"pulse": SubResource("Animation_5kkds")
+}
+
 [node name="SmallEnemy" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_5hhm5")
@@ -315,27 +290,8 @@ z_index = 1
 position = Vector2(-2, -5)
 script = ExtResource("31_s11go")
 
-[node name="Area2D" type="Area2D" parent="Attack"]
-visible = false
-rotation = 1.5708
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D"]
-position = Vector2(88, -7.27596e-12)
-polygon = PackedVector2Array(-98.0005, -131, -79.0005, -131, -79, 5.99997, -98, 6.00004)
-
 [node name="Sound" type="AudioStreamPlayer2D" parent="Attack"]
 position = Vector2(0, 21)
-
-[node name="FireAnimation" type="AnimatedSprite2D" parent="Attack"]
-z_index = 4
-position = Vector2(0, 1)
-rotation = 3.14159
-scale = Vector2(1.3, 1.3)
-sprite_frames = SubResource("SpriteFrames_j4upl")
-animation = &"AttackSpike"
-offset = Vector2(-40, 2)
-flip_h = true
-script = SubResource("GDScript_q24g6")
 
 [node name="LaserRaycast" parent="Attack" instance=ExtResource("13_3dlbd")]
 
@@ -368,9 +324,15 @@ scale = Vector2(1.11436, 0.985996)
 blend_mode = 2
 texture = ExtResource("50_bgvho")
 
+[node name="TimedAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lidq3")
+}
+script = ExtResource("39_7b776")
+animation = "pulse"
+
 [connection signal="hurt" from="." to="AnimatedSprite" method="_on_small_enemy_hurt"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
-[connection signal="animation_looped" from="Attack/FireAnimation" to="Attack" method="_on_fire_animation_animation_looped"]
 [connection signal="die" from="HealthPool" to="." method="_on_health_pool_die"]
 [connection signal="health_changed" from="HealthPool" to="HurtAnimation" method="_on_health_pool_health_changed"]
 [connection signal="animation_looped" from="HurtAnimation" to="HurtAnimation" method="_on_animation_looped"]

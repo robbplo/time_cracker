@@ -15,8 +15,6 @@ func _ready():
 	target = get_parent().get_node("Player")
 	$Attack.set_target(target)
 
-	GlobalTimer.sixteenth_note.connect(_on_sixteenth_note)
-
 func get_target():
 	if target != null && is_instance_valid(target):
 		return target
@@ -32,6 +30,8 @@ func _physics_process(_delta):
 		get_input()
 		move_and_slide()
 
+## Move for 'distance' pixels
+## Speed is calculated so the movement occurs an eigth note
 func step(distance):
 	var step_time = GlobalTimer.quarter_note_duration / 2.0
 	speed = distance / step_time
@@ -42,21 +42,16 @@ func step(distance):
 func _on_health_pool_die():
 	queue_free()
 
+## Subtract health when hit by player
 func _on_player_attack_hit(body, amount):
 	if body == self:
 		hurt.emit(amount)
 		$HealthPool.subtract(amount)
 
+## Emit signal if player was hit
 func _on_attack_attack_hit(body):
 	if body.name == "Player":
 		attack_hit.emit(damage)
-
-func _on_sixteenth_note(index):
-	match index:
-		4: step(150)
-		8: charge_attack()
-		14: $Attack/LaserRaycast.stop_tracking()
-		15: fire_attack()
 
 ## Start charging attack
 func charge_attack():
@@ -66,9 +61,8 @@ func charge_attack():
 		$AnimationPlayer.play("open")
 		$AnimationPlayer.queue("loop_charging")
 
-## Fire attack after a short delay
+## If charging, fire attack
 func fire_attack():
-	var delay = GlobalTimer.sixteenth_note_duration * .75
-	await get_tree().create_timer(delay).timeout
-	$AnimationPlayer.play("fire")
-	$AnimationPlayer.queue("idle")
+	if $Attack.is_attacking:
+		$AnimationPlayer.play("fire")
+		$AnimationPlayer.queue("idle")

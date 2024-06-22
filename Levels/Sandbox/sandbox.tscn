@@ -21,13 +21,12 @@ glow_hdr_threshold = 0.76
 
 [node name="Sandbox" type="Node2D"]
 script = ExtResource("1_m1cg6")
-metadata/_edit_vertical_guides_ = [-96.0, 364.0]
 
 [node name="Song" type="AudioStreamPlayer" parent="."]
 process_priority = 5
 process_physics_priority = 5
 stream = ExtResource("2_ic05v")
-volume_db = -21.929
+volume_db = -13.508
 
 [node name="16thCounter" type="Label" parent="."]
 offset_left = 188.0
@@ -57,8 +56,7 @@ script = ExtResource("7_ohc0p")
 [node name="ProceduralGen" parent="." instance=ExtResource("10_cwkm0")]
 
 [node name="Player" parent="." instance=ExtResource("3_jsvw3")]
-position = Vector2(200, 217)
-scale = Vector2(0.8, 0.8)
+position = Vector2(201, 217)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.5, 1.5)

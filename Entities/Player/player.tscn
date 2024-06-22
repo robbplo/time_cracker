@@ -777,11 +777,6 @@ graph_offset = Vector2(-73, -100)
 z_index = 10
 texture_filter = 1
 script = ExtResource("1_nvb10")
-base_speed = null
-damage = null
-dash_speed_factor = null
-dash_duration = null
-dash_cooldown = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -809,6 +804,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "5367dd9cee5a8e2d8a648b27341b6d35"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_heu7g")
 
@@ -821,6 +817,7 @@ volume_db = -6.0
 script = SubResource("GDScript_d2r8w")
 
 [node name="Area2D" type="Area2D" parent="Attack"]
+visible = false
 position = Vector2(0, 4)
 monitoring = false
 

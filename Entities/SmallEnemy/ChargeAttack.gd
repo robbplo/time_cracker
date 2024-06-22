@@ -5,7 +5,6 @@ signal attack_fire
 signal attack_end
 signal attack_hit(body: CharacterBody2D)
 
-
 var is_attacking = false
 
 func set_target(node: Node2D):
