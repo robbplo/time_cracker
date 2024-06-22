@@ -29,7 +29,7 @@ func _physics_process(_delta):
 		move_and_slide()
 
 func step(distance):
-	var step_time = GlobalTimer.quarter_note_duration / 1000.0 / 2.0
+	var step_time = GlobalTimer.quarter_note_duration / 2.0
 	speed = distance / step_time
 	moving = true
 	await get_tree().create_timer(step_time).timeout

@@ -33,7 +33,7 @@ func _physics_process(_delta):
 		move_and_slide()
 
 func step(distance):
-	var step_time = GlobalTimer.quarter_note_duration / 1000.0 / 2.0
+	var step_time = GlobalTimer.quarter_note_duration / 2.0
 	speed = distance / step_time
 	is_moving = true
 	await get_tree().create_timer(step_time).timeout
@@ -68,7 +68,7 @@ func charge_attack():
 
 ## Fire attack after a short delay
 func fire_attack():
-	var delay = GlobalTimer.sixteenth_note_duration / 1000.0 * .75
+	var delay = GlobalTimer.sixteenth_note_duration * .75
 	await get_tree().create_timer(delay).timeout
 	$AnimationPlayer.play("fire")
 	$AnimationPlayer.queue("idle")

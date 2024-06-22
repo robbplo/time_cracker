@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://22hjgugr4bg3"]
+[gd_scene load_steps=57 format=3 uid="uid://22hjgugr4bg3"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_nvb10"]
 [ext_resource type="Script" path="res://Entities/Attack.gd" id="3_m3bif"]
@@ -10,6 +10,9 @@
 [ext_resource type="Shader" path="res://Entities/Player/character_cursor.gdshader" id="12_qno53"]
 [ext_resource type="Texture2D" uid="uid://c66m6yr0htalo" path="res://Sprites/Characters/CharacterCursorRing.png" id="15_wf412"]
 [ext_resource type="Texture2D" uid="uid://cxgpni1gkphvf" path="res://Sprites/Lights/Spotlight.png" id="16_tre60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_heu7g"]
+size = Vector2(13, 42)
 
 [sub_resource type="GDScript" id="GDScript_d2r8w"]
 script/source = "extends AudioStreamPlayer2D
@@ -805,9 +808,9 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "5367dd9cee5a8e2d8a648b27341b6d35"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-2, -43)
-polygon = PackedVector2Array(-4, 66, -5, 23, 7, 24, 8, 65)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_heu7g")
 
 [node name="Attack" type="CharacterBody2D" parent="."]
 script = ExtResource("3_m3bif")

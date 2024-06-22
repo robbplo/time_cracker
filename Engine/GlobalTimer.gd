@@ -8,11 +8,11 @@ signal sixteenth_note(index: int)
 var running: bool = false
 ## Bpm of the song
 @export var bpm: float = 112.0
-## Duration of a quarter note in milliseconds
-var quarter_note_duration: float = 60.0 / bpm * 1000
-## Duration of a sixteenth note in millisecondsw
+## Duration of a quarter note in seconds
+var quarter_note_duration: float = 60.0 / bpm
+## Duration of a sixteenth note in seconds
 var sixteenth_note_duration: float = quarter_note_duration / 4.0
-## In milliseconds
+## Total time since the music started playing
 var elapsed_time: float = 0
 ## Amount of quarter notes since starting
 var total_quarter_notes: int = 0
@@ -22,10 +22,13 @@ var total_sixteenth_notes: int = 0
 @onready var output_latency: float = AudioServer.get_output_latency()
 @onready var player: AudioStreamPlayer = get_tree().root.get_child(-1).find_child("Song")
 
-const COMPENSATE_FRAMES = -4
+const COMPENSATE_FRAMES = 5
 const COMPENSATE_HZ = 60.0
 
 func _ready():
+	# add a short delay so others can listen to started event
+	# ideally the song should not start when the scene is ready, but after everything is loaded
+	await get_tree().process_frame
 	if player:
 		player.play()
 		start()
@@ -38,8 +41,6 @@ func _process(_delta):
 		+ AudioServer.get_time_since_last_mix() \
 		- output_latency \
 		+ ((1 / COMPENSATE_HZ) * COMPENSATE_FRAMES)
-
-	elapsed_time *= 1000
 
 	var new_quarter_notes = floor(elapsed_time / quarter_note_duration)
 	if new_quarter_notes > total_quarter_notes:
