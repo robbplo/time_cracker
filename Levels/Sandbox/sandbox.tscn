@@ -66,9 +66,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-position = Vector2(221, 284)
-scale = Vector2(0.113417, -0.514364)
-color = Color(0.277528, 0.277528, 0.277528, 1)
+color = Color(0.245984, 0.245984, 0.245984, 1)
 
 [node name="SmallEnemy" parent="." instance=ExtResource("10_5fq8l")]
 position = Vector2(566, 224)

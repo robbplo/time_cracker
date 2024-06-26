@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal attack_hit(damage: int)
 signal hurt(damage: int)
 
+@export var movement_curve: Curve
 var target = null
 ## Movement speed, controlled by movement duration
 var speed = 0
