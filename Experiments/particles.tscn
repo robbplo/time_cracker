@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dekxuqddee516" path="res://Entities/SmallEnemy/laser_raycast.tscn" id="1_un84s"]
 [ext_resource type="Texture2D" uid="uid://b8wuvhvbcgnpf" path="res://Sprites/Lights/CircleParticle.png" id="2_2blup"]
-[ext_resource type="Shader" path="res://pixelate.gdshader" id="3_wocrs"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lbt0y"]
 particle_flag_disable_z = true
