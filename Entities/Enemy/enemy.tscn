@@ -175,8 +175,6 @@ stream = ExtResource("30_y14b0")
 
 [node name="HealthPool" parent="." instance=ExtResource("23_jeuvx")]
 position = Vector2(0, -62)
-health = 2.0
-max_health = 2.0
 
 [node name="HurtAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)

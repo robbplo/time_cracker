@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://v81snc18ntys"]
+[gd_scene load_steps=15 format=3 uid="uid://v81snc18ntys"]
 
 [ext_resource type="Script" path="res://Levels/Main/main.gd" id="1_m1cg6"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="2_ic05v"]
@@ -7,8 +7,17 @@
 [ext_resource type="Script" path="res://Engine/TimerLaber.gd" id="6_4wvix"]
 [ext_resource type="Script" path="res://Levels/Sandbox/4thCounter.gd" id="6_dky0v"]
 [ext_resource type="Script" path="res://Engine/GameTime.gd" id="7_ohc0p"]
+[ext_resource type="PackedScene" uid="uid://bpcym56c3hp2q" path="res://trails.tscn" id="9_2hlah"]
 [ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="10_5fq8l"]
 [ext_resource type="PackedScene" uid="uid://da1tacyxgqx7p" path="res://Engine/ProceduralGen.tscn" id="10_cwkm0"]
+[ext_resource type="Script" path="res://Levels/Sandbox/polygon_2d.gd" id="10_dkngy"]
+
+[sub_resource type="Curve" id="Curve_ckcdk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_i36o4"]
+colors = PackedColorArray(1, 1, 1, 1, 0.242302, 0.534966, 0.309497, 0)
 
 [sub_resource type="Environment" id="Environment_k5mep"]
 background_mode = 3
@@ -56,14 +65,33 @@ script = ExtResource("7_ohc0p")
 [node name="ProceduralGen" parent="." instance=ExtResource("10_cwkm0")]
 
 [node name="Player" parent="." instance=ExtResource("3_jsvw3")]
-position = Vector2(201, 217)
+z_index = 1
+position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Player"]
+top_level = true
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-8, -12, -9, 3, -1, 14, 18, 7, 12, -12)
+script = ExtResource("10_dkngy")
+orbitRadius = 20.0
+orbitSpeed = 5.0
+
+[node name="Trails" parent="Player/Polygon2D" instance=ExtResource("9_2hlah")]
+top_level = true
+z_index = 1
+points = PackedVector2Array(-76, 111)
+width_curve = SubResource("Curve_ckcdk")
+gradient = SubResource("Gradient_i36o4")
+Max_length = 50
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.245984, 0.245984, 0.245984, 1)
