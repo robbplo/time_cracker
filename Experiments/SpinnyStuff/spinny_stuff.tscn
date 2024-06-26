@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c2m8p4t80bgai"]
 
-[ext_resource type="Script" path="res://Levels/SpinnyStuff/spinny_stuff.gd" id="1_uhypv"]
+[ext_resource type="Script" path="res://Experiments/SpinnyStuff/spinny_stuff.gd" id="1_uhypv"]
 [ext_resource type="PackedScene" uid="uid://dekxuqddee516" path="res://Entities/SmallEnemy/laser_raycast.tscn" id="2_p1gya"]
-[ext_resource type="Script" path="res://Levels/SpinnyStuff/SpinnyCube.gd" id="2_t118n"]
+[ext_resource type="Script" path="res://Experiments/SpinnyStuff/SpinnyCube.gd" id="2_t118n"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="3_2160p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gase"]

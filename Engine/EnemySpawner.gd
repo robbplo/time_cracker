@@ -5,7 +5,7 @@ const ENEMY = preload("res://Entities/SmallEnemy/small_enemy.tscn")
 ## Node that enemies will be added to
 @onready var root = get_parent()
 @onready var player = root.get_node("Player")
-@onready var camera: Camera2D = player.get_node("Camera2D")
+@onready var camera: Camera2D = root.find_child("Camera2D")
 
 @export var max_enemies = 20
 @export var min_delay = 1

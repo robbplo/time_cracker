@@ -94,9 +94,7 @@ gradient = SubResource("Gradient_i36o4")
 Max_length = 50
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-position = Vector2(221, 284)
-scale = Vector2(0.113417, -0.514364)
-color = Color(0.277528, 0.277528, 0.277528, 1)
+color = Color(0.245984, 0.245984, 0.245984, 1)
 
 [node name="SmallEnemy" parent="." instance=ExtResource("10_5fq8l")]
 position = Vector2(566, 224)
