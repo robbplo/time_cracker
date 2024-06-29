@@ -10,7 +10,7 @@ var speed = 0
 var is_moving = false
 @export var damage = 2.0
 ## Starts attacking if target is within n pixels
-@export var attack_range: int = 400
+@export var attack_range: int = 800
 
 func _ready():
 	target = get_parent().get_node("Player")

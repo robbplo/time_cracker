@@ -36,8 +36,9 @@ func _process(_delta):
 
 	elapsed_time = player.get_playback_position() \
 		+ AudioServer.get_time_since_last_mix() \
-		- output_latency \
-		- Config.global_timer_offset
+		- output_latency
+
+	print(Config.global_timer_offset)
 
 	var new_quarter_notes = floor(elapsed_time / quarter_note_duration)
 	if new_quarter_notes > total_quarter_notes:
@@ -70,7 +71,8 @@ func is_on_time():
 ## Returns the 'distance' in seconds to the nearest quarter note.
 ## The value is negative if called just before the note and positive if called just after.
 func distance_to_quarter_note() -> float:
-	var offset = fmod(elapsed_time, quarter_note_duration)
+	var adjusted_time = elapsed_time - Config.global_timer_offset
+	var offset = fmod(adjusted_time, quarter_note_duration)
 	if offset < quarter_note_duration / 2:
 		return offset
 	else:
