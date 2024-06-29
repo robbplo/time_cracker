@@ -1,0 +1,147 @@
+[gd_scene load_steps=5 format=3 uid="uid://sq3rdwlwe0ej"]
+
+[ext_resource type="Script" path="res://Engine/TimedAnimation.gd" id="1_ehrls"]
+
+[sub_resource type="Animation" id="Animation_0gxaq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quarter1:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("quarter2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("quarter3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("quarter4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h25px"]
+resource_name = "new_animation"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quarter1:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.1, 0.5),
+"update": 0,
+"values": [Color(0.2046, 0.66, 0.66, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("quarter2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 0.2501, 0.5),
+"transitions": PackedFloat32Array(1, 0.1, 0.5),
+"update": 0,
+"values": [Color(0.203922, 0.658824, 0.658824, 1), Color(0.203922, 0.658824, 0.658824, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("quarter3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.75),
+"transitions": PackedFloat32Array(0.1, 0.5),
+"update": 0,
+"values": [Color(0.203922, 0.658824, 0.658824, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("quarter4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.75, 1),
+"transitions": PackedFloat32Array(0.1, 0.5),
+"update": 0,
+"values": [Color(0.203922, 0.658824, 0.658824, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1eoc4"]
+_data = {
+"RESET": SubResource("Animation_0gxaq"),
+"new_animation": SubResource("Animation_h25px")
+}
+
+[node name="Meter" type="Node2D"]
+position = Vector2(431, 562)
+scale = Vector2(0.431818, 2.14583)
+
+[node name="quarter1" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="quarter2" type="ColorRect" parent="."]
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="quarter3" type="ColorRect" parent="."]
+offset_left = 300.0
+offset_right = 340.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="quarter4" type="ColorRect" parent="."]
+offset_left = 450.0
+offset_right = 490.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TimedAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1eoc4")
+}
+script = ExtResource("1_ehrls")
+animation = "new_animation"

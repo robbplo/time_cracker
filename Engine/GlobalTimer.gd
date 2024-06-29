@@ -22,9 +22,6 @@ var total_sixteenth_notes: int = 0
 @onready var output_latency: float = AudioServer.get_output_latency()
 @onready var player: AudioStreamPlayer = get_tree().root.get_child(-1).find_child("Song")
 
-const COMPENSATE_FRAMES = 5
-const COMPENSATE_HZ = 60.0
-
 func _ready():
 	# add a short delay so others can listen to started event
 	# ideally the song should not start when the scene is ready, but after everything is loaded
@@ -40,7 +37,7 @@ func _process(_delta):
 	elapsed_time = player.get_playback_position() \
 		+ AudioServer.get_time_since_last_mix() \
 		- output_latency \
-		+ ((1 / COMPENSATE_HZ) * COMPENSATE_FRAMES)
+		- Config.global_timer_offset
 
 	var new_quarter_notes = floor(elapsed_time / quarter_note_duration)
 	if new_quarter_notes > total_quarter_notes:
@@ -64,13 +61,13 @@ func _add_sixteenth_note():
 	total_sixteenth_notes += 1
 	sixteenth_note.emit(total_sixteenth_notes % 16)
 
-## Considered on time when within a sixteenth note of the quarter note
+## Considered on time when within a sixteenth note duration of the quarter note
 func is_on_time():
 	var distance = distance_to_quarter_note()
 	# print(str("distance to quarter note: ", distance, " ms"))
 	return abs(distance) < sixteenth_note_duration
 
-## Returns the 'distance' in milliseconds to the nearest quarter note.
+## Returns the 'distance' in seconds to the nearest quarter note.
 ## The value is negative if called just before the note and positive if called just after.
 func distance_to_quarter_note() -> float:
 	var offset = fmod(elapsed_time, quarter_note_duration)

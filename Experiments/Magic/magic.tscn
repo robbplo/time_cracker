@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://gso2donl7rf8"]
+
+[ext_resource type="Script" path="res://Experiments/Magic/Magic.gd" id="1_5bb8a"]
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
+[ext_resource type="Texture2D" uid="uid://cfsu3qonjjgk0" path="res://Sprites/Characters/EnemyBig1.png" id="2_57g1i"]
+[ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="4_3d11i"]
+
+[node name="Magic" type="Node2D"]
+
+[node name="Song" type="AudioStreamPlayer" parent="."]
+process_priority = 5
+process_physics_priority = 5
+stream = ExtResource("1_tkckc")
+volume_db = -13.508
+
+[node name="Node2D" type="CharacterBody2D" parent="."]
+position = Vector2(545, 260)
+script = ExtResource("1_5bb8a")
+
+[node name="EnemyBig1" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_57g1i")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
+clip_contents = false
+offset_left = -76.0
+offset_top = -94.0
+offset_right = -36.0
+offset_bottom = -54.0
+autowrap_mode = 0
+
+[node name="Meter" parent="." instance=ExtResource("4_3d11i")]

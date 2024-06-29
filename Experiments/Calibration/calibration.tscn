@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu6l523ql7td1"]
+
+[ext_resource type="Script" path="res://Experiments/Calibration/calibration.gd" id="1_r3jhq"]
+[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="2_ktbqd"]
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="3_un87m"]
+
+[node name="Calibration" type="Node2D"]
+script = ExtResource("1_r3jhq")
+
+[node name="Meter" parent="." instance=ExtResource("2_ktbqd")]
+position = Vector2(480, 560)
+
+[node name="NewOffsetLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = 513.0
+offset_top = 296.0
+offset_right = 735.0
+offset_bottom = 336.0
+text = "New Offset"
+
+[node name="ActiveOffsetLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = 513.0
+offset_top = 8.0
+offset_right = 735.0
+offset_bottom = 48.0
+text = "Active Offset: "
+
+[node name="Song" type="AudioStreamPlayer" parent="."]
+process_priority = 5
+process_physics_priority = 5
+stream = ExtResource("3_un87m")
+volume_db = -13.508
+
+[node name="ResetCalibrationButton" type="Button" parent="."]
+offset_left = 248.0
+offset_top = 288.0
+offset_right = 386.0
+offset_bottom = 319.0
+focus_mode = 0
+text = "Reset calibration"
+
+[node name="RemoveOffsetButton" type="Button" parent="."]
+offset_left = 120.0
+offset_top = 160.0
+offset_right = 240.0
+offset_bottom = 191.0
+focus_mode = 0
+text = "Remove offset
+"
+
+[node name="StoreOffsetButton" type="Button" parent="."]
+offset_left = 264.0
+offset_top = 160.0
+offset_right = 384.0
+offset_bottom = 191.0
+focus_mode = 0
+text = "Store offset
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 472.0
+offset_right = 312.0
+offset_bottom = 640.0
+text = "Press spacebar on the beat to calibrate the timer for the latency in your system.  "
+
+[connection signal="pressed" from="ResetCalibrationButton" to="." method="_on_reset_calibration_button_pressed"]
+[connection signal="pressed" from="RemoveOffsetButton" to="." method="_on_remove_offset_button_pressed"]
+[connection signal="pressed" from="StoreOffsetButton" to="." method="_on_store_offset_button_pressed"]
