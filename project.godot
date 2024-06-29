@@ -14,6 +14,8 @@ config/name="Time Cracker"
 run/main_scene="res://Levels/Main/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
+boot_splash/bg_color=Color(1, 0.305466, 0.678619, 1)
+boot_splash/image="res://Sprites/Splash.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -78,10 +80,16 @@ Dash={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="World"
+2d_render/layer_2="Player"
+2d_render/layer_3="Item"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.592157, 0.74902, 0.431373, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
 

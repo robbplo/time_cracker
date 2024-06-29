@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsani0bmhoiuj"
+path="res://.godot/imported/PlacementExperiment 2-Kick_36_440 [2024-06-28 203012]-1.wav-de438c6b74ebb4949c92214ebabfa6ac.sample"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment 2-Kick_36_440 [2024-06-28 203012]-1.wav"
+dest_files=["res://.godot/imported/PlacementExperiment 2-Kick_36_440 [2024-06-28 203012]-1.wav-de438c6b74ebb4949c92214ebabfa6ac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

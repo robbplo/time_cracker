@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsbi5fruekwni"
+path="res://.godot/imported/PlacementExperiment G-_ Midbell.mp3-1abb96edc9b51c858774957334d524e7.mp3str"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment G-_ Midbell.mp3"
+dest_files=["res://.godot/imported/PlacementExperiment G-_ Midbell.mp3-1abb96edc9b51c858774957334d524e7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

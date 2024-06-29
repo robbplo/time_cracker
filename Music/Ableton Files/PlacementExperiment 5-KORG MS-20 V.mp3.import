@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bd8l8ylaivlre"
+path="res://.godot/imported/PlacementExperiment 5-KORG MS-20 V.mp3-513737a34a102ba984a6e3a1a726849d.mp3str"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment 5-KORG MS-20 V.mp3"
+dest_files=["res://.godot/imported/PlacementExperiment 5-KORG MS-20 V.mp3-513737a34a102ba984a6e3a1a726849d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d12bqnfdkahy5"
+path="res://.godot/imported/PlacementExperiment 6-CS-80 V4.wav-a3d66be0dd5f34e85373d39229e8598e.sample"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment 6-CS-80 V4.wav"
+dest_files=["res://.godot/imported/PlacementExperiment 6-CS-80 V4.wav-a3d66be0dd5f34e85373d39229e8598e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

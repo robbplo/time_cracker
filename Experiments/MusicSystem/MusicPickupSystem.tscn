@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bj4l2313fctl6"]
+
+[ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_4f1qy"]
+[ext_resource type="Script" path="res://Experiments/MusicSystem/music_non_spatial.gd" id="2_yf8js"]
+[ext_resource type="AudioStream" uid="uid://dimrarste2m7r" path="res://Music/Ableton Files/PlacementExperiment 1-Kick_36_440 [2024-06-28 203012].mp3" id="3_dv62t"]
+[ext_resource type="Texture2D" uid="uid://cfsu3qonjjgk0" path="res://Sprites/Characters/EnemyBig1.png" id="3_krw6b"]
+[ext_resource type="AudioStream" uid="uid://bd8l8ylaivlre" path="res://Music/Ableton Files/PlacementExperiment 5-KORG MS-20 V.mp3" id="4_4wn8r"]
+[ext_resource type="AudioStream" uid="uid://c28uxpt36tjax" path="res://Music/Ableton Files/PlacementExperiment 3 Midi.mp3" id="4_e3sdr"]
+[ext_resource type="PackedScene" uid="uid://cs767msgh05mg" path="res://Experiments/MusicSystem/pickup_kick.tscn" id="5_3yc1i"]
+[ext_resource type="Texture2D" uid="uid://b4q7x5a2hjlv2" path="res://Sprites/Characters/EnemyBig2.png" id="8_ucwv5"]
+[ext_resource type="Texture2D" uid="uid://tprdxtalqvna" path="res://Sprites/Characters/EnemySmall1.png" id="9_7jau8"]
+
+[node name="MusicPickupSystem" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_4f1qy")]
+
+[node name="Music_NonSpatial" type="Node" parent="."]
+script = ExtResource("2_yf8js")
+
+[node name="Kick" type="AudioStreamPlayer" parent="Music_NonSpatial"]
+stream = ExtResource("3_dv62t")
+volume_db = -80.0
+autoplay = true
+
+[node name="Snare" type="AudioStreamPlayer" parent="Music_NonSpatial"]
+stream = ExtResource("4_e3sdr")
+volume_db = -80.0
+autoplay = true
+
+[node name="Bassline" type="AudioStreamPlayer" parent="Music_NonSpatial"]
+stream = ExtResource("4_4wn8r")
+volume_db = -80.0
+autoplay = true
+
+[node name="Pickup_Kick" parent="." node_paths=PackedStringArray("track") instance=ExtResource("5_3yc1i")]
+track = NodePath("../Music_NonSpatial/Kick")
+sprite = ExtResource("3_krw6b")
+
+[node name="Pickup_Snare" parent="." node_paths=PackedStringArray("track") instance=ExtResource("5_3yc1i")]
+position = Vector2(182, 196)
+track = NodePath("../Music_NonSpatial/Snare")
+sprite = ExtResource("8_ucwv5")
+
+[node name="Pickup_Bass" parent="." node_paths=PackedStringArray("track") instance=ExtResource("5_3yc1i")]
+position = Vector2(306, 78)
+track = NodePath("../Music_NonSpatial/Bassline")
+sprite = ExtResource("9_7jau8")
+
+[connection signal="pickup_item" from="Pickup_Kick" to="Music_NonSpatial" method="_on_pickup_kick_pickup_item"]
+[connection signal="pickup_item" from="Pickup_Snare" to="Music_NonSpatial" method="_on_pickup_kick_pickup_item"]
+[connection signal="pickup_item" from="Pickup_Bass" to="Music_NonSpatial" method="_on_pickup_kick_pickup_item"]

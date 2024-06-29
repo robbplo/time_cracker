@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bb6us3cpav0lv"
+path="res://.godot/imported/PlacementExperiment 7-Mini V3.wav-47044c05db19d3b69616fb3fe9283e57.sample"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment 7-Mini V3.wav"
+dest_files=["res://.godot/imported/PlacementExperiment 7-Mini V3.wav-47044c05db19d3b69616fb3fe9283e57.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

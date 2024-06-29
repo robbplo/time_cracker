@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dimrarste2m7r"
+path="res://.godot/imported/PlacementExperiment 1-Kick_36_440 [2024-06-28 203012].mp3-a6b368389b7d41f8b6c8bbfb141d62cc.mp3str"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment 1-Kick_36_440 [2024-06-28 203012].mp3"
+dest_files=["res://.godot/imported/PlacementExperiment 1-Kick_36_440 [2024-06-28 203012].mp3-a6b368389b7d41f8b6c8bbfb141d62cc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

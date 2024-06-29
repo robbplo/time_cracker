@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dqbsvhx4r4y05"
+path="res://.godot/imported/FloorGrassRuin.aseprite-fcb1e4411dc51a0485b7e691362240a0.res"
+
+[deps]
+
+source_file="res://Sprites/FloorTiles/FloorGrassRuin.aseprite"
+dest_files=["res://.godot/imported/FloorGrassRuin.aseprite-fcb1e4411dc51a0485b7e691362240a0.res"]
+
+[params]
+

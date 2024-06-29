@@ -1,0 +1,4 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://neu7am6moshj"]
+
+[resource]
+bus/0/solo = true
