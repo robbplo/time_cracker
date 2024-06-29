@@ -658,7 +658,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-73, -100)
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 10
+y_sort_enabled = true
 texture_filter = 1
 up_direction = Vector2(1.54196e-12, -1)
 script = ExtResource("1_nvb10")

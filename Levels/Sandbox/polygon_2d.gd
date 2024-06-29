@@ -13,5 +13,5 @@ func _process(delta):
 	position.y = playerposition.y + (cos(GlobalTimer.elapsed_time*orbitSpeed)*orbitRadius) + (sin(GlobalTimer.elapsed_time*exponentSpeed)*exponent*1.5)
 	
 	if position.y < playerposition.y:
-		z_index = z_index-1
+		z_index = z_index-2
 	

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7dgpnhi0u1vq"
+path="res://.godot/imported/PlacementExperiment 6-CS-80 V4.mp3-d36a155053f72b3f13a1af23f80440c6.mp3str"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment 6-CS-80 V4.mp3"
+dest_files=["res://.godot/imported/PlacementExperiment 6-CS-80 V4.mp3-d36a155053f72b3f13a1af23f80440c6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

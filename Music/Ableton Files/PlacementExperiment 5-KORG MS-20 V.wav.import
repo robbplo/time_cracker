@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://by1hvarbbwdxa"
+path="res://.godot/imported/PlacementExperiment 5-KORG MS-20 V.wav-cc2248cd44b2b8ecb57593888b0b14e1.sample"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment 5-KORG MS-20 V.wav"
+dest_files=["res://.godot/imported/PlacementExperiment 5-KORG MS-20 V.wav-cc2248cd44b2b8ecb57593888b0b14e1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

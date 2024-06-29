@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyi7tyjxbq44t"
+path="res://.godot/imported/PlacementExperiment D-HighShelf.mp3-11b870a805ca67cde5795131763116d0.mp3str"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment D-HighShelf.mp3"
+dest_files=["res://.godot/imported/PlacementExperiment D-HighShelf.mp3-11b870a805ca67cde5795131763116d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjggp8f2squnw"
+path="res://.godot/imported/PlacementExperiment C-Comeback Kid.wav-5ee3d0cf3af8d75b4f6e3e848f1162d1.sample"
+
+[deps]
+
+source_file="res://Music/Ableton Files/PlacementExperiment C-Comeback Kid.wav"
+dest_files=["res://.godot/imported/PlacementExperiment C-Comeback Kid.wav-5ee3d0cf3af8d75b4f6e3e848f1162d1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

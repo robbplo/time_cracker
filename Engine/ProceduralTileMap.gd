@@ -20,7 +20,7 @@ func _ready():
 		for _j in range (-300,300):
 			_k = _noise.get_noise_2d(_i, _j)
 			if  _k < -0.5 :
-				set_cell(0,Vector2i(_i,_j), 0, Vector2i(randi_range(0,3),randi_range(0,3)))
+				set_cell(0,Vector2i(_i,_j), 1, Vector2i(randi_range(0,3),randi_range(0,3)))
 				_lo += 1
 			elif _k > -0.5 && _k <0:
 				set_cell(0,Vector2i(_i,_j,), 1, Vector2i(randi_range(0,3),randi_range(0,3)))
@@ -29,5 +29,5 @@ func _ready():
 				set_cell(0,Vector2i(_i,_j,), 2, Vector2i(randi_range(0,3),randi_range(0,3)))
 				_hi += 1
 			else:
-				set_cell(0, Vector2i(_i, _j,), 0, Vector2i(randi_range(0,3),randi_range(0,3)))
+				set_cell(0, Vector2i(_i, _j,), 3, Vector2i(randi_range(0,3),randi_range(0,3)))
 				_empty += 1

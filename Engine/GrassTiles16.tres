@@ -1,0 +1,109 @@
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://ios0peyptfh4"]
+
+[ext_resource type="Texture2D" uid="uid://bp8d20dkw57ha" path="res://Sprites/FloorTiles/Grassflat.png" id="1_aj13m"]
+[ext_resource type="Texture2D" uid="uid://6jwyd51dcg4i" path="res://Sprites/FloorTiles/Grass16_1.png" id="2_ioegn"]
+[ext_resource type="Texture2D" uid="uid://b5fnibc1t6wdj" path="res://Sprites/FloorTiles/Grass16_2.png" id="3_3twy7"]
+[ext_resource type="Texture2D" uid="uid://c1clgvb5qobl0" path="res://Sprites/FloorTiles/Grass16_3.png" id="4_ik3vi"]
+[ext_resource type="Texture2D" uid="uid://cqear22s7e28g" path="res://Sprites/FloorTiles/Grass16_4.png" id="5_8trnh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfq0d"]
+texture = ExtResource("1_aj13m")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlfjm"]
+texture = ExtResource("2_ioegn")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sovn7"]
+texture = ExtResource("3_3twy7")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hk0sv"]
+texture = ExtResource("4_ik3vi")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kiw5a"]
+texture = ExtResource("5_8trnh")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_gfq0d")
+sources/4 = SubResource("TileSetAtlasSource_kiw5a")
+sources/3 = SubResource("TileSetAtlasSource_hk0sv")
+sources/2 = SubResource("TileSetAtlasSource_sovn7")
+sources/1 = SubResource("TileSetAtlasSource_vlfjm")

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://x13vrt0kqkbo"]
+
+[ext_resource type="PackedScene" uid="uid://cs767msgh05mg" path="res://Experiments/MusicSystem/pickup_kick.tscn" id="1_gof4i"]
+
+[node name="Pickup_BassLine" instance=ExtResource("1_gof4i")]
