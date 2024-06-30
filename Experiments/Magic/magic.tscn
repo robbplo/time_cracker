@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Experiments/Magic/Magic.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
 [ext_resource type="Texture2D" uid="uid://cfsu3qonjjgk0" path="res://Sprites/Characters/EnemyBig1.png" id="2_57g1i"]
-[ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="4_3d11i"]
+[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="4_3d11i"]
 
 [node name="Magic" type="Node2D"]
 

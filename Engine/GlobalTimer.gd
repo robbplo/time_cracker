@@ -38,8 +38,6 @@ func _process(_delta):
 		+ AudioServer.get_time_since_last_mix() \
 		- output_latency
 
-	print(Config.global_timer_offset)
-
 	var new_quarter_notes = floor(elapsed_time / quarter_note_duration)
 	if new_quarter_notes > total_quarter_notes:
 		_add_quarter_note()
