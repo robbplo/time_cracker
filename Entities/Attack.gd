@@ -23,9 +23,10 @@ func check_hit():
 	pass
 
 func _on_animation_tree_animation_finished(anim_name:StringName):
-	if anim_name in ["R_Slash1", "L_Slash1"]:
+	if anim_name == "Casting":
 		attack_end.emit()
 		is_attacking = false
+		print (anim_name)
 
 
 

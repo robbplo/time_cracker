@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bu6l523ql7td1"]
 
 [ext_resource type="Script" path="res://Experiments/Calibration/calibration.gd" id="1_r3jhq"]
-[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="2_ktbqd"]
+[ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="2_ktbqd"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="3_un87m"]
 
 [node name="Calibration" type="Node2D"]

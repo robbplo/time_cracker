@@ -4,6 +4,7 @@ signal attack_hit
 signal hurt(damage: int)
 
 @onready var animation_tree : AnimationTree = $AnimationTree
+@onready var state_machine = $AnimationTree.get("parameters/playback")
 
 @export var base_speed: float = 250.0
 @export var damage: float = 1.0
@@ -16,6 +17,7 @@ var input_direction: Vector2 = Vector2.ZERO
 var speed: float = base_speed
 var is_dashing = false
 var is_invulnerable = false
+var is_casting = false
 
 func _ready():
 	animation_tree.active = true
@@ -28,6 +30,15 @@ func get_input():
 	if Input.is_action_just_pressed("Dash") and input_direction != Vector2.ZERO:
 		dash()
 	velocity = input_direction * speed
+	if Input.is_action_pressed("Attack"):
+		velocity = Vector2.ZERO
+		is_casting = true
+		animation_tree
+	else:
+		var is_casting = false
+	if Input.is_action_just_released("Attack"):
+		is_casting = false
+		state_machine.travel("Idle")
 
 ## Dash has iframes equal to dash_duration
 func dash():
@@ -47,16 +58,18 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func attack() -> bool:
-	if not GlobalTimer.is_on_time():
-		return false
-	if !$Attack.start(get_global_mouse_position()):
-		return false
+	$Attack.start(get_global_mouse_position())
 	return true
+	#if not GlobalTimer.is_on_time():
+		#return false
+	#if !$Attack.start(get_global_mouse_position()):
+		#return false
+	#return true
 
-func _unhandled_input(_event):
-	if (Input.is_action_just_pressed("Attack")):
-		if attack():
-			animation_tree["parameters/Slash1/blend_position"] = get_local_mouse_position().normalized()
+#func _unhandled_input(_event):
+	#if (Input.is_action_just_pressed("Attack")):
+		#if attack():
+			#animation_tree["parameters/Cast/blend_position"] = get_local_mouse_position().normalized()
 
 func _on_attack_attack_hit(body: Node):
 	attack_hit.emit(body, damage)
@@ -71,13 +84,12 @@ func _on_enemy_attack_hit(amount):
 func _on_health_pool_die():
 	get_tree().change_scene_to_file("res://Levels/death_screen.tscn")
 
-
 func update_animations():
 	var is_idle = velocity == Vector2.ZERO
 	animation_tree["parameters/conditions/Idle"] = is_idle
 	animation_tree["parameters/conditions/is_moving"] = not is_idle
-
-	animation_tree["parameters/conditions/Attack"] = $Attack.is_attacking
+	
+	animation_tree["parameters/conditions/is_casting"] = is_casting
 
 	if not $Attack.is_attacking:
 		if input_direction != Vector2.ZERO:
