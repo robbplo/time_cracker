@@ -114,6 +114,7 @@ target_position = Vector2(2000, 0)
 script = ExtResource("1_uxqx7")
 
 [node name="Line2D" type="Line2D" parent="."]
+modulate = Color(2, 2, 2, 1)
 material = SubResource("CanvasItemMaterial_xh6cd")
 points = PackedVector2Array(0, 0, 50, 0)
 width = 0.0
@@ -122,6 +123,7 @@ joint_mode = 2
 begin_cap_mode = 2
 
 [node name="Line2D2" type="Line2D" parent="."]
+modulate = Color(1.2, 1.2, 1.2, 1)
 material = SubResource("CanvasItemMaterial_ypoqf")
 points = PackedVector2Array(0, 0, 50, 0)
 width = 0.0
