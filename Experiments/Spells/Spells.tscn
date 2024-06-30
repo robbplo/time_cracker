@@ -42,6 +42,7 @@ collision_mask = 4
 script = ExtResource("4_54giv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Spells/ForcePush"]
+visible = false
 position = Vector2(19.9851, -16.4852)
 rotation = -0.785398
 scale = Vector2(1, 1)
@@ -49,6 +50,7 @@ skew = 0.785398
 shape = SubResource("RectangleShape2D_aygyu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/Spells/ForcePush"]
+visible = false
 position = Vector2(19.985, 16.485)
 rotation = 0.785398
 scale = Vector2(1, 1)
@@ -56,9 +58,13 @@ skew = -0.785398
 shape = SubResource("RectangleShape2D_aygyu")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Player/Spells/ForcePush"]
+visible = false
 position = Vector2(66.6667, 0)
 scale = Vector2(1, 1.00391)
 shape = SubResource("CircleShape2D_62n1s")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Spells/ForcePush"]
+polygon = PackedVector2Array(0, 0, 50, -50, 85, -45, 100, 0, 85, 45, 50, 50)
 
 [node name="Meter" parent="." instance=ExtResource("4_3d11i")]
 
