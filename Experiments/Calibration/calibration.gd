@@ -38,3 +38,4 @@ func _on_store_offset_button_pressed():
 	Config.global_timer_offset += new_offset
 	update_active_offset()
 	reset()
+		print(enemy)
