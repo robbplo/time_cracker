@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Experiments/Magic/Magic.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
-[ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="4_3d11i"]
+[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="4_3d11i"]
 [ext_resource type="Texture2D" uid="uid://bb3q0cclbuqk6" path="res://Sprites/MagicCircles/Loopy1_0000.png" id="4_nkrts"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
 [ext_resource type="Texture2D" uid="uid://bexnxads1pli3" path="res://Sprites/MagicCircles/Loopy1_0001.png" id="5_pswwi"]
@@ -121,36 +121,36 @@ stream = ExtResource("1_tkckc")
 volume_db = -13.508
 
 [node name="Player" parent="." instance=ExtResource("5_07648")]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(384, 192)
 
-[node name="Node2D" type="CharacterBody2D" parent="Player"]
+[node name="Magic" type="CharacterBody2D" parent="Player"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5bb8a")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Node2D"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Magic"]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -70.0
+offset_top = -48.0
 offset_right = 100.0
-offset_bottom = 130.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.7)
 
-[node name="SubViewport" type="SubViewport" parent="Player/Node2D/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Player/Magic/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(200, 200)
 render_target_update_mode = 4
 
-[node name="Magic Circle" type="Area2D" parent="Player/Node2D/SubViewportContainer/SubViewport"]
+[node name="Magic Circle" type="Area2D" parent="Player/Magic/SubViewportContainer/SubViewport"]
 show_behind_parent = true
 position = Vector2(100, 100)
 
-[node name="MCircleAnimation" type="AnimatedSprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircleAnimation" type="AnimatedSprite2D" parent="Player/Magic/SubViewportContainer/SubViewport/Magic Circle"]
 show_behind_parent = true
 z_index = -1
 position = Vector2(2.08165e-12, 20)
@@ -158,15 +158,15 @@ scale = Vector2(1, 0.7)
 sprite_frames = SubResource("SpriteFrames_xkbof")
 animation = &"Loopy"
 
-[node name="TimedAnimation" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="TimedAnimation" type="AnimationPlayer" parent="Player/Magic/SubViewportContainer/SubViewport/Magic Circle"]
 script = ExtResource("17_s4jtj")
 
-[node name="MCircles" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircles" type="AnimationPlayer" parent="Player/Magic/SubViewportContainer/SubViewport/Magic Circle"]
 libraries = {
 "": SubResource("AnimationLibrary_vg6vl")
 }
 
-[node name="MCircleSheets" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircleSheets" type="Sprite2D" parent="Player/Magic/SubViewportContainer/SubViewport/Magic Circle"]
 texture = ExtResource("18_3rf4k")
 hframes = 5
 metadata/_aseprite_wizard_interface_config_ = {
@@ -187,7 +187,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": ""
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Player/Node2D"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Player/Magic"]
 clip_contents = false
 offset_left = -76.0
 offset_top = -94.0

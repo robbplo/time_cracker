@@ -13,6 +13,3 @@ func _ready():
 func _physics_process(delta):
 	var movement = (direction * SPEED) * delta
 	move_and_collide(movement)
-
-
-
