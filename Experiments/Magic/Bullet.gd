@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Bullet
+#class_name Bullet
 
 const SPEED = 300.0
 

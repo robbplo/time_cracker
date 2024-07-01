@@ -1,89 +1,19 @@
-[gd_scene load_steps=43 format=3 uid="uid://gso2donl7rf8"]
+[gd_scene load_steps=27 format=3 uid="uid://gso2donl7rf8"]
 
 [ext_resource type="Script" path="res://Experiments/Magic/Magic.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
-[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="4_3d11i"]
-[ext_resource type="Texture2D" uid="uid://bb3q0cclbuqk6" path="res://Sprites/MagicCircles/Loopy1_0000.png" id="4_nkrts"]
-[ext_resource type="Shader" path="res://Experiments/Magic/ChromaticAbb.gdshader" id="4_vrhha"]
+[ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="4_3d11i"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
-[ext_resource type="Texture2D" uid="uid://bexnxads1pli3" path="res://Sprites/MagicCircles/Loopy1_0001.png" id="5_pswwi"]
-[ext_resource type="Texture2D" uid="uid://044q35i2ol2s" path="res://Sprites/MagicCircles/Loopy1_0002.png" id="6_uf3f5"]
-[ext_resource type="Texture2D" uid="uid://cpdm3tf3al24h" path="res://Sprites/MagicCircles/Loopy1_0003.png" id="7_aljvc"]
-[ext_resource type="Texture2D" uid="uid://hh8tq675fd0s" path="res://Sprites/MagicCircles/Loopy1_0004.png" id="8_46qnd"]
-[ext_resource type="Texture2D" uid="uid://cjs75mgxlfo4" path="res://Sprites/MagicCircles/Loopy1_0005.png" id="9_2kia0"]
-[ext_resource type="Texture2D" uid="uid://bs2yp5mg3vqrh" path="res://Sprites/MagicCircles/Loopy1_0006.png" id="10_rruph"]
-[ext_resource type="Texture2D" uid="uid://dseyln7bm5372" path="res://Sprites/MagicCircles/Loopy1_0007.png" id="11_lyk56"]
-[ext_resource type="Texture2D" uid="uid://dw7rwpapwxyst" path="res://Sprites/MagicCircles/Loopy1_0008.png" id="12_hwrtc"]
-[ext_resource type="Texture2D" uid="uid://dvsgh23y8kjdx" path="res://Sprites/MagicCircles/Loopy1_0009.png" id="13_uo5ro"]
-[ext_resource type="Texture2D" uid="uid://cgs041dnkm1lf" path="res://Sprites/MagicCircles/Loopy1_0010.png" id="14_unt37"]
-[ext_resource type="Texture2D" uid="uid://yesqjseiqq7a" path="res://Sprites/MagicCircles/Loopy1_0011.png" id="15_dgwrc"]
-[ext_resource type="Texture2D" uid="uid://b8h7ln6gckyrk" path="res://Sprites/MagicCircles/Loopy1_0012.png" id="16_e4uey"]
 [ext_resource type="Script" path="res://Engine/TimedAnimation.gd" id="17_s4jtj"]
 [ext_resource type="Texture2D" uid="uid://cxb18xwlssfmr" path="res://Experiments/Magic/MagicCircles_layer1.png" id="18_oof3j"]
 [ext_resource type="Texture2D" uid="uid://b6ohteimglvqg" path="res://Experiments/Magic/MagicCircles_Layer2.png" id="19_ekgy8"]
 [ext_resource type="Texture2D" uid="uid://ciduvrg3g4dly" path="res://Experiments/Magic/MagicCircles_Layer3.png" id="20_1yvpg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lu3jw"]
-shader = ExtResource("4_vrhha")
-shader_parameter/r_displacement = Vector2(3, 0)
-shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(-3, 0)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xkbof"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_nkrts")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_pswwi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_uf3f5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_aljvc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_46qnd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_2kia0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_rruph")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_lyk56")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_hwrtc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_uo5ro")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_unt37")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_dgwrc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_e4uey")
-}],
-"loop": false,
-"name": &"Loopy",
-"speed": 12.0
-}]
-
-[sub_resource type="Animation" id="Animation_veiub"]
-resource_name = "GlyphRotation"
+[sub_resource type="Animation" id="Animation_v4bfv"]
+resource_name = "GlyphAnimation"
 length = 4.00001
 loop_mode = 1
-step = 0.0625
+step = 0.03125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -118,19 +48,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3.48787e-16, 6.28319]
+"values": [0.0, 6.28319]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("MCircleSheets_layer1:position")
-tracks/3/interp = 2
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1875, 0.25, 0.4375, 0.5, 0.6875, 0.75, 0.9375, 1, 1.1875, 1.25, 1.4375, 1.5, 1.6875, 1.75, 1.9375, 2, 2.1875, 2.25, 2.4375, 2.5, 2.6875, 2.75, 2.9375, 3, 3.1875, 3.25, 3.4375, 3.5, 3.6875, 3.75, 3.9375, 4),
-"transitions": PackedFloat32Array(0.15932, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755),
+"times": PackedFloat32Array(0, 0.03125, 0.1875, 0.21875, 0.375, 0.40625, 0.5625, 0.59375, 0.75, 0.78125, 0.9375, 0.96875, 1.125, 1.15625, 1.3125, 1.34375, 1.5, 1.53125, 1.6875, 1.71875, 2, 2.03125, 2.1875, 2.21875, 2.375, 2.40625, 2.5625, 2.59375, 2.75, 2.78125, 2.9375, 2.96875, 3.125, 3.15625, 3.3125, 3.34375, 3.5, 3.53125, 3.6875, 3.71875, 4, 4.03125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12)]
+"values": [Vector2(2.08165e-12, -10), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -10), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0), Vector2(2.08165e-12, -20), Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -139,25 +69,13 @@ tracks/4/path = NodePath("MCircleSheets_layer2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3, 3.9375),
-"transitions": PackedFloat32Array(4.5948, 4, 0.210224, 3.4822, 0.225313, 3.86374),
+"times": PackedFloat32Array(0.0625),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(2.08165e-12, -15), Vector2(0, 0), Vector2(2.08165e-12, -15), Vector2(0, 0), Vector2(2.08165e-12, -15)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("MCircleSheets_layer3:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(-0.0625, 2),
-"transitions": PackedFloat32Array(0.554785, 0.68302),
-"update": 0,
-"values": [Vector2(2.08165e-12, -25), Vector2(2.08165e-12, 2.08165e-12)]
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
 }
 
-[sub_resource type="Animation" id="Animation_umnmr"]
+[sub_resource type="Animation" id="Animation_sd6ky"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -169,7 +87,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [3.48787e-16]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -193,7 +111,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.48787e-16]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -205,7 +123,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.08165e-12, 2.08165e-12)]
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -217,25 +135,13 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("MCircleSheets_layer3:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwtom"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gy37d"]
 _data = {
-"GlyphRotation": SubResource("Animation_veiub"),
-"RESET": SubResource("Animation_umnmr")
+"MCircle_BounceRotate": SubResource("Animation_v4bfv"),
+"RESET": SubResource("Animation_sd6ky")
 }
 
 [sub_resource type="Animation" id="Animation_e24j7"]
@@ -244,7 +150,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer1:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -256,7 +162,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -272,7 +178,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer1:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -284,7 +190,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -300,7 +206,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer1:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -312,7 +218,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -328,7 +234,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer1:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -340,7 +246,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer1:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -364,7 +270,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -376,7 +282,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -392,7 +298,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -404,7 +310,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -420,7 +326,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -432,7 +338,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -448,7 +354,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -460,7 +366,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -484,7 +390,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -496,7 +402,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -512,7 +418,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -524,7 +430,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -540,7 +446,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -552,7 +458,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -568,7 +474,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -580,7 +486,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/path = NodePath("Player/Magic/SubViewportContainer/SubViewport/MagicCircle/MCircleSheets_layer3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
@@ -613,23 +519,25 @@ position = Vector2(384, 192)
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5bb8a")
 
-[node name="ColorRect" type="ColorRect" parent="Player/Node2D"]
-z_index = -1
-material = SubResource("ShaderMaterial_lu3jw")
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = 90.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Player/Magic"]
+clip_contents = false
+offset_left = -76.0
+offset_top = -94.0
+offset_right = -36.0
+offset_bottom = -54.0
+autowrap_mode = 0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Node2D"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Magic"]
 z_index = -2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -50.0
+offset_top = -70.0
 offset_right = 100.0
-offset_bottom = 150.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.7)
@@ -641,32 +549,23 @@ handle_input_locally = false
 size = Vector2i(200, 200)
 render_target_update_mode = 4
 
-[node name="Magic Circle" type="Area2D" parent="Player/Magic/SubViewportContainer/SubViewport"]
+[node name="MagicCircle" type="Area2D" parent="Player/Magic/SubViewportContainer/SubViewport"]
 show_behind_parent = true
-position = Vector2(100, 100)
+position = Vector2(100, 130)
 
-[node name="MCircleAnimation" type="AnimatedSprite2D" parent="Player/Magic/SubViewportContainer/SubViewport/Magic Circle"]
-show_behind_parent = true
-z_index = -1
-position = Vector2(2.08165e-12, 20)
-scale = Vector2(1, 0.7)
-sprite_frames = SubResource("SpriteFrames_xkbof")
-animation = &"Loopy"
-
-[node name="TimedAnimation" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="Timed_MCircle_Animation" type="AnimationPlayer" parent="Player/Magic/SubViewportContainer/SubViewport/MagicCircle"]
 libraries = {
-"": SubResource("AnimationLibrary_qwtom")
+"": SubResource("AnimationLibrary_gy37d")
 }
-autoplay = "GlyphRotation"
+autoplay = "MCircle_BounceRotate"
 script = ExtResource("17_s4jtj")
 
-[node name="MCircleSheets_layer1" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircleSheets_layer1" type="Sprite2D" parent="Player/Magic/SubViewportContainer/SubViewport/MagicCircle"]
 texture_filter = 1
-position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("18_oof3j")
 hframes = 5
 vframes = 4
-frame = 4
+frame = 10
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "layer_section": true,
@@ -680,23 +579,19 @@ metadata/_aseprite_wizard_config_ = {
 "o_folder": "",
 "o_name": "",
 "only_visible": false,
-"player": "Player/Node2D/SubViewportContainer/SubViewport/Magic Circle/MCircles",
+"player": "Player/Magic/SubViewportContainer/SubViewport/Magic Circle/MCircles",
 "slice": "",
 "source": "res://Sprites/MagicCircles/MagicCircles_layer1.ase"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "1f209ac1c34130b578c83ad59a6ea86d"
 
-[node name="MCircles" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
-libraries = {
-"": SubResource("AnimationLibrary_7xtxi")
-}
-
-[node name="MCircleSheets_layer2" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircleSheets_layer2" type="Sprite2D" parent="Player/Magic/SubViewportContainer/SubViewport/MagicCircle"]
 texture_filter = 1
+position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("19_ekgy8")
 hframes = 5
 vframes = 4
-frame = 19
+frame = 15
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -705,23 +600,19 @@ metadata/_aseprite_wizard_config_ = {
 "o_folder": "",
 "o_name": "",
 "only_visible": false,
-"player": "Player/Node2D/SubViewportContainer/SubViewport/Magic Circle/MCircles_2",
+"player": "Player/Magic/SubViewportContainer/SubViewport/Magic Circle/MCircles_2",
 "slice": "",
 "source": "res://Sprites/MagicCircles/MagicCircles_Layer2.ase"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "0b963a7c5ab79d01a024f37a87768baa"
 
-[node name="MCircles_2" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
-libraries = {
-"": SubResource("AnimationLibrary_wydy5")
-}
-
-[node name="MCircleSheets_layer3" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircleSheets_layer3" type="Sprite2D" parent="Player/Magic/SubViewportContainer/SubViewport/MagicCircle"]
 texture_filter = 1
+position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("20_1yvpg")
 hframes = 5
 vframes = 4
-frame = 4
+frame = 5
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -730,25 +621,31 @@ metadata/_aseprite_wizard_config_ = {
 "o_folder": "",
 "o_name": "",
 "only_visible": false,
-"player": "Player/Node2D/SubViewportContainer/SubViewport/Magic Circle/MCircles_3",
+"player": "Player/Magic/SubViewportContainer/SubViewport/Magic Circle/MCircles_3",
 "slice": "",
 "source": "res://Sprites/MagicCircles/MagicCircles_Layer3.ase"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "88115c3675776907a49ee2b07758511c"
 
-[node name="MCircles_3" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircles" type="AnimationPlayer" parent="Player/Magic/SubViewportContainer/SubViewport/MagicCircle"]
+root_node = NodePath("../../../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_7xtxi")
+}
+
+[node name="MCircles_2" type="AnimationPlayer" parent="Player/Magic/SubViewportContainer/SubViewport/MagicCircle"]
+root_node = NodePath("../../../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_wydy5")
+}
+
+[node name="MCircles_3" type="AnimationPlayer" parent="Player/Magic/SubViewportContainer/SubViewport/MagicCircle"]
+root_node = NodePath("../../../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_0i34q")
 }
 
-[node name="Node2D" type="Node2D" parent="Player/Node2D/SubViewportContainer"]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Player/Magic"]
-clip_contents = false
-offset_left = -76.0
-offset_top = -94.0
-offset_right = -36.0
-offset_bottom = -54.0
-autowrap_mode = 0
+[node name="Node2D" type="Node2D" parent="Player"]
+position = Vector2(-384, -192)
 
 [node name="Meter" parent="." instance=ExtResource("4_3d11i")]
