@@ -1,5 +1,21 @@
 extends CharacterBody2D
 
+# ⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀⢀⠀⠀⠀⠠⡶⠄⠀⠀⠀⠀⠀
+# ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀⠀⣨⣷⣧⣀⠀⠀⠀⠀⠐⣤⡴⠀
+#⠀ ⠀⠀⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠸⠀⡀⡀⠀⠀⠀⠈⢹⠋⠁
+#⠀⠀ ⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⢻⠓⠀⠸⡮⠄⠀⠀⠀
+#⠀⠀⠀ ⠀ ⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⢲⠈⠀⠀⢀⠀⠀⠀⠼⡮
+#⠀⠀⠀  ⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⢀⣴⣇⠔⠁⠀⠠⢷⠯⠀⠀⠀⠀⠀
+#⠀⠀ ⠀⠀ ⠀ ⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠸⠀⠀⠀⠀⠀⠀
+#⠀ ⠀⠀⠀⠀  ⠀⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+# ⠀⠀⠀⠀  ⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀woah⠀⠀⠀⠀⠀⠀⠀⠀
+# ⠀⠀⠀  ⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀woah⠀⠀⠀
+# ⠀⠀  ⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+# ⠀  ⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀woah ⠀⠀⠀⠀⠀⠀
+#   ⡔⢁⠜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀it's magic
+#  ⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+
 const BULLET = preload("res://Experiments/Magic/bullet.tscn")
 @onready var MCircleComp: Area2D = $SubViewportContainer/SubViewport/MagicCircle
 @onready var MCircle1: AnimationPlayer = $SubViewportContainer/SubViewport/MagicCircle/MCircles
