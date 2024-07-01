@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://k6526wdxlqt3"
+path="res://.godot/imported/MagicCircles.ase-0feeb6b942f7b25bc519899850bda04c.res"
+
+[deps]
+
+source_file="res://Sprites/MagicCircles/MagicCircles.ase"
+dest_files=["res://.godot/imported/MagicCircles.ase-0feeb6b942f7b25bc519899850bda04c.res"]
+
+[params]
+

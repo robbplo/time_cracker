@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://gso2donl7rf8"]
+[gd_scene load_steps=43 format=3 uid="uid://gso2donl7rf8"]
 
 [ext_resource type="Script" path="res://Experiments/Magic/Magic.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
 [ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="4_3d11i"]
 [ext_resource type="Texture2D" uid="uid://bb3q0cclbuqk6" path="res://Sprites/MagicCircles/Loopy1_0000.png" id="4_nkrts"]
+[ext_resource type="Shader" path="res://Experiments/Magic/ChromaticAbb.gdshader" id="4_vrhha"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
 [ext_resource type="Texture2D" uid="uid://bexnxads1pli3" path="res://Sprites/MagicCircles/Loopy1_0001.png" id="5_pswwi"]
 [ext_resource type="Texture2D" uid="uid://044q35i2ol2s" path="res://Sprites/MagicCircles/Loopy1_0002.png" id="6_uf3f5"]
@@ -18,7 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://yesqjseiqq7a" path="res://Sprites/MagicCircles/Loopy1_0011.png" id="15_dgwrc"]
 [ext_resource type="Texture2D" uid="uid://b8h7ln6gckyrk" path="res://Sprites/MagicCircles/Loopy1_0012.png" id="16_e4uey"]
 [ext_resource type="Script" path="res://Engine/TimedAnimation.gd" id="17_s4jtj"]
-[ext_resource type="Texture2D" uid="uid://34qto710gfgm" path="res://Sprites/MagicCircles/Up10000-sheet.png" id="18_3rf4k"]
+[ext_resource type="Texture2D" uid="uid://cxb18xwlssfmr" path="res://Experiments/Magic/MagicCircles_layer1.png" id="18_oof3j"]
+[ext_resource type="Texture2D" uid="uid://b6ohteimglvqg" path="res://Experiments/Magic/MagicCircles_Layer2.png" id="19_ekgy8"]
+[ext_resource type="Texture2D" uid="uid://ciduvrg3g4dly" path="res://Experiments/Magic/MagicCircles_Layer3.png" id="20_1yvpg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lu3jw"]
+shader = ExtResource("4_vrhha")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xkbof"]
 animations = [{
@@ -70,46 +79,523 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="Animation" id="Animation_irjm1"]
-resource_name = "Loopy1"
+[sub_resource type="Animation" id="Animation_veiub"]
+resource_name = "GlyphRotation"
+length = 4.00001
+loop_mode = 1
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.48787e-16, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -12.5664]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MCircleSheets_layer3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.48787e-16, 6.28319]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MCircleSheets_layer1:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1875, 0.25, 0.4375, 0.5, 0.6875, 0.75, 0.9375, 1, 1.1875, 1.25, 1.4375, 1.5, 1.6875, 1.75, 1.9375, 2, 2.1875, 2.25, 2.4375, 2.5, 2.6875, 2.75, 2.9375, 3, 3.1875, 3.25, 3.4375, 3.5, 3.6875, 3.75, 3.9375, 4),
+"transitions": PackedFloat32Array(0.15932, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755, 2.4623, 0.176777, 3.4822, 0.170755),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MCircleSheets_layer2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3, 3.9375),
+"transitions": PackedFloat32Array(4.5948, 4, 0.210224, 3.4822, 0.225313, 3.86374),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.08165e-12, -15), Vector2(0, 0), Vector2(2.08165e-12, -15), Vector2(0, 0), Vector2(2.08165e-12, -15)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MCircleSheets_layer3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(-0.0625, 2),
+"transitions": PackedFloat32Array(0.554785, 0.68302),
+"update": 0,
+"values": [Vector2(2.08165e-12, -25), Vector2(2.08165e-12, 2.08165e-12)]
+}
 
-[sub_resource type="Animation" id="Animation_33kgo"]
+[sub_resource type="Animation" id="Animation_umnmr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets:frame")
+tracks/0/path = NodePath("MCircleSheets_layer1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MCircleSheets_layer3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.48787e-16]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MCircleSheets_layer1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MCircleSheets_layer2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MCircleSheets_layer3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_yx1es"]
-resource_name = "Up1"
-length = 0.16
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwtom"]
+_data = {
+"GlyphRotation": SubResource("Animation_veiub"),
+"RESET": SubResource("Animation_umnmr")
+}
+
+[sub_resource type="Animation" id="Animation_e24j7"]
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets:frame")
+tracks/0/path = NodePath("MCircleSheets_layer1:visible")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vg6vl"]
+[sub_resource type="Animation" id="Animation_4sw25"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_jk4ri"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_fmql5"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xtxi"]
 _data = {
-"Loopy1": SubResource("Animation_irjm1"),
-"RESET": SubResource("Animation_33kgo"),
-"Up1": SubResource("Animation_yx1es")
+"Down1": SubResource("Animation_e24j7"),
+"Left1": SubResource("Animation_4sw25"),
+"Right1": SubResource("Animation_jk4ri"),
+"Up1": SubResource("Animation_fmql5")
+}
+
+[sub_resource type="Animation" id="Animation_lfxcs"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_6lmvs"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_aaej1"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_acgfr"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wydy5"]
+_data = {
+"Down2": SubResource("Animation_lfxcs"),
+"Left2": SubResource("Animation_6lmvs"),
+"Right2": SubResource("Animation_aaej1"),
+"Up2": SubResource("Animation_acgfr")
+}
+
+[sub_resource type="Animation" id="Animation_ubsd0"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_mnhmf"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_pc2k3"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_4gk75"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MCircleSheets_layer3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MCircleSheets_layer3:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i34q"]
+_data = {
+"Down3": SubResource("Animation_ubsd0"),
+"Left3": SubResource("Animation_mnhmf"),
+"Right3": SubResource("Animation_pc2k3"),
+"Up3": SubResource("Animation_4gk75")
 }
 
 [node name="Magic" type="Node2D"]
@@ -127,18 +613,27 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5bb8a")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Node2D"]
+[node name="ColorRect" type="ColorRect" parent="Player/Node2D"]
 z_index = -1
+material = SubResource("ShaderMaterial_lu3jw")
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 90.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Node2D"]
+z_index = -2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -70.0
+offset_top = -50.0
 offset_right = 100.0
-offset_bottom = 130.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.7)
+pivot_offset = Vector2(100, 2.08165e-12)
 
 [node name="SubViewport" type="SubViewport" parent="Player/Node2D/SubViewportContainer"]
 transparent_bg = true
@@ -159,16 +654,19 @@ sprite_frames = SubResource("SpriteFrames_xkbof")
 animation = &"Loopy"
 
 [node name="TimedAnimation" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+libraries = {
+"": SubResource("AnimationLibrary_qwtom")
+}
+autoplay = "GlyphRotation"
 script = ExtResource("17_s4jtj")
 
-[node name="MCircles" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
-libraries = {
-"": SubResource("AnimationLibrary_vg6vl")
-}
-
-[node name="MCircleSheets" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
-texture = ExtResource("18_3rf4k")
+[node name="MCircleSheets_layer1" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+texture_filter = 1
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("18_oof3j")
 hframes = 5
+vframes = 4
+frame = 4
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "layer_section": true,
@@ -182,10 +680,68 @@ metadata/_aseprite_wizard_config_ = {
 "o_folder": "",
 "o_name": "",
 "only_visible": false,
-"player": "Player/Node2D/Magic Circle/MCircles",
+"player": "Player/Node2D/SubViewportContainer/SubViewport/Magic Circle/MCircles",
 "slice": "",
-"source": ""
+"source": "res://Sprites/MagicCircles/MagicCircles_layer1.ase"
 }
+metadata/_aseprite_wizard_source_file_hash_ = "1f209ac1c34130b578c83ad59a6ea86d"
+
+[node name="MCircles" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+libraries = {
+"": SubResource("AnimationLibrary_7xtxi")
+}
+
+[node name="MCircleSheets_layer2" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+texture_filter = 1
+texture = ExtResource("19_ekgy8")
+hframes = 5
+vframes = 4
+frame = 19
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Player/Node2D/SubViewportContainer/SubViewport/Magic Circle/MCircles_2",
+"slice": "",
+"source": "res://Sprites/MagicCircles/MagicCircles_Layer2.ase"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0b963a7c5ab79d01a024f37a87768baa"
+
+[node name="MCircles_2" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+libraries = {
+"": SubResource("AnimationLibrary_wydy5")
+}
+
+[node name="MCircleSheets_layer3" type="Sprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+texture_filter = 1
+texture = ExtResource("20_1yvpg")
+hframes = 5
+vframes = 4
+frame = 4
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Player/Node2D/SubViewportContainer/SubViewport/Magic Circle/MCircles_3",
+"slice": "",
+"source": "res://Sprites/MagicCircles/MagicCircles_Layer3.ase"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "88115c3675776907a49ee2b07758511c"
+
+[node name="MCircles_3" type="AnimationPlayer" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+libraries = {
+"": SubResource("AnimationLibrary_0i34q")
+}
+
+[node name="Node2D" type="Node2D" parent="Player/Node2D/SubViewportContainer"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Player/Node2D"]
 clip_contents = false
