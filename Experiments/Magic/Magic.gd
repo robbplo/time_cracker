@@ -13,8 +13,6 @@ func _ready():
 
 func _process(_delta):
 	if not is_casting:
-		var direction = Input.get_vector("left", "right", "up", "down").normalized()
-		velocity = Vector2.ZERO
 		move_and_slide()
 	else:
 		if Input.is_action_just_pressed("left"):
@@ -25,7 +23,7 @@ func _process(_delta):
 			add_component("up")
 		if Input.is_action_just_pressed("down"):
 			add_component("down")
-			
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -40,10 +38,9 @@ func add_component(component):
 		return
 	spell_components.append(component)
 	$RichTextLabel.text = ", ".join(spell_components)
-	
+
 ## just fookin send it
 func send_it():
-	print(spell_components)
 	spell_components.clear()
 	$RichTextLabel.text = ""
 	fire_bullet()
@@ -51,7 +48,6 @@ func send_it():
 ## Hell yea brother
 func fire_bullet():
 	var bullet = BULLET.instantiate()
-	print(bullet.direction)
 	bullet.direction = global_position.direction_to(get_global_mouse_position()).normalized()
 	bullet.global_position = global_position
 	get_tree().root.add_child(bullet)

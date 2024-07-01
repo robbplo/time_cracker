@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Experiments/Magic/Magic.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
-[ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="4_3d11i"]
+[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="4_3d11i"]
 [ext_resource type="Texture2D" uid="uid://bb3q0cclbuqk6" path="res://Sprites/MagicCircles/Loopy1_0000.png" id="4_nkrts"]
 [ext_resource type="Shader" path="res://Experiments/Magic/ChromaticAbb.gdshader" id="4_vrhha"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
@@ -607,9 +607,9 @@ stream = ExtResource("1_tkckc")
 volume_db = -13.508
 
 [node name="Player" parent="." instance=ExtResource("5_07648")]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(384, 192)
 
-[node name="Node2D" type="CharacterBody2D" parent="Player"]
+[node name="Magic" type="CharacterBody2D" parent="Player"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5bb8a")
 
@@ -635,17 +635,17 @@ grow_vertical = 2
 scale = Vector2(1, 0.7)
 pivot_offset = Vector2(100, 2.08165e-12)
 
-[node name="SubViewport" type="SubViewport" parent="Player/Node2D/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Player/Magic/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(200, 200)
 render_target_update_mode = 4
 
-[node name="Magic Circle" type="Area2D" parent="Player/Node2D/SubViewportContainer/SubViewport"]
+[node name="Magic Circle" type="Area2D" parent="Player/Magic/SubViewportContainer/SubViewport"]
 show_behind_parent = true
 position = Vector2(100, 100)
 
-[node name="MCircleAnimation" type="AnimatedSprite2D" parent="Player/Node2D/SubViewportContainer/SubViewport/Magic Circle"]
+[node name="MCircleAnimation" type="AnimatedSprite2D" parent="Player/Magic/SubViewportContainer/SubViewport/Magic Circle"]
 show_behind_parent = true
 z_index = -1
 position = Vector2(2.08165e-12, 20)
@@ -743,7 +743,7 @@ libraries = {
 
 [node name="Node2D" type="Node2D" parent="Player/Node2D/SubViewportContainer"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Player/Node2D"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Player/Magic"]
 clip_contents = false
 offset_left = -76.0
 offset_top = -94.0
