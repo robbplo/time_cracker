@@ -873,7 +873,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
 "slice_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "42e13be73033844e16daec514c4ce31c"
+metadata/_aseprite_wizard_source_file_hash_ = "be5549ce2f94f8a443767ea16d2ba4fc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

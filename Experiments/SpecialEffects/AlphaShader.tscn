@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bquxmnngw0mko"]
+
+[ext_resource type="Texture2D" uid="uid://db46mow08wd3t" path="res://Sprites/Splash.png" id="1_dmg6r"]
+[ext_resource type="Shader" path="res://Experiments/SpecialEffects/AlphaShader.gdshader" id="2_d8xwm"]
+[ext_resource type="Texture2D" uid="uid://cb8ad682h8ak0" path="res://Sprites/Lights/OutsideGradient.png" id="3_4hjw7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxme2"]
+shader = ExtResource("2_d8xwm")
+shader_parameter/speed = 1.0
+shader_parameter/brightness = null
+shader_parameter/r_displace = Vector2(-3, 2)
+shader_parameter/r_time = 2.0
+shader_parameter/g_displace = Vector2(2, -4)
+shader_parameter/g_time = 3.0
+shader_parameter/b_displace = Vector2(2, 1)
+shader_parameter/b_time = 1.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovvqm"]
+shader = ExtResource("2_d8xwm")
+shader_parameter/speed = 10.0
+shader_parameter/brightness = -2.2352e-08
+shader_parameter/r_displace = Vector2(10, 5)
+shader_parameter/r_time = 0.8
+shader_parameter/g_displace = Vector2(7, -10)
+shader_parameter/g_time = 0.9
+shader_parameter/b_displace = Vector2(-9, 3)
+shader_parameter/b_time = 0.7
+
+[node name="AlphaShader" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(546, 197)
+texture = ExtResource("1_dmg6r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+visible = false
+material = SubResource("ShaderMaterial_gxme2")
+position = Vector2(377, 9)
+scale = Vector2(4.4, 5.61219)
+polygon = PackedVector2Array(6.59091, 36.884, 3.40909, 63.6116, 36.3636, 65.7498, 39.3182, 35.6367)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+material = SubResource("ShaderMaterial_ovvqm")
+position = Vector2(486, 222)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_4hjw7")
