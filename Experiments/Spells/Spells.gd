@@ -41,9 +41,12 @@ func add_component(component):
 
 ## just fookin send it
 func send_it():
+	match spell_components:
+		["down"]: $ForcePush.cast()
+		[]: pass
+		_: fire_bullet()
 	spell_components.clear()
 	$RichTextLabel.text = ""
-	fire_bullet()
 
 ## Hell yea brother
 func fire_bullet():
