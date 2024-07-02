@@ -1,116 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://wbdwm2s1b34v"]
+[gd_scene load_steps=9 format=3 uid="uid://wbdwm2s1b34v"]
 
 [ext_resource type="Script" path="res://Experiments/Spells/Spells.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
 [ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="4_3d11i"]
-[ext_resource type="Texture2D" uid="uid://bb3q0cclbuqk6" path="res://Sprites/MagicCircles/Loopy1_0000.png" id="4_nkrts"]
+[ext_resource type="Script" path="res://Experiments/Spells/force_push.gd" id="4_54giv"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
-[ext_resource type="Texture2D" uid="uid://bexnxads1pli3" path="res://Sprites/MagicCircles/Loopy1_0001.png" id="5_pswwi"]
-[ext_resource type="Texture2D" uid="uid://044q35i2ol2s" path="res://Sprites/MagicCircles/Loopy1_0002.png" id="6_uf3f5"]
-[ext_resource type="Texture2D" uid="uid://cpdm3tf3al24h" path="res://Sprites/MagicCircles/Loopy1_0003.png" id="7_aljvc"]
-[ext_resource type="Texture2D" uid="uid://hh8tq675fd0s" path="res://Sprites/MagicCircles/Loopy1_0004.png" id="8_46qnd"]
-[ext_resource type="Texture2D" uid="uid://cjs75mgxlfo4" path="res://Sprites/MagicCircles/Loopy1_0005.png" id="9_2kia0"]
-[ext_resource type="Texture2D" uid="uid://bs2yp5mg3vqrh" path="res://Sprites/MagicCircles/Loopy1_0006.png" id="10_rruph"]
-[ext_resource type="Texture2D" uid="uid://dseyln7bm5372" path="res://Sprites/MagicCircles/Loopy1_0007.png" id="11_lyk56"]
-[ext_resource type="Texture2D" uid="uid://dw7rwpapwxyst" path="res://Sprites/MagicCircles/Loopy1_0008.png" id="12_hwrtc"]
-[ext_resource type="Texture2D" uid="uid://dvsgh23y8kjdx" path="res://Sprites/MagicCircles/Loopy1_0009.png" id="13_uo5ro"]
-[ext_resource type="Texture2D" uid="uid://cgs041dnkm1lf" path="res://Sprites/MagicCircles/Loopy1_0010.png" id="14_unt37"]
-[ext_resource type="Texture2D" uid="uid://yesqjseiqq7a" path="res://Sprites/MagicCircles/Loopy1_0011.png" id="15_dgwrc"]
-[ext_resource type="Texture2D" uid="uid://b8h7ln6gckyrk" path="res://Sprites/MagicCircles/Loopy1_0012.png" id="16_e4uey"]
-[ext_resource type="Script" path="res://Engine/TimedAnimation.gd" id="17_s4jtj"]
-[ext_resource type="Texture2D" uid="uid://34qto710gfgm" path="res://Sprites/MagicCircles/Up10000-sheet.png" id="18_3rf4k"]
+[ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="6_xkjjl"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xkbof"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_nkrts")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_pswwi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_uf3f5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_aljvc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_46qnd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_2kia0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_rruph")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_lyk56")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_hwrtc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_uo5ro")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_unt37")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_dgwrc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_e4uey")
-}],
-"loop": false,
-"name": &"Loopy",
-"speed": 12.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aygyu"]
+size = Vector2(55.4863, 17.731)
 
-[sub_resource type="Animation" id="Animation_irjm1"]
-resource_name = "Loopy1"
-
-[sub_resource type="Animation" id="Animation_33kgo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_yx1es"]
-resource_name = "Up1"
-length = 0.16
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MCircleSheets:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vg6vl"]
-_data = {
-"Loopy1": SubResource("Animation_irjm1"),
-"RESET": SubResource("Animation_33kgo"),
-"Up1": SubResource("Animation_yx1es")
-}
+[sub_resource type="CircleShape2D" id="CircleShape2D_62n1s"]
+radius = 51.3333
 
 [node name="Spells" type="Node2D"]
 
@@ -127,66 +28,6 @@ position = Vector2(384, 192)
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5bb8a")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/Spells"]
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -48.0
-offset_right = 100.0
-offset_bottom = 152.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 0.7)
-
-[node name="SubViewport" type="SubViewport" parent="Player/Spells/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(200, 200)
-render_target_update_mode = 4
-
-[node name="Magic Circle" type="Area2D" parent="Player/Spells/SubViewportContainer/SubViewport"]
-show_behind_parent = true
-position = Vector2(100, 100)
-
-[node name="MCircleAnimation" type="AnimatedSprite2D" parent="Player/Spells/SubViewportContainer/SubViewport/Magic Circle"]
-show_behind_parent = true
-z_index = -1
-position = Vector2(2.08165e-12, 20)
-scale = Vector2(1, 0.7)
-sprite_frames = SubResource("SpriteFrames_xkbof")
-animation = &"Loopy"
-
-[node name="TimedAnimation" type="AnimationPlayer" parent="Player/Spells/SubViewportContainer/SubViewport/Magic Circle"]
-script = ExtResource("17_s4jtj")
-
-[node name="MCircles" type="AnimationPlayer" parent="Player/Spells/SubViewportContainer/SubViewport/Magic Circle"]
-libraries = {
-"": SubResource("AnimationLibrary_vg6vl")
-}
-
-[node name="MCircleSheets" type="Sprite2D" parent="Player/Spells/SubViewportContainer/SubViewport/Magic Circle"]
-texture = ExtResource("18_3rf4k")
-hframes = 5
-metadata/_aseprite_wizard_interface_config_ = {
-"animation_section": true,
-"layer_section": true,
-"output_section": true
-}
-metadata/_aseprite_wizard_config_ = {
-"i_mode": -1,
-"keep_anim_length": false,
-"layer": "",
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "Player/Node2D/Magic Circle/MCircles",
-"slice": "",
-"source": ""
-}
-
 [node name="RichTextLabel" type="RichTextLabel" parent="Player/Spells"]
 clip_contents = false
 offset_left = -76.0
@@ -195,4 +36,37 @@ offset_right = -36.0
 offset_bottom = -54.0
 autowrap_mode = 0
 
+[node name="ForcePush" type="Area2D" parent="Player/Spells"]
+scale = Vector2(1.5, 1.5)
+collision_mask = 4
+script = ExtResource("4_54giv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Spells/ForcePush"]
+visible = false
+position = Vector2(19.9851, -16.4852)
+rotation = -0.785398
+scale = Vector2(1, 1)
+skew = 0.785398
+shape = SubResource("RectangleShape2D_aygyu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/Spells/ForcePush"]
+visible = false
+position = Vector2(19.985, 16.485)
+rotation = 0.785398
+scale = Vector2(1, 1)
+skew = -0.785398
+shape = SubResource("RectangleShape2D_aygyu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Player/Spells/ForcePush"]
+visible = false
+position = Vector2(66.6667, 0)
+scale = Vector2(1, 1.00391)
+shape = SubResource("CircleShape2D_62n1s")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Spells/ForcePush"]
+polygon = PackedVector2Array(0, 0, 50, -50, 85, -45, 100, 0, 85, 45, 50, 50)
+
 [node name="Meter" parent="." instance=ExtResource("4_3d11i")]
+
+[node name="SmallEnemy" parent="." instance=ExtResource("6_xkjjl")]
+position = Vector2(769, 192)
