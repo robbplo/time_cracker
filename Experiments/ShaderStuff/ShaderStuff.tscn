@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://gp7uwd0moq0p"]
+
+[ext_resource type="Texture2D" uid="uid://cqk02pkxqkdgp" path="res://Sprites/Normalball.png" id="1_3ah8v"]
+[ext_resource type="Shader" path="res://Experiments/ShaderStuff/radial_gradient_smoothstep.gdshader" id="2_qgswh"]
+[ext_resource type="Texture2D" uid="uid://cqh1t48u7chp2" path="res://Sprites/square_white.jpg" id="3_5xj6p"]
+[ext_resource type="Shader" path="res://Experiments/ShaderStuff/radial_gradient_linear.gdshader" id="4_ff424"]
+[ext_resource type="Shader" path="res://Experiments/ShaderStuff/shiny_rings.gdshader" id="5_p6sov"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq06m"]
+shader = ExtResource("2_qgswh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nuoa3"]
+shader = ExtResource("4_ff424")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdy5c"]
+shader = ExtResource("5_p6sov")
+
+[node name="ShaderStuff" type="Node2D"]
+
+[node name="Normalball" type="Sprite2D" parent="."]
+position = Vector2(214, 212)
+texture = ExtResource("1_3ah8v")
+
+[node name="SquareWhite2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pq06m")
+position = Vector2(689, 84)
+scale = Vector2(5, 5)
+texture = ExtResource("3_5xj6p")
+
+[node name="SquareWhite3" type="Sprite2D" parent="."]
+position = Vector2(455, 0)
+texture = ExtResource("3_5xj6p")
+
+[node name="SquareWhite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nuoa3")
+position = Vector2(505, 97)
+scale = Vector2(5, 5)
+texture = ExtResource("3_5xj6p")
+
+[node name="SquareWhite4" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fdy5c")
+position = Vector2(395, 402)
+scale = Vector2(25, 25)
+texture = ExtResource("3_5xj6p")
