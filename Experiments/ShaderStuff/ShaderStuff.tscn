@@ -39,6 +39,6 @@ texture = ExtResource("3_5xj6p")
 
 [node name="SquareWhite4" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fdy5c")
-position = Vector2(395, 402)
+position = Vector2(-430, 405)
 scale = Vector2(25, 25)
 texture = ExtResource("3_5xj6p")

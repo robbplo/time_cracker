@@ -1,7 +1,5 @@
 shader_type canvas_item;
 
-instance uniform interpolation_method : int = 1g
-
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
@@ -13,7 +11,3 @@ void fragment() {
 	COLOR.a = smoothstep(0.0, 1.0, alpha);
 }
 
-float interpolate() {
-	if (interpolate
-
-}

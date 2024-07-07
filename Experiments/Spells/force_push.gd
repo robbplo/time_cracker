@@ -1,20 +1,31 @@
-extends Area2D
+extends Spell
 class_name ForcePush
 
-var direction: Vector2
+const HITBOX_ACTIVE_TIME = .3
+
 var force_multiplier := 1500.0
+var damage := .5
+
+func _ready() -> void:
+	$Area2D.monitoring = false
+	$GPUParticles2D.emitting = false
 
 func cast():
 	look_at(get_global_mouse_position())
-	# wait for the next physics frame to ensure collisions were updated
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	# all bodies should be enemies
-	var enemies = get_overlapping_bodies()
-	print(enemies)
+	$Area2D.monitoring = true
+	var t = create_tween()
+	$GPUParticles2D.emitting = true
+	$GPUParticles2D.amount_ratio = 1.0
+	$GPUParticles2D.process_material.initial_velocity_min = 1000.0
+	$GPUParticles2D.process_material.initial_velocity_max = 1500.0
+	t.tween_property($GPUParticles2D, "amount_ratio", 0.0, HITBOX_ACTIVE_TIME)
+	t.parallel().tween_property($GPUParticles2D.process_material, "initial_velocity_min", 100.0, HITBOX_ACTIVE_TIME)
+	t.parallel().tween_property($GPUParticles2D.process_material, "initial_velocity_max", 100.0, HITBOX_ACTIVE_TIME)
+	await get_tree().create_timer(HITBOX_ACTIVE_TIME).timeout
+	$GPUParticles2D.emitting = false
+	$Area2D.monitoring = false
 
-	for enemy in enemies:
-		enemy.velocity += (Vector2.from_angle(rotation) * force_multiplier)
-
-
-
+func _on_area_2d_body_entered(body:Node2D) -> void:
+	if body is Character:
+		body.velocity += (Vector2.from_angle(rotation) * force_multiplier)
+		body.take_damage(damage)

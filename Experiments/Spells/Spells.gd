@@ -1,6 +1,4 @@
-extends CharacterBody2D
-
-const BULLET = preload("res://Experiments/Spells/bullet.tscn")
+extends Node2D
 
 var spell_components: = []
 var is_casting = false
@@ -8,13 +6,8 @@ var is_casting = false
 var mCircle_currentFrame = 0
 var mCircle_toFrame = 0
 
-func _ready():
-	pass
-
 func _process(_delta):
-	if not is_casting:
-		move_and_slide()
-	else:
+	if is_casting:
 		if Input.is_action_just_pressed("left"):
 			add_component("left")
 		if Input.is_action_just_pressed("right"):
@@ -42,18 +35,14 @@ func add_component(component):
 ## just fookin send it
 func send_it():
 	match spell_components:
-		["down"]: $ForcePush.cast()
-		[]: pass
-		_: fire_bullet()
+		["up"]: $ForcePush.cast()
+		["down"]: $Blink.cast()
+		["left"]: $Projectile.cast()
+		["right"]: $Spike.cast()
+		_: pass
+
 	spell_components.clear()
 	$RichTextLabel.text = ""
-
-## Hell yea brother
-func fire_bullet():
-	var bullet = BULLET.instantiate()
-	bullet.direction = global_position.direction_to(get_global_mouse_position()).normalized()
-	bullet.global_position = global_position
-	get_tree().root.add_child(bullet)
 
 
 # force pushu
