@@ -34,7 +34,7 @@ func _ready():
 
 func _process(delta):
 	var target: Vector3 = $"../Player".global_position
-	var offset := Vector2(10, 10)
+	var offset := Vector2(0, 15)
 	var new_pos := update(delta, Vector2(target.x, target.z) + offset)
 	global_position.x = new_pos.x
 	global_position.z = new_pos.y
