@@ -103,3 +103,19 @@ bpm={
 "type": "float",
 "value": 112.0
 }
+progress_2bar={
+"type": "float",
+"value": 0.0
+}
+progress_1bar={
+"type": "float",
+"value": 0.0
+}
+progress_4bar={
+"type": "float",
+"value": 0.0
+}
+progress_8bar={
+"type": "float",
+"value": 0.0
+}

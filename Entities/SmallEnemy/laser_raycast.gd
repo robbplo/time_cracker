@@ -32,7 +32,7 @@ func update_laser():
 		cast_point = to_local(get_collision_point())
 
 	var length = cast_point.length()
-	print(length)
+	#print(length)
 	$"Beam/Cyl".height = length
 	$"Beam/Cyl".position.z = -length / 2
 

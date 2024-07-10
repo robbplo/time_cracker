@@ -3,7 +3,8 @@ extends AnimationPlayer
 ## AnimationPlayer that follows the pulse of the global timer
 ##
 ## In the animations, each second corresponds to a bar in the song
-## It's recommended to set snapping to 16 FPS in the animation editor
+## The snapping value corresponds to musical subdivisions.
+## Set snapping to 16 for 16th note subdivisions, to 8 for 8th notes, and so on.
 
 ## The name of the animation that will be played
 @export var animation: String = ""

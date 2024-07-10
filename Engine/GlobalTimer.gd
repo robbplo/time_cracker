@@ -45,6 +45,8 @@ func _process(_delta):
 	var new_sixteenth_notes = floor(elapsed_time / sixteenth_note_duration)
 	if new_sixteenth_notes > total_sixteenth_notes:
 		_add_sixteenth_note()
+		
+	shader_globals()
 
 func start():
 	running = true
@@ -75,3 +77,13 @@ func distance_to_quarter_note() -> float:
 		return offset
 	else:
 		return offset - quarter_note_duration
+
+## Sets global uniforms that correspond to musical timing for use
+## in any kind of shader across the project. 
+## starts at 0 and then linearly ramps to 1 before resetting.
+func shader_globals():
+	RenderingServer.global_shader_parameter_set("progress_1bar",(fposmod(elapsed_time/((60/bpm)*4), 1)))
+	RenderingServer.global_shader_parameter_set("progress_2bar",(fposmod(elapsed_time/((60/bpm)*8), 1)))
+	RenderingServer.global_shader_parameter_set("progress_4bar",(fposmod(elapsed_time/((60/bpm)*16), 1)))
+	RenderingServer.global_shader_parameter_set("progress_8bar",(fposmod(elapsed_time/((60/bpm)*32), 1)))
+	

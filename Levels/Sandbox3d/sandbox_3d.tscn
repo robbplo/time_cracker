@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://cx1rad3hxx0il"]
+[gd_scene load_steps=27 format=3 uid="uid://cx1rad3hxx0il"]
 
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_g8ipq"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_s40h8"]
 [ext_resource type="PackedScene" uid="uid://myvhnl1u57q5" path="res://Levels/GodotLevel_scrapyard.tscn" id="2_6rmwk"]
+[ext_resource type="CompressedTexture3D" uid="uid://qqbbsga58bj0" path="res://Experiments/Octogenesis_LUT.png" id="3_dat81"]
 [ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="3_fff6j"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="4_ijfub"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="5_ddabd"]
@@ -22,16 +23,19 @@ ground_horizon_color = Color(0.487418, 0.715658, 0.585581, 1)
 
 [sub_resource type="Sky" id="Sky_iia68"]
 sky_material = SubResource("ProceduralSkyMaterial_k5122")
+radiance_size = 2
 
 [sub_resource type="Environment" id="Environment_exrdt"]
 background_mode = 2
 sky = SubResource("Sky_iia68")
 sky_custom_fov = 72.2
+tonemap_mode = 1
+adjustment_color_correction = ExtResource("3_dat81")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plr41"]
 albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
 
-[sub_resource type="Resource" id="Resource_r37qm"]
+[sub_resource type="Resource" id="Resource_2h3pc"]
 script = ExtResource("7_futuu")
 spacing = Vector3(5, 0.05, 5)
 enabled = true
@@ -40,7 +44,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_2fra7"]
+[sub_resource type="Resource" id="Resource_iqv88"]
 script = ExtResource("8_r4umj")
 position = Vector3(2, 2, 2)
 rotation = Vector3(180, 180, 180)
@@ -51,7 +55,7 @@ custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_vgg1a"]
+[sub_resource type="Resource" id="Resource_5ahtv"]
 script = ExtResource("9_48f5w")
 iterations = 0
 offset_step = 2.08167e-15
@@ -63,7 +67,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4gowu"]
+[sub_resource type="Resource" id="Resource_ac2a8"]
 script = ExtResource("10_juc04")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -79,9 +83,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_238xs"]
+[sub_resource type="Resource" id="Resource_b4ugq"]
 script = ExtResource("5_ddabd")
-stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_r37qm"), SubResource("Resource_2fra7"), SubResource("Resource_vgg1a"), SubResource("Resource_4gowu")])
+stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_2h3pc"), SubResource("Resource_iqv88"), SubResource("Resource_5ahtv"), SubResource("Resource_ac2a8")])
 
 [sub_resource type="Resource" id="Resource_6qveq"]
 script = ExtResource("13_micxf")
@@ -97,22 +101,6 @@ volume_db = -13.508
 
 [node name="Player" parent="." instance=ExtResource("1_s40h8")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 2.97356, 0)
-
-[node name="Sprite3D" parent="Player" index="0"]
-transform = Transform3D(3.07482, -1.63528, 2.8324, 3.06662e-15, 3.88759, 2.2445, -3.27057, -1.53741, 2.66287, 0.0220408, 1, 0.0288499)
-billboard = 0
-
-[node name="AnimationTree" parent="Player" index="2"]
-parameters/current_position = 0.458335
-parameters/current_delta = 0.007063
-parameters/Idle/current_position = 0.458335
-parameters/Idle/current_delta = 0.007063
-parameters/Idle/0/current_position = 0.458335
-parameters/Idle/0/current_delta = 0.007063
-parameters/Run/blend_position = Vector2(-0.773066, -0.389381)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.40629, 0.913744, 0, -0.913744, 0.40629, 0.243469, 17.4507, 8.16703)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_exrdt")
@@ -130,7 +118,7 @@ material = SubResource("StandardMaterial3D_plr41")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.431, 2.08165e-12, -136.606)
 script = ExtResource("4_ijfub")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_238xs")
+modifier_stack = SubResource("Resource_b4ugq")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -157,4 +145,7 @@ projection = 1
 fov = 90.0
 size = 10.419
 
-[editable path="Player"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.111903, -0.6477, -0.753633, -4.39627e-17, -0.758396, 0.651794, -0.993719, -0.0729374, -0.0848664, 0, 7.05054, 0)
+light_bake_mode = 1
+shadow_enabled = true
