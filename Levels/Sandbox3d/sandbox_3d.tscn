@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx1rad3hxx0il"]
+[gd_scene load_steps=7 format=3 uid="uid://cx1rad3hxx0il"]
 
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_s40h8"]
+[ext_resource type="Script" path="res://Levels/Sandbox3d/camera_3d.gd" id="2_ugg1o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5122"]
 ground_bottom_color = Color(0.116904, 0.195091, 0.151804, 1)
@@ -23,8 +24,11 @@ albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97356, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233947, 5.00441, 9.07785)
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, -0.233947, 6.7383, 9.07785)
+projection = 1
 fov = 90.0
+size = 10.419
+script = ExtResource("2_ugg1o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.40629, 0.913744, 0, -0.913744, 0.40629, 0.243469, 17.4507, 8.16703)
