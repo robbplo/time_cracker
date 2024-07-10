@@ -26,4 +26,3 @@ func cube3(delta, target):
 
 	prev_target_pos = target.position
 	$Cube3.position += (difference / 5)
-
