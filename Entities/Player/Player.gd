@@ -1,6 +1,8 @@
 extends Character
 class_name Player
 
+const CAMERA_Y_ROTATION = 45
+
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
@@ -34,7 +36,7 @@ func get_input(delta):
 	if Input.is_action_just_pressed("dash"):
 		dash()
 
-	input_dir = Input.get_vector("left", "right", "up", "down").rotated(deg_to_rad(-45))
+	input_dir = Input.get_vector("left", "right", "up", "down").rotated(deg_to_rad(-CAMERA_Y_ROTATION))
 
 	if Input.is_action_just_pressed("attack"):
 		is_casting = true
@@ -71,11 +73,11 @@ func die():
 	get_tree().change_scene_to_file("res://Levels/death_screen.tscn")
 
 func update_animations():
-	input_dir = input_dir.rotated(deg_to_rad(45))
-	var is_idle = input_dir == Vector2.ZERO
+	var direction = input_dir.rotated(deg_to_rad(CAMERA_Y_ROTATION))
+	var is_idle = direction == Vector2.ZERO
 	animation_tree["parameters/conditions/Idle"] = is_idle
 	animation_tree["parameters/conditions/is_moving"] = not is_idle
 	animation_tree["parameters/conditions/is_casting"] = is_casting
-	if input_dir:
-		animation_tree["parameters/Idle/blend_position"] = input_dir
-		animation_tree["parameters/Run/blend_position"] = input_dir
+	if direction:
+		animation_tree["parameters/Idle/blend_position"] = direction
+		animation_tree["parameters/Run/blend_position"] = direction

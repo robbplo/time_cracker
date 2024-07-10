@@ -44,7 +44,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_iqv88"]
+[sub_resource type="Resource" id="Resource_btclv"]
 script = ExtResource("8_r4umj")
 position = Vector3(2, 2, 2)
 rotation = Vector3(180, 180, 180)
@@ -55,7 +55,7 @@ custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_5ahtv"]
+[sub_resource type="Resource" id="Resource_j03nm"]
 script = ExtResource("9_48f5w")
 iterations = 0
 offset_step = 2.08167e-15
@@ -67,7 +67,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_ac2a8"]
+[sub_resource type="Resource" id="Resource_ooqk3"]
 script = ExtResource("10_juc04")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -83,9 +83,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_b4ugq"]
+[sub_resource type="Resource" id="Resource_ndtb2"]
 script = ExtResource("5_ddabd")
-stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_2h3pc"), SubResource("Resource_iqv88"), SubResource("Resource_5ahtv"), SubResource("Resource_ac2a8")])
+stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_0ecco"), SubResource("Resource_btclv"), SubResource("Resource_j03nm"), SubResource("Resource_ooqk3")])
 
 [sub_resource type="Resource" id="Resource_6qveq"]
 script = ExtResource("13_micxf")
@@ -102,15 +102,24 @@ volume_db = -13.508
 [node name="Player" parent="." instance=ExtResource("1_s40h8")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 2.97356, 0)
 
+[node name="Sprite3D" parent="Player" index="0"]
+transform = Transform3D(3.07482, -1.63528, 2.8324, 3.06662e-15, 3.88759, 2.2445, -3.27057, -1.53741, 2.66287, 0.0220408, 1, 0.0288499)
+billboard = 0
+
+[node name="AnimationTree" parent="Player" index="2"]
+parameters/current_position = 0.149422
+parameters/current_delta = 0.0130846
+parameters/Idle/current_position = 0.149422
+parameters/Idle/current_delta = 0.0130846
+parameters/Idle/0/current_position = 0.149422
+parameters/Idle/0/current_delta = 0.0130846
+parameters/Run/blend_position = Vector2(-0.773066, -0.389381)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.40629, 0.913744, 0, -0.913744, 0.40629, 0.243469, 17.4507, 8.16703)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_exrdt")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09439, -0.05, 4.28754)
-visible = false
-use_collision = true
-size = Vector3(25.0668, 0.1, 32.9772)
-material = SubResource("StandardMaterial3D_plr41")
 
 [node name="GodotLevelExperiment" parent="." instance=ExtResource("2_6rmwk")]
 
@@ -118,7 +127,7 @@ material = SubResource("StandardMaterial3D_plr41")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.431, 2.08165e-12, -136.606)
 script = ExtResource("4_ijfub")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_b4ugq")
+modifier_stack = SubResource("Resource_ndtb2")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -137,6 +146,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18384, 0.270508, -8.77356)
 [node name="ProceduralAnimation" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106201, 0.0291748, 0.0136719)
 script = ExtResource("5_hkq5k")
+damping = 1.5
+response = 0.5
 target = NodePath("../Player")
 
 [node name="Camera3D" type="Camera3D" parent="ProceduralAnimation"]
