@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Experiments/Magic/Magic.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
-[ext_resource type="PackedScene" path="res://Engine/meter.tscn" id="4_3d11i"]
+[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="4_3d11i"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
 [ext_resource type="Script" path="res://Engine/TimedAnimation.gd" id="17_s4jtj"]
 [ext_resource type="Texture2D" uid="uid://cxb18xwlssfmr" path="res://Experiments/Magic/MagicCircles_layer1.png" id="18_oof3j"]
@@ -603,7 +603,6 @@ texture_filter = 1
 texture = ExtResource("18_oof3j")
 hframes = 5
 vframes = 4
-frame = 14
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "layer_section": true,

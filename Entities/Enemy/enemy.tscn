@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bxslj0kd4kixd" path="res://Sprites/Animations/AttackSpikeAnim-9.png" id="20_db4d2"]
 [ext_resource type="Texture2D" uid="uid://onps1uun7k2m" path="res://Sprites/Animations/AttackSpikeAnim-10.png" id="21_g18ql"]
 [ext_resource type="Texture2D" uid="uid://b5bq35yt13ayy" path="res://Sprites/Animations/AttackSpikeAnim-11.png" id="22_kfjff"]
-[ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://Entities/health_pool.tscn" id="23_jeuvx"]
+[ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://Entities/health_bar.tscn" id="23_jeuvx"]
 [ext_resource type="Texture2D" uid="uid://cxe2gxrraghxn" path="res://Sprites/Animations/OnBeatPingAnim1.png" id="24_mmrv0"]
 [ext_resource type="Texture2D" uid="uid://yowqn22xipkv" path="res://Sprites/Animations/OnBeatPingAnim2.png" id="25_fime2"]
 [ext_resource type="Texture2D" uid="uid://bcvefb6k2im2r" path="res://Sprites/Animations/OnBeatPingAnim3.png" id="26_nmbx8"]

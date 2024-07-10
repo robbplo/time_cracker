@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cjhlyk5slw3am" path="res://SFX/Swish_51_SP.wav" id="4_573gc"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerSprite.gd" id="4_q1ewa"]
 [ext_resource type="Texture2D" uid="uid://cxlylusoy40wj" path="res://Sprites/Characters/CharacterCursor.png" id="11_mvpm4"]
-[ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://Entities/health_pool.tscn" id="11_qak4c"]
+[ext_resource type="PackedScene" uid="uid://hg7e4ve8vfed" path="res://Entities/health_bar.tscn" id="11_qak4c"]
 [ext_resource type="Shader" path="res://Entities/Player/character_cursor.gdshader" id="12_qno53"]
 [ext_resource type="Texture2D" uid="uid://c66m6yr0htalo" path="res://Sprites/Characters/CharacterCursorRing.png" id="15_wf412"]
 [ext_resource type="Texture2D" uid="uid://cxgpni1gkphvf" path="res://Sprites/Lights/Spotlight.png" id="16_tre60"]
@@ -843,11 +843,12 @@ graph_offset = Vector2(-64, -136)
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 texture_filter = 1
-collision_layer = 3
+collision_layer = 2
 collision_mask = 7
 motion_mode = 1
 up_direction = Vector2(1.54196e-12, -1)
 script = ExtResource("1_nvb10")
+max_health = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -900,8 +901,9 @@ monitoring = false
 position = Vector2(52, 0)
 shape = SubResource("RectangleShape2D_wws6q")
 
-[node name="HealthPool" parent="." instance=ExtResource("11_qak4c")]
-position = Vector2(-3, -73)
+[node name="HealthBar" parent="." instance=ExtResource("11_qak4c")]
+offset_top = -37.0
+offset_bottom = 43.0
 
 [node name="PlayerCursor" type="Node2D" parent="."]
 visible = false
@@ -983,11 +985,9 @@ parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 
-[connection signal="hurt" from="." to="Sprite2D" method="_on_player_hurt"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="attack_hit" from="Attack" to="." method="_on_attack_attack_hit"]
 [connection signal="attack_start" from="Attack" to="Attack/AttackSwish" method="_on_attack_attack_start"]
 [connection signal="body_entered" from="Attack/Area2D" to="Attack" method="_on_area_2d_body_entered"]
-[connection signal="die" from="HealthPool" to="." method="_on_health_pool_die"]
 [connection signal="animation_finished" from="AnimationPlayer" to="Attack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="Attack" method="_on_animation_tree_animation_finished"]

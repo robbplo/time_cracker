@@ -111,6 +111,7 @@ _data = {
 
 [node name="LaserRaycast" type="RayCast2D"]
 target_position = Vector2(2000, 0)
+collision_mask = 3
 script = ExtResource("1_uxqx7")
 
 [node name="Line2D" type="Line2D" parent="."]

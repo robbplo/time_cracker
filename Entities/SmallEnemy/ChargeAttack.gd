@@ -1,8 +1,5 @@
-extends CharacterBody2D
+extends Node2D
 
-signal attack_charge
-signal attack_fire
-signal attack_end
 signal attack_hit(body: CharacterBody2D)
 
 var is_attacking = false
@@ -13,7 +10,6 @@ func set_target(node: Node2D):
 func charge():
 	if is_attacking:
 		return false
-	attack_charge.emit()
 	$LaserRaycast.start_tracking()
 	is_attacking = true
 	return true
@@ -32,7 +28,5 @@ func check_hit():
 		attack_hit.emit(body)
 
 func _on_fire_animation_animation_looped():
-	attack_end.emit()
 	is_attacking = false
 	$FireAnimation.stop()
-
