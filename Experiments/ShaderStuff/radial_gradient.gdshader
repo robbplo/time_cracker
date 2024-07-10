@@ -10,4 +10,3 @@ void fragment() {
 
 	COLOR.a = smoothstep(0.0, 1.0, alpha);
 }
-

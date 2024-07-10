@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdmad3xnjn1rk"
-path.s3tc="res://.godot/imported/Self_insert_Animations.png-730fcdce5ffbb3d013a9b830c8523edd.s3tc.ctex"
+uid="uid://6ixs421icp1"
+path.s3tc="res://.godot/imported/Self_insert_AnimationsSwordBackup.png-0d34b9e744dbe84222001762a7778782.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Entities/Player/Self_insert_Animations.png"
-dest_files=["res://.godot/imported/Self_insert_Animations.png-730fcdce5ffbb3d013a9b830c8523edd.s3tc.ctex"]
+source_file="res://Entities/Player/Self_insert_AnimationsSwordBackup.png"
+dest_files=["res://.godot/imported/Self_insert_AnimationsSwordBackup.png-0d34b9e744dbe84222001762a7778782.s3tc.ctex"]
 
 [params]
 

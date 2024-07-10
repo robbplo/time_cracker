@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdmad3xnjn1rk"
-path.s3tc="res://.godot/imported/Self_insert_Animations.png-730fcdce5ffbb3d013a9b830c8523edd.s3tc.ctex"
+uid="uid://b2o3lyfsu3rxf"
+path.s3tc="res://.godot/imported/Self_insert(backup).png-3ad7f8685de529d9b5d2bf6973311231.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Entities/Player/Self_insert_Animations.png"
-dest_files=["res://.godot/imported/Self_insert_Animations.png-730fcdce5ffbb3d013a9b830c8523edd.s3tc.ctex"]
+source_file="res://Levels/Sandbox3d/Self_insert(backup).png"
+dest_files=["res://.godot/imported/Self_insert(backup).png-3ad7f8685de529d9b5d2bf6973311231.s3tc.ctex"]
 
 [params]
 

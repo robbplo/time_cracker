@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody3D
 class_name Character
 
 signal health_changed(new: float, previous: float)
@@ -31,8 +31,6 @@ func set_health(amount: float):
 	var previous = health
 	health = max(0.0, amount)
 	health_changed.emit(health, previous)
-
-
 
 func die():
 	queue_free()

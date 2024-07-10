@@ -68,4 +68,3 @@ void fragment() {
 
 	COLOR.rgb = finalColor;
 }
-
