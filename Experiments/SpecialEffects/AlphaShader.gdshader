@@ -29,7 +29,7 @@ void fragment() {
 	g += brightness;
 	b += brightness;
 
-    COLOR = vec4(r, g, b, alpha_mod);
+    COLOR = vec4(g, r, r, alpha_mod);
 }
 
 //void light() {

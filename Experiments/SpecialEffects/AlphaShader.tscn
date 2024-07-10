@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://db46mow08wd3t" path="res://Sprites/Splash.png" id="1_dmg6r"]
 [ext_resource type="Shader" path="res://Experiments/SpecialEffects/AlphaShader.gdshader" id="2_d8xwm"]
-[ext_resource type="Texture2D" uid="uid://cb8ad682h8ak0" path="res://Sprites/Lights/OutsideGradient.png" id="3_4hjw7"]
+[ext_resource type="Texture2D" uid="uid://b8wuvhvbcgnpf" path="res://Sprites/Lights/CircleParticle.png" id="3_1gei6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxme2"]
 shader = ExtResource("2_d8xwm")
@@ -17,14 +17,14 @@ shader_parameter/b_time = 1.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovvqm"]
 shader = ExtResource("2_d8xwm")
-shader_parameter/speed = 10.0
+shader_parameter/speed = 6.0
 shader_parameter/brightness = -2.2352e-08
-shader_parameter/r_displace = Vector2(10, 5)
+shader_parameter/r_displace = Vector2(20, 17.375)
 shader_parameter/r_time = 0.8
-shader_parameter/g_displace = Vector2(7, -10)
+shader_parameter/g_displace = Vector2(12.51, -8.275)
 shader_parameter/g_time = 0.9
-shader_parameter/b_displace = Vector2(-9, 3)
-shader_parameter/b_time = 0.7
+shader_parameter/b_displace = Vector2(-6.735, 4.98)
+shader_parameter/b_time = 0.6
 
 [node name="AlphaShader" type="Node2D"]
 
@@ -43,6 +43,6 @@ polygon = PackedVector2Array(6.59091, 36.884, 3.40909, 63.6116, 36.3636, 65.7498
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 material = SubResource("ShaderMaterial_ovvqm")
-position = Vector2(486, 222)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_4hjw7")
+position = Vector2(682, 268)
+scale = Vector2(2.59375, 2.65625)
+texture = ExtResource("3_1gei6")
