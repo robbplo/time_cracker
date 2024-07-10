@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://22hjgugr4bg3"]
+[gd_scene load_steps=41 format=3 uid="uid://22hjgugr4bg3"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_nvb10"]
 [ext_resource type="Texture2D" uid="uid://cdmad3xnjn1rk" path="res://Entities/Player/Self_insert_Animations.png" id="2_uqo20"]
@@ -53,11 +53,9 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3axxs"]
 advance_mode = 2
-advance_condition = &"Idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vag2j"]
 priority = 0
-advance_mode = 2
 advance_condition = &"is_casting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xsivi"]
@@ -75,7 +73,6 @@ advance_condition = &"is_moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pdrn1"]
 priority = 0
-advance_mode = 2
 advance_condition = &"is_casting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p8jv7"]
@@ -146,6 +143,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [16, 15, 14, 0, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_mxglw"]
+length = 0.525
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 14, 0, 12, 11, 10, 9]
 }
 
 [sub_resource type="Animation" id="Animation_bmfbf"]
@@ -484,62 +509,6 @@ tracks/1/keys = {
 "values": [13, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 25, 37, 36, 35]
 }
 
-[sub_resource type="Animation" id="Animation_m4of6"]
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [42, 41, 40, 39, 25, 37, 36, 35]
-}
-
-[sub_resource type="Animation" id="Animation_mxglw"]
-length = 0.525
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [15, 14, 0, 12, 11, 10, 9]
-}
-
 [sub_resource type="Animation" id="Animation_xmsol"]
 length = 0.525
 loop_mode = 1
@@ -568,6 +537,62 @@ tracks/1/keys = {
 "values": [49, 48, 47, 46, 45, 44, 43]
 }
 
+[sub_resource type="Animation" id="Animation_m4of6"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 41, 40, 39, 25, 37, 36, 35]
+}
+
+[sub_resource type="Animation" id="Animation_hl87d"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [66]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yxog"]
 _data = {
 "Casting": SubResource("Animation_odj2m"),
@@ -579,6 +604,7 @@ _data = {
 "L_Run": SubResource("Animation_fgs8e"),
 "L_Slash1": SubResource("Animation_e8egr"),
 "Left": SubResource("Animation_xll2k"),
+"RESET": SubResource("Animation_hl87d"),
 "R_IdleL": SubResource("Animation_l5plf"),
 "R_IdleR": SubResource("Animation_i7df6"),
 "R_Run": SubResource("Animation_46yov"),
@@ -597,12 +623,12 @@ max_health = 5.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(4.489, 0, 0, 0, 4.489, 0, 0, 0, 4.489, 0.0220408, 1, 0.0288499)
-visible = false
 billboard = 2
 texture_filter = 0
 texture = ExtResource("2_uqo20")
 hframes = 10
 vframes = 10
+frame = 66
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -630,35 +656,35 @@ shape = SubResource("CapsuleShape3D_7e51w")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_1knbg")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.0
-parameters/current_position = 0.0
-parameters/current_delta = 0.0
+parameters/current_length = 0.525
+parameters/current_position = 0.379645
+parameters/current_delta = 0.0166667
 parameters/conditions/Idle = false
 parameters/conditions/is_casting = true
 parameters/conditions/is_moving = false
-parameters/Cast/current_length = Vector2(0, 0)
-parameters/Cast/current_position = Vector2(0, 0)
-parameters/Cast/current_delta = Vector2(0, 0)
+parameters/Cast/current_length = 0.525
+parameters/Cast/current_position = 0.46673
+parameters/Cast/current_delta = 0.0166667
 parameters/Cast/blend_position = Vector2(2.08165e-12, 2.08165e-12)
-parameters/Cast/0/current_length = null
-parameters/Cast/0/current_position = null
-parameters/Cast/0/current_delta = null
+parameters/Cast/0/current_length = 0.525
+parameters/Cast/0/current_position = 0.46673
+parameters/Cast/0/current_delta = 0.0166667
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
-parameters/Idle/current_length = Vector2(0, 0)
-parameters/Idle/current_position = Vector2(0, 0)
-parameters/Idle/current_delta = Vector2(0, 0)
+parameters/Idle/current_length = 0.525
+parameters/Idle/current_position = 0.379645
+parameters/Idle/current_delta = 0.0166667
 parameters/Idle/blend_position = Vector2(-0.0689388, 0.0812855)
-parameters/Idle/0/current_length = null
-parameters/Idle/0/current_position = null
-parameters/Idle/0/current_delta = null
+parameters/Idle/0/current_length = 0.525
+parameters/Idle/0/current_position = 0.379645
+parameters/Idle/0/current_delta = 0.0166667
 parameters/Idle/1/current_length = null
 parameters/Idle/1/current_position = null
 parameters/Idle/1/current_delta = null
-parameters/Run/current_length = Vector2(0, 0)
-parameters/Run/current_position = Vector2(0, 0)
-parameters/Run/current_delta = Vector2(0, 0)
+parameters/Run/current_length = 0.6
+parameters/Run/current_position = 0.0
+parameters/Run/current_delta = 0.0
 parameters/Run/blend_position = Vector2(0.00405955, 0.862661)
 parameters/Run/0/current_length = null
 parameters/Run/0/current_position = null
@@ -669,9 +695,9 @@ parameters/Run/1/current_delta = null
 parameters/Run/2/current_length = null
 parameters/Run/2/current_position = null
 parameters/Run/2/current_delta = null
-parameters/Run/3/current_length = null
-parameters/Run/3/current_position = null
-parameters/Run/3/current_delta = null
+parameters/Run/3/current_length = 0.6
+parameters/Run/3/current_position = 0.0
+parameters/Run/3/current_delta = 0.0
 parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0

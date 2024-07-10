@@ -75,5 +75,6 @@ func update_animations():
 	animation_tree["parameters/conditions/Idle"] = is_idle
 	animation_tree["parameters/conditions/is_moving"] = not is_idle
 	animation_tree["parameters/conditions/is_casting"] = is_casting
-	animation_tree["parameters/Idle/blend_position"] = input_dir
-	animation_tree["parameters/Run/blend_position"] = input_dir
+	if input_dir:
+		animation_tree["parameters/Idle/blend_position"] = input_dir
+		animation_tree["parameters/Run/blend_position"] = input_dir
