@@ -28,11 +28,10 @@ func update_laser():
 
 		$Beam.look_at(tracking_pos, Vector3.UP)
 
-	if is_colliding() and not is_casting:
+	if is_colliding():
 		cast_point = to_local(get_collision_point())
 
 	var length = cast_point.length()
-	print(length)
 	$"Beam/Cyl".height = length
 	$"Beam/Cyl".position.z = -length / 2
 

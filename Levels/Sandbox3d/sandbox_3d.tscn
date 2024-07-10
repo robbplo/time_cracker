@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cx1rad3hxx0il"]
+[gd_scene load_steps=25 format=3 uid="uid://cx1rad3hxx0il"]
 
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_g8ipq"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_s40h8"]
@@ -28,10 +28,7 @@ background_mode = 2
 sky = SubResource("Sky_iia68")
 sky_custom_fov = 72.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plr41"]
-albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
-
-[sub_resource type="Resource" id="Resource_r37qm"]
+[sub_resource type="Resource" id="Resource_0ecco"]
 script = ExtResource("7_futuu")
 spacing = Vector3(5, 0.05, 5)
 enabled = true
@@ -40,7 +37,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_2fra7"]
+[sub_resource type="Resource" id="Resource_btclv"]
 script = ExtResource("8_r4umj")
 position = Vector3(2, 2, 2)
 rotation = Vector3(180, 180, 180)
@@ -51,7 +48,7 @@ custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_vgg1a"]
+[sub_resource type="Resource" id="Resource_j03nm"]
 script = ExtResource("9_48f5w")
 iterations = 0
 offset_step = 2.08167e-15
@@ -63,7 +60,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4gowu"]
+[sub_resource type="Resource" id="Resource_ooqk3"]
 script = ExtResource("10_juc04")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -79,9 +76,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_238xs"]
+[sub_resource type="Resource" id="Resource_ndtb2"]
 script = ExtResource("5_ddabd")
-stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_r37qm"), SubResource("Resource_2fra7"), SubResource("Resource_vgg1a"), SubResource("Resource_4gowu")])
+stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_0ecco"), SubResource("Resource_btclv"), SubResource("Resource_j03nm"), SubResource("Resource_ooqk3")])
 
 [sub_resource type="Resource" id="Resource_6qveq"]
 script = ExtResource("13_micxf")
@@ -103,12 +100,12 @@ transform = Transform3D(3.07482, -1.63528, 2.8324, 3.06662e-15, 3.88759, 2.2445,
 billboard = 0
 
 [node name="AnimationTree" parent="Player" index="2"]
-parameters/current_position = 0.458335
-parameters/current_delta = 0.007063
-parameters/Idle/current_position = 0.458335
-parameters/Idle/current_delta = 0.007063
-parameters/Idle/0/current_position = 0.458335
-parameters/Idle/0/current_delta = 0.007063
+parameters/current_position = 0.149422
+parameters/current_delta = 0.0130846
+parameters/Idle/current_position = 0.149422
+parameters/Idle/current_delta = 0.0130846
+parameters/Idle/0/current_position = 0.149422
+parameters/Idle/0/current_delta = 0.0130846
 parameters/Run/blend_position = Vector2(-0.773066, -0.389381)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -117,20 +114,13 @@ transform = Transform3D(1, 0, 0, 0, 0.40629, 0.913744, 0, -0.913744, 0.40629, 0.
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_exrdt")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09439, -0.05, 4.28754)
-visible = false
-use_collision = true
-size = Vector3(25.0668, 0.1, 32.9772)
-material = SubResource("StandardMaterial3D_plr41")
-
 [node name="GodotLevelExperiment" parent="." instance=ExtResource("2_6rmwk")]
 
 [node name="ProtonScatter" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.431, 2.08165e-12, -136.606)
 script = ExtResource("4_ijfub")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_238xs")
+modifier_stack = SubResource("Resource_ndtb2")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -149,6 +139,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18384, 0.270508, -8.77356)
 [node name="ProceduralAnimation" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106201, 0.0291748, 0.0136719)
 script = ExtResource("5_hkq5k")
+damping = 1.5
+response = 0.5
 target = NodePath("../Player")
 
 [node name="Camera3D" type="Camera3D" parent="ProceduralAnimation"]
