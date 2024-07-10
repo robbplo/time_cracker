@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://cx1rad3hxx0il"]
+[gd_scene load_steps=10 format=3 uid="uid://cx1rad3hxx0il"]
 
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_g8ipq"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_s40h8"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="2_0wa74"]
 [ext_resource type="PackedScene" uid="uid://myvhnl1u57q5" path="res://Levels/GodotLevel_scrapyard.tscn" id="2_6rmwk"]
@@ -14,6 +15,8 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="11_owyt0"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="12_5ek6s"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="13_micxf"]
+[ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="3_fff6j"]
+[ext_resource type="Script" path="res://Experiments/ProceduralAnimation/ProceduralAnimation.gd" id="5_hkq5k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5122"]
 ground_bottom_color = Color(0.116904, 0.195091, 0.151804, 1)
@@ -88,6 +91,12 @@ size = Vector3(420, 1, 420)
 
 [node name="Sandbox3D" type="Node3D"]
 
+[node name="Song" type="AudioStreamPlayer" parent="."]
+process_priority = 5
+process_physics_priority = 5
+stream = ExtResource("1_g8ipq")
+volume_db = -13.508
+
 [node name="Player" parent="." instance=ExtResource("1_s40h8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97356, 0)
 script = ExtResource("2_0wa74")
@@ -145,3 +154,16 @@ script = ExtResource("12_5ek6s")
 shape = SubResource("Resource_6qveq")
 
 [editable path="Player"]
+[node name="SmallEnemy" parent="." instance=ExtResource("3_fff6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18384, 0.270508, -8.77356)
+
+[node name="ProceduralAnimation" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106201, 0.0291748, 0.0136719)
+script = ExtResource("5_hkq5k")
+target = NodePath("../Player")
+
+[node name="Camera3D" type="Camera3D" parent="ProceduralAnimation"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 6, 6, 6)
+projection = 1
+fov = 90.0
+size = 10.419

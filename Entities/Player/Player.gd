@@ -34,7 +34,7 @@ func get_input(delta):
 	if Input.is_action_just_pressed("dash"):
 		dash()
 
-	input_dir = Input.get_vector("left", "right", "up", "down")
+	input_dir = Input.get_vector("left", "right", "up", "down").rotated(deg_to_rad(-45))
 
 	if Input.is_action_just_pressed("attack"):
 		is_casting = true

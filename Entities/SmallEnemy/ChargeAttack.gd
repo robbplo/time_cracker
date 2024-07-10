@@ -1,10 +1,10 @@
-extends Node2D
+extends Node3D
 
-signal attack_hit(body: CharacterBody2D)
+signal attack_hit(body: CharacterBody3D)
 
 var is_attacking = false
 
-func set_target(node: Node2D):
+func set_target(node: Node3D):
 	$LaserRaycast.target = node
 
 func charge():
