@@ -706,3 +706,6 @@ parameters/Start/current_delta = 0.0
 libraries = {
 "": SubResource("AnimationLibrary_8yxog")
 }
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true

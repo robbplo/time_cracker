@@ -4,7 +4,7 @@ extends Character
 var target = null
 var speed = 0
 @export var damage = 2.0
-## Starts attacking if target is within n pixels
+## Starts attacking if target is within n meters
 @export var attack_range: int = 600
 
 func _ready():
@@ -20,7 +20,7 @@ func _physics_process(_delta):
 	move_and_slide()
 	velocity *= .9
 
-## Move for 'distance' pixels
+## Move for 'distance' meters
 ## Speed is calculated so the movement occurs an eigth note
 func step(distance):
 	var step_time = GlobalTimer.quarter_note_duration / 2.0

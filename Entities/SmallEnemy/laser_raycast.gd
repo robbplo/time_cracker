@@ -1,8 +1,8 @@
-extends RayCast2D
+extends RayCast3D
 
 var is_casting = false
 var is_tracking = true
-var target: Node2D = null
+var target: Node3D = null
 
 func _process(_delta):
 	update_laser()
@@ -10,9 +10,7 @@ func _process(_delta):
 ## enable tracking beam and follow the target
 func start_tracking():
 	is_tracking = true
-	# update immediately so laser will not appear in last position
 	update_laser()
-	$Line2D.width = 2
 
 ## stop following the target
 func stop_tracking():
@@ -20,22 +18,27 @@ func stop_tracking():
 
 ## update laser position based on target location
 func update_laser():
-	var cast_point = target_position
-
+	var cast_point := target_position
 	if is_tracking && target:
+		var tracking_pos = target.global_position
+		tracking_pos.y += self.position.y
 		# extend past target node by a static length
-		var direction = global_position.direction_to(target.global_position)
+		var direction = global_position.direction_to(tracking_pos)
 		target_position = direction * 2000
+
+		$Beam.look_at(tracking_pos, Vector3.UP)
 
 	if is_colliding() and not is_casting:
 		cast_point = to_local(get_collision_point())
 
-	$Line2D.points[1] = cast_point
-	$Line2D2.points[1] = cast_point
+	var length = cast_point.length()
+	print(length)
+	$"Beam/Cyl".height = length
+	$"Beam/Cyl".position.z = -length / 2
 
 func fire():
 	is_casting = true
 	$AnimationPlayer.play("fire")
 
-func point_light_at_target():
-	$Lights.look_at(to_global($Line2D.points[1]))
+func stop_casting():
+	is_casting = false

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx1rad3hxx0il"]
+[gd_scene load_steps=10 format=3 uid="uid://cx1rad3hxx0il"]
 
+[ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_g8ipq"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_s40h8"]
-[ext_resource type="PackedScene" uid="uid://myvhnl1u57q5" path="res://Levels/GodotLevel_scrapyard.tscn" id="2_6rmwk"]
+[ext_resource type="PackedScene" path="res://Levels/GodotLevel_scrapyard.tscn" id="2_6rmwk"]
 [ext_resource type="Script" path="res://Levels/Sandbox3d/camera_3d.gd" id="2_ugg1o"]
+[ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="3_fff6j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5122"]
 ground_bottom_color = Color(0.116904, 0.195091, 0.151804, 1)
@@ -21,23 +23,18 @@ albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
 
 [node name="Sandbox3D" type="Node3D"]
 
+[node name="Song" type="AudioStreamPlayer" parent="."]
+process_priority = 5
+process_physics_priority = 5
+stream = ExtResource("1_g8ipq")
+volume_db = -13.508
+
 [node name="Player" parent="." instance=ExtResource("1_s40h8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97356, 0)
-
-[node name="Sprite3D" parent="Player" index="0"]
-transform = Transform3D(4.489, -2.34856e-15, 1.35594e-15, 1.35594e-15, 3.88759, 2.2445, -2.34856e-15, -2.2445, 3.88759, 0.0220408, 1, 0.0288499)
-billboard = 0
-
-[node name="AnimationTree" parent="Player" index="2"]
-parameters/current_position = 0.0198653
-parameters/current_delta = 0.00833333
-parameters/Idle/current_position = 0.0198653
-parameters/Idle/current_delta = 0.00833333
-parameters/Idle/0/current_position = 0.0198653
-parameters/Idle/0/current_delta = 0.00833333
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52202, 0)
+max_health = 500000.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, -0.233947, 6.7383, 9.07785)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.668761, 6.95656, 9.27255)
 projection = 1
 fov = 90.0
 size = 10.419
@@ -58,4 +55,5 @@ material = SubResource("StandardMaterial3D_plr41")
 
 [node name="GodotLevelExperiment" parent="." instance=ExtResource("2_6rmwk")]
 
-[editable path="Player"]
+[node name="SmallEnemy" parent="." instance=ExtResource("3_fff6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18384, 0.270508, -8.77356)
