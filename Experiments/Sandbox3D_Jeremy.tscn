@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bncxo1en36gny"]
+[gd_scene load_steps=29 format=3 uid="uid://bncxo1en36gny"]
 
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_6l7b2"]
 [ext_resource type="Script" path="res://Levels/Sandbox3d/camera_3d.gd" id="2_i26il"]
-[ext_resource type="Script" path="res://Entities/Player/Player.gd" id="2_r70oy"]
 [ext_resource type="PackedScene" uid="uid://myvhnl1u57q5" path="res://Levels/GodotLevel_scrapyard.tscn" id="3_qgrji"]
 [ext_resource type="CompressedTexture3D" uid="uid://qqbbsga58bj0" path="res://Experiments/Octogenesis_LUT.png" id="3_slsor"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="4_ybk7l"]
@@ -34,7 +33,7 @@ adjustment_color_correction = ExtResource("3_slsor")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plr41"]
 albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
 
-[sub_resource type="Resource" id="Resource_jmp25"]
+[sub_resource type="Resource" id="Resource_wokk4"]
 script = ExtResource("7_g4sgt")
 spacing = Vector3(5, 0.05, 5)
 enabled = true
@@ -43,7 +42,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_vp1gx"]
+[sub_resource type="Resource" id="Resource_qsihf"]
 script = ExtResource("8_lq4pl")
 position = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 rotation = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -54,7 +53,7 @@ custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_1camb"]
+[sub_resource type="Resource" id="Resource_ahwlo"]
 script = ExtResource("9_rlgbr")
 iterations = 0
 offset_step = 2.08167e-15
@@ -66,7 +65,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qgo7b"]
+[sub_resource type="Resource" id="Resource_t5f13"]
 script = ExtResource("10_qqr5x")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -82,9 +81,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_ilmfg"]
+[sub_resource type="Resource" id="Resource_rcco8"]
 script = ExtResource("5_oe76j")
-stack = Array[ExtResource("6_o0rb2")]([SubResource("Resource_jmp25"), SubResource("Resource_vp1gx"), SubResource("Resource_1camb"), SubResource("Resource_qgo7b")])
+stack = Array[ExtResource("6_o0rb2")]([SubResource("Resource_wokk4"), SubResource("Resource_qsihf"), SubResource("Resource_ahwlo"), SubResource("Resource_t5f13")])
 
 [sub_resource type="Resource" id="Resource_6qveq"]
 script = ExtResource("13_rp2b5")
@@ -146,19 +145,15 @@ render_target_update_mode = 4
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_6l7b2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97356, 0)
-script = ExtResource("2_r70oy")
 
 [node name="Sprite3D" parent="SubViewportContainer/SubViewport/Player" index="0"]
 transform = Transform3D(4.489, -2.34856e-15, 1.35594e-15, 1.35594e-15, 3.88759, 2.2445, -2.34856e-15, -2.2445, 3.88759, 0.0220408, 1, 0.0288499)
 billboard = 0
 
 [node name="AnimationTree" parent="SubViewportContainer/SubViewport/Player" index="2"]
-parameters/current_position = 0.0261032
-parameters/current_delta = 0.0133333
-parameters/Idle/current_position = 0.0261032
-parameters/Idle/current_delta = 0.0133333
-parameters/Idle/0/current_position = 0.0261032
-parameters/Idle/0/current_delta = 0.0133333
+parameters/current_position = 0.292095
+parameters/Idle/current_position = 0.292095
+parameters/Idle/0/current_position = 0.292095
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, 2.08165e-12, 10, 10)
@@ -188,7 +183,7 @@ material = SubResource("StandardMaterial3D_plr41")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.431, 2.08165e-12, -136.606)
 script = ExtResource("4_ybk7l")
 enable_updates_in_game = true
-modifier_stack = SubResource("Resource_ilmfg")
+modifier_stack = SubResource("Resource_rcco8")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

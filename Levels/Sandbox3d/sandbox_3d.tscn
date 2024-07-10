@@ -1,12 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx1rad3hxx0il"]
+[gd_scene load_steps=26 format=3 uid="uid://cx1rad3hxx0il"]
 
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_g8ipq"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_s40h8"]
-[ext_resource type="Script" path="res://Entities/Player/Player.gd" id="2_0wa74"]
 [ext_resource type="PackedScene" uid="uid://myvhnl1u57q5" path="res://Levels/GodotLevel_scrapyard.tscn" id="2_6rmwk"]
-[ext_resource type="Script" path="res://Levels/Sandbox3d/camera_3d.gd" id="2_ugg1o"]
+[ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="3_fff6j"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="4_ijfub"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="5_ddabd"]
+[ext_resource type="Script" path="res://Experiments/ProceduralAnimation/ProceduralAnimation.gd" id="5_hkq5k"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="6_b8dew"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_grid.gd" id="7_futuu"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="8_r4umj"]
@@ -15,8 +15,6 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="11_owyt0"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="12_5ek6s"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="13_micxf"]
-[ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="3_fff6j"]
-[ext_resource type="Script" path="res://Experiments/ProceduralAnimation/ProceduralAnimation.gd" id="5_hkq5k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5122"]
 ground_bottom_color = Color(0.116904, 0.195091, 0.151804, 1)
@@ -33,7 +31,7 @@ sky_custom_fov = 72.2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plr41"]
 albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
 
-[sub_resource type="Resource" id="Resource_26d7p"]
+[sub_resource type="Resource" id="Resource_5qct1"]
 script = ExtResource("7_futuu")
 spacing = Vector3(5, 0.05, 5)
 enabled = true
@@ -42,18 +40,18 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3l4ag"]
+[sub_resource type="Resource" id="Resource_t23p6"]
 script = ExtResource("8_r4umj")
-position = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-rotation = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-scale = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+position = Vector3(2, 2, 2)
+rotation = Vector3(180, 180, 180)
+scale = Vector3(3, 4, 5)
 enabled = true
 override_global_seed = false
 custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_maoqb"]
+[sub_resource type="Resource" id="Resource_wy0j2"]
 script = ExtResource("9_48f5w")
 iterations = 0
 offset_step = 2.08167e-15
@@ -65,7 +63,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_dte54"]
+[sub_resource type="Resource" id="Resource_jd481"]
 script = ExtResource("10_juc04")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -81,9 +79,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_m17eq"]
+[sub_resource type="Resource" id="Resource_gcpve"]
 script = ExtResource("5_ddabd")
-stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_26d7p"), SubResource("Resource_3l4ag"), SubResource("Resource_maoqb"), SubResource("Resource_dte54")])
+stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_5qct1"), SubResource("Resource_t23p6"), SubResource("Resource_wy0j2"), SubResource("Resource_jd481")])
 
 [sub_resource type="Resource" id="Resource_6qveq"]
 script = ExtResource("13_micxf")
@@ -98,29 +96,19 @@ stream = ExtResource("1_g8ipq")
 volume_db = -13.508
 
 [node name="Player" parent="." instance=ExtResource("1_s40h8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97356, 0)
-script = ExtResource("2_0wa74")
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 2.97356, 0)
 
 [node name="Sprite3D" parent="Player" index="0"]
-transform = Transform3D(4.489, -2.34856e-15, 1.35594e-15, 1.35594e-15, 3.88759, 2.2445, -2.34856e-15, -2.2445, 3.88759, 0.0220408, 1, 0.0288499)
+transform = Transform3D(3.07482, -1.63528, 2.8324, 3.06662e-15, 3.88759, 2.2445, -3.27057, -1.53741, 2.66287, 0.0220408, 1, 0.0288499)
 billboard = 0
 
 [node name="AnimationTree" parent="Player" index="2"]
-parameters/current_position = 0.133799
-parameters/current_delta = 0.00715524
-parameters/Idle/current_position = 0.133799
-parameters/Idle/current_delta = 0.00715524
-parameters/Idle/0/current_position = 0.133799
-parameters/Idle/0/current_delta = 0.00715524
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, 2.08165e-12, 10, 10)
-visible = false
-projection = 1
-current = true
-fov = 90.0
-size = 15.0
-script = ExtResource("2_ugg1o")
+parameters/current_position = 0.0500205
+parameters/current_delta = 0.0134913
+parameters/Idle/current_position = 0.0500205
+parameters/Idle/current_delta = 0.0134913
+parameters/Idle/0/current_position = 0.0500205
+parameters/Idle/0/current_delta = 0.0134913
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.40629, 0.913744, 0, -0.913744, 0.40629, 0.243469, 17.4507, 8.16703)
@@ -140,7 +128,8 @@ material = SubResource("StandardMaterial3D_plr41")
 [node name="ProtonScatter" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.431, 2.08165e-12, -136.606)
 script = ExtResource("4_ijfub")
-modifier_stack = SubResource("Resource_m17eq")
+keep_static_colliders = true
+modifier_stack = SubResource("Resource_gcpve")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -153,7 +142,6 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
 script = ExtResource("12_5ek6s")
 shape = SubResource("Resource_6qveq")
 
-[editable path="Player"]
 [node name="SmallEnemy" parent="." instance=ExtResource("3_fff6j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18384, 0.270508, -8.77356)
 
@@ -163,7 +151,9 @@ script = ExtResource("5_hkq5k")
 target = NodePath("../Player")
 
 [node name="Camera3D" type="Camera3D" parent="ProceduralAnimation"]
-transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 6, 6, 6)
+transform = Transform3D(0.707107, -0.353553, 0.612372, 3.02058e-16, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 6, 6, 6)
 projection = 1
 fov = 90.0
 size = 10.419
+
+[editable path="Player"]
