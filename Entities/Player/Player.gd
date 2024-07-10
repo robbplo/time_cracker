@@ -71,6 +71,7 @@ func die():
 	get_tree().change_scene_to_file("res://Levels/death_screen.tscn")
 
 func update_animations():
+	input_dir = input_dir.rotated(deg_to_rad(45))
 	var is_idle = input_dir == Vector2.ZERO
 	animation_tree["parameters/conditions/Idle"] = is_idle
 	animation_tree["parameters/conditions/is_moving"] = not is_idle

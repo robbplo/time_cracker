@@ -31,7 +31,7 @@ sky_custom_fov = 72.2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plr41"]
 albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
 
-[sub_resource type="Resource" id="Resource_5qct1"]
+[sub_resource type="Resource" id="Resource_r37qm"]
 script = ExtResource("7_futuu")
 spacing = Vector3(5, 0.05, 5)
 enabled = true
@@ -40,7 +40,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_t23p6"]
+[sub_resource type="Resource" id="Resource_2fra7"]
 script = ExtResource("8_r4umj")
 position = Vector3(2, 2, 2)
 rotation = Vector3(180, 180, 180)
@@ -51,7 +51,7 @@ custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_wy0j2"]
+[sub_resource type="Resource" id="Resource_vgg1a"]
 script = ExtResource("9_48f5w")
 iterations = 0
 offset_step = 2.08167e-15
@@ -63,7 +63,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_jd481"]
+[sub_resource type="Resource" id="Resource_4gowu"]
 script = ExtResource("10_juc04")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -79,9 +79,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_gcpve"]
+[sub_resource type="Resource" id="Resource_238xs"]
 script = ExtResource("5_ddabd")
-stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_5qct1"), SubResource("Resource_t23p6"), SubResource("Resource_wy0j2"), SubResource("Resource_jd481")])
+stack = Array[ExtResource("6_b8dew")]([SubResource("Resource_r37qm"), SubResource("Resource_2fra7"), SubResource("Resource_vgg1a"), SubResource("Resource_4gowu")])
 
 [sub_resource type="Resource" id="Resource_6qveq"]
 script = ExtResource("13_micxf")
@@ -103,12 +103,13 @@ transform = Transform3D(3.07482, -1.63528, 2.8324, 3.06662e-15, 3.88759, 2.2445,
 billboard = 0
 
 [node name="AnimationTree" parent="Player" index="2"]
-parameters/current_position = 0.0500205
-parameters/current_delta = 0.0134913
-parameters/Idle/current_position = 0.0500205
-parameters/Idle/current_delta = 0.0134913
-parameters/Idle/0/current_position = 0.0500205
-parameters/Idle/0/current_delta = 0.0134913
+parameters/current_position = 0.458335
+parameters/current_delta = 0.007063
+parameters/Idle/current_position = 0.458335
+parameters/Idle/current_delta = 0.007063
+parameters/Idle/0/current_position = 0.458335
+parameters/Idle/0/current_delta = 0.007063
+parameters/Run/blend_position = Vector2(-0.773066, -0.389381)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.40629, 0.913744, 0, -0.913744, 0.40629, 0.243469, 17.4507, 8.16703)
@@ -129,7 +130,7 @@ material = SubResource("StandardMaterial3D_plr41")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.431, 2.08165e-12, -136.606)
 script = ExtResource("4_ijfub")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_gcpve")
+modifier_stack = SubResource("Resource_238xs")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
