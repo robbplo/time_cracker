@@ -59,8 +59,8 @@ func dash():
 		return false
 	is_dashing = true
 	is_invulnerable = true
-	var tween = create_tween()
 	speed = base_speed * dash_speed_factor
+	var tween = create_tween()
 	tween.tween_property(self, "speed", base_speed, dash_duration)
 	tween.parallel().tween_callback(func():
 		is_dashing = false

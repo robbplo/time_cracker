@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="1_s40h8"]
 [ext_resource type="PackedScene" uid="uid://myvhnl1u57q5" path="res://Levels/GodotLevel_scrapyard.tscn" id="2_6rmwk"]
+[ext_resource type="Script" path="res://Levels/Sandbox3d/camera_3d.gd" id="2_ugg1o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5122"]
 ground_bottom_color = Color(0.116904, 0.195091, 0.151804, 1)
@@ -36,9 +37,11 @@ parameters/Idle/0/current_position = 0.0198653
 parameters/Idle/0/current_delta = 0.00833333
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.2318e-16, 3.02058e-16, 3.02058e-16, 0.866025, 0.5, -5.2318e-16, -0.5, 0.866025, -0.233947, 5.00441, 9.07785)
-current = true
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, -0.233947, 6.7383, 9.07785)
+projection = 1
 fov = 90.0
+size = 10.419
+script = ExtResource("2_ugg1o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.40629, 0.913744, 0, -0.913744, 0.40629, 0.243469, 17.4507, 8.16703)
