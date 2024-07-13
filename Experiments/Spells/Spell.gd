@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 class_name Spell
 
 ## Called when the components for the spell are prepared

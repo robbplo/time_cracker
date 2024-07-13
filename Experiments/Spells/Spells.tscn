@@ -1,36 +1,47 @@
-[gd_scene load_steps=12 format=3 uid="uid://wbdwm2s1b34v"]
+[gd_scene load_steps=16 format=3 uid="uid://wbdwm2s1b34v"]
 
 [ext_resource type="Script" path="res://Experiments/Spells/Spells.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
-[ext_resource type="PackedScene" uid="uid://sq3rdwlwe0ej" path="res://Engine/meter.tscn" id="4_3d11i"]
 [ext_resource type="Script" path="res://Experiments/Spells/force_push.gd" id="4_54giv"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
-[ext_resource type="Script" path="res://Experiments/Spells/spike.gd" id="5_j71lg"]
-[ext_resource type="Script" path="res://Experiments/Spells/projectile.gd" id="6_42axd"]
+[ext_resource type="Shader" path="res://Shaders/animate_spritesheet.gdshader" id="5_famqx"]
+[ext_resource type="Texture2D" uid="uid://djucnwupxfhxb" path="res://VFX/Spritesheets/flameorb_alpha.png" id="5_nfsuh"]
 [ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="6_xkjjl"]
-[ext_resource type="Script" path="res://Experiments/Spells/blink.gd" id="7_07yls"]
+[ext_resource type="Script" path="res://Experiments/ProceduralAnimation/ProceduralAnimation.gd" id="8_wlpwo"]
+[ext_resource type="PackedScene" uid="uid://damo8c7lkvjjg" path="res://Engine/default_environment.tscn" id="9_6bc5i"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5c5vm"]
-particle_flag_disable_z = true
-spread = 40.0
-initial_velocity_min = 439.21
-initial_velocity_max = 603.39
-orbit_velocity_min = 9.49949e-08
-orbit_velocity_max = 9.49949e-08
-radial_velocity_min = -2.23517e-05
-radial_velocity_max = -2.23517e-05
+[sub_resource type="BoxShape3D" id="BoxShape3D_178cl"]
+size = Vector3(1.5, 1.5, 3)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xidmj"]
+direction = Vector3(0, 0, -1)
+flatness = 0.906
+initial_velocity_min = 10.41
+initial_velocity_max = 18.68
 gravity = Vector3(0, 0, 0)
-linear_accel_min = 100.0
-linear_accel_max = 200.0
-radial_accel_min = 100.0
-radial_accel_max = 100.0
-scale_max = 3.0
-turbulence_enabled = true
+scale_min = 0.3
+scale_max = 0.6
+anim_speed_min = 1.0
+anim_speed_max = 1.5
+anim_offset_max = 1.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x6d8"]
-size = Vector2(100, 10)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_litd8"]
+render_priority = 0
+shader = ExtResource("5_famqx")
+shader_parameter/framerate = 16
+shader_parameter/hframes = 8
+shader_parameter/vframes = 8
+shader_parameter/spritesheet = ExtResource("5_nfsuh")
 
-[node name="Spells" type="Node2D"]
+[sub_resource type="QuadMesh" id="QuadMesh_ii5k7"]
+material = SubResource("ShaderMaterial_litd8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrr1f"]
+albedo_color = Color(0.351209, 0.161803, 0.204465, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjb5w"]
+
+[node name="Spells" type="Node3D"]
 
 [node name="Song" type="AudioStreamPlayer" parent="."]
 process_priority = 5
@@ -38,68 +49,77 @@ process_physics_priority = 5
 stream = ExtResource("1_tkckc")
 volume_db = -25.995
 
-[node name="Player" parent="." instance=ExtResource("5_07648")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 413, 198, 0)
-base_speed = 5.0
-damage = 1.0
-dash_speed_factor = 8.0
-dash_duration = 0.15
-dash_cooldown = 2.0
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
-[node name="Spells" type="Node2D" parent="Player"]
-position = Vector2(2.08165e-12, 2.08165e-12)
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_07648")]
+
+[node name="Spells" type="Node3D" parent="SubViewportContainer/SubViewport/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 0)
 script = ExtResource("1_5bb8a")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Player/Spells"]
-clip_contents = false
-offset_left = -76.0
-offset_top = -94.0
-offset_right = -36.0
-offset_bottom = -54.0
-autowrap_mode = 0
+[node name="Label3D" type="Label3D" parent="SubViewportContainer/SubViewport/Player/Spells"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 2.67236, 0)
+text = "yes
+"
 
-[node name="ForcePush" type="Node2D" parent="Player/Spells"]
+[node name="ForcePush" type="Node3D" parent="SubViewportContainer/SubViewport/Player/Spells"]
 script = ExtResource("4_54giv")
 
-[node name="Area2D" type="Area2D" parent="Player/Spells/ForcePush"]
-scale = Vector2(1.5, 1.5)
+[node name="Area3D" type="Area3D" parent="SubViewportContainer/SubViewport/Player/Spells/ForcePush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 collision_mask = 4
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/Spells/ForcePush/Area2D"]
-polygon = PackedVector2Array(0, 0, 50, -50, 85, -45, 100, 0, 85, 45, 50, 50)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Player/Spells/ForcePush/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0015564, -0.983731)
+shape = SubResource("BoxShape3D_178cl")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Player/Spells/ForcePush"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="SubViewportContainer/SubViewport/Player/Spells/ForcePush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31628, 0)
+cast_shadow = 0
 emitting = false
 amount = 1000
-process_material = SubResource("ParticleProcessMaterial_5c5vm")
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_xidmj")
+draw_pass_1 = SubResource("QuadMesh_ii5k7")
 
-[node name="Spike" type="Node2D" parent="Player/Spells"]
-script = ExtResource("5_j71lg")
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360657, -0.4995, 1.03558)
+material_override = SubResource("StandardMaterial3D_hrr1f")
+use_collision = true
+size = Vector3(100, 0.001, 100)
+material = SubResource("StandardMaterial3D_gjb5w")
 
-[node name="Area2D" type="Area2D" parent="Player/Spells/Spike"]
-position = Vector2(16, 0)
-scale = Vector2(1.5, 1.5)
-collision_mask = 4
+[node name="SmallEnemy" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_xkjjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61047, 0.490967, 6.56653)
+damage = 0.0
+attack_range = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Spells/Spike/Area2D"]
-position = Vector2(39.3333, 0)
-shape = SubResource("RectangleShape2D_6x6d8")
+[node name="ProceduralAnimation" type="Node3D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("target")]
+script = ExtResource("8_wlpwo")
+frequency = 2.1
+damping = 1.5
+response = 0.3
+target = NodePath("../Player")
 
-[node name="Polygon2D" type="Polygon2D" parent="Player/Spells/Spike"]
-z_index = 5
-color = Color(0.899258, 0.899258, 0.899258, 1)
-polygon = PackedVector2Array(0, -3, 135, -3, 132, -7, 148, 0, 132, 7, 135, 3, 0, 3)
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/ProceduralAnimation"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 3.02058e-16, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 6, 6, 6)
+projection = 1
+current = true
+fov = 90.0
+size = 10.419
 
-[node name="Projectile" type="Node2D" parent="Player/Spells"]
-script = ExtResource("6_42axd")
+[node name="DefaultEnvironment" parent="SubViewportContainer/SubViewport" instance=ExtResource("9_6bc5i")]
 
-[node name="Blink" type="Node2D" parent="Player/Spells"]
-script = ExtResource("7_07yls")
-
-[node name="Meter" parent="." instance=ExtResource("4_3d11i")]
-
-[node name="SmallEnemy" parent="." instance=ExtResource("6_xkjjl")]
-position = Vector2(769, 192)
-
-[connection signal="body_entered" from="Player/Spells/ForcePush/Area2D" to="Player/Spells/ForcePush" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Player/Spells/Spike/Area2D" to="Player/Spells/Spike" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Player/Spells/ForcePush/Area3D" to="SubViewportContainer/SubViewport/Player/Spells/ForcePush" method="_on_area_3d_body_entered"]

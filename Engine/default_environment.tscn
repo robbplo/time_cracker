@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://damo8c7lkvjjg"]
+
+[ext_resource type="CompressedTexture3D" uid="uid://qqbbsga58bj0" path="res://Experiments/Octogenesis_LUT.png" id="1_taiqy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5122"]
+ground_bottom_color = Color(0.116904, 0.195091, 0.151804, 1)
+ground_horizon_color = Color(0.487418, 0.715658, 0.585581, 1)
+
+[sub_resource type="Sky" id="Sky_iia68"]
+sky_material = SubResource("ProceduralSkyMaterial_k5122")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_exrdt"]
+background_mode = 2
+sky = SubResource("Sky_iia68")
+sky_custom_fov = 72.2
+ambient_light_source = 3
+adjustment_brightness = 0.9
+adjustment_contrast = 1.1
+adjustment_color_correction = ExtResource("1_taiqy")
+
+[node name="DefaultEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_exrdt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.111903, -0.6477, -0.753633, -4.39627e-17, -0.758396, 0.651794, -0.993719, -0.0729377, -0.0848668, 0, 7.05054, 0)
+light_bake_mode = 1
+shadow_enabled = true

@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bdq2oumtp7uoh"]
-
-[ext_resource type="Shader" path="res://Levels/Sandbox/Palette.gdshader" id="1_8y2l7"]
-[ext_resource type="Texture2D" uid="uid://u6tfv5jhkm7v" path="res://Sprites/twilioquest-76-1x.png" id="2_86so8"]
-
-[resource]
-shader = ExtResource("1_8y2l7")
-shader_parameter/palette = ExtResource("2_86so8")

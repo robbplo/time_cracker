@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 
 var spell_components: = []
 var is_casting = false
@@ -10,11 +10,11 @@ func _process(_delta):
 	if is_casting:
 		if Input.is_action_just_pressed("left"):
 			add_component("left")
-		if Input.is_action_just_pressed("right"):
+		elif Input.is_action_just_pressed("right"):
 			add_component("right")
-		if Input.is_action_just_pressed("up"):
+		elif Input.is_action_just_pressed("up"):
 			add_component("up")
-		if Input.is_action_just_pressed("down"):
+		elif Input.is_action_just_pressed("down"):
 			add_component("down")
 
 
@@ -26,11 +26,10 @@ func _unhandled_input(event):
 				send_it()
 
 func add_component(component):
-	print(GlobalTimer.distance_to_quarter_note())
 	if not GlobalTimer.is_on_time():
 		return
 	spell_components.append(component)
-	$RichTextLabel.text = ", ".join(spell_components)
+	$Label3D.text = ", ".join(spell_components)
 
 ## just fookin send it
 func send_it():
@@ -42,14 +41,4 @@ func send_it():
 		_: pass
 
 	spell_components.clear()
-	$RichTextLabel.text = ""
-
-
-# force pushu
-# (slightly) houming projectiles
-# big rock that follows cursor
-# laser insta raycast (SHOOT)
-# airstrike fire column
-# orbiter blessed hammer
-# summon wall
-# crash game
+	$Label3D.text = ""

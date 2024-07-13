@@ -4,3 +4,4 @@
 godothost
 .DS_store
 **/.DS_store
+addons/proton_scatter/cache/**
