@@ -18,7 +18,7 @@ void fragment() {
 		COLOR.rgb = vec3(progress_4bar);
 	if (UV.x > 0.75 && UV.x < 1.0)
 		COLOR.rgb = vec3(progress_8bar);
-		
+
 }
 
 //void light() {

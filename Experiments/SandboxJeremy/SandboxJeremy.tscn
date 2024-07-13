@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d17rhs6rc6lnl"]
+[gd_scene load_steps=34 format=3 uid="uid://d17rhs6rc6lnl"]
 
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_07shg"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="2_tt2ch"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="15_be0ui"]
 [ext_resource type="Script" path="res://Experiments/ProceduralAnimation/ProceduralAnimation.gd" id="16_jn3t0"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="17_wahu8"]
-[ext_resource type="Shader" path="res://Experiments/SandboxJeremy/TimedShaderCanvas.gdshader" id="18_kurlb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5122"]
 ground_bottom_color = Color(0.116904, 0.195091, 0.151804, 1)
@@ -32,6 +31,7 @@ background_mode = 2
 sky = SubResource("Sky_iia68")
 sky_custom_fov = 72.2
 ambient_light_source = 3
+adjustment_enabled = true
 adjustment_brightness = 0.9
 adjustment_contrast = 1.1
 adjustment_color_correction = ExtResource("3_gsp8x")
@@ -39,7 +39,7 @@ adjustment_color_correction = ExtResource("3_gsp8x")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plr41"]
 albedo_color = Color(0.706539, 0.887321, 0.661792, 1)
 
-[sub_resource type="Resource" id="Resource_srfed"]
+[sub_resource type="Resource" id="Resource_bnh5d"]
 script = ExtResource("8_sgreu")
 spacing = Vector3(5, 0.05, 5)
 enabled = true
@@ -48,7 +48,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_dd15f"]
+[sub_resource type="Resource" id="Resource_el0n1"]
 script = ExtResource("9_m3i6g")
 position = Vector3(3, 3, 3)
 rotation = Vector3(180, 180, 180)
@@ -59,7 +59,7 @@ custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_8m670"]
+[sub_resource type="Resource" id="Resource_ulu8k"]
 script = ExtResource("10_dr3mv")
 iterations = 0
 offset_step = 2.08167e-15
@@ -71,7 +71,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_lm8pg"]
+[sub_resource type="Resource" id="Resource_p34e3"]
 script = ExtResource("11_1xa73")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -87,15 +87,15 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_chs60"]
+[sub_resource type="Resource" id="Resource_u0gka"]
 script = ExtResource("6_oxdnb")
-stack = Array[ExtResource("7_ioqpd")]([SubResource("Resource_srfed"), SubResource("Resource_dd15f"), SubResource("Resource_8m670"), SubResource("Resource_lm8pg")])
+stack = Array[ExtResource("7_ioqpd")]([SubResource("Resource_bnh5d"), SubResource("Resource_el0n1"), SubResource("Resource_ulu8k"), SubResource("Resource_p34e3")])
 
 [sub_resource type="Resource" id="Resource_6qveq"]
 script = ExtResource("14_an1xi")
 size = Vector3(420, 1, 420)
 
-[sub_resource type="Resource" id="Resource_tm1ik"]
+[sub_resource type="Resource" id="Resource_13lqi"]
 script = ExtResource("17_wahu8")
 amount = 10000
 enabled = true
@@ -104,7 +104,7 @@ custom_seed = 1
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_4ha54"]
+[sub_resource type="Resource" id="Resource_hpkia"]
 script = ExtResource("9_m3i6g")
 position = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 rotation = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -115,7 +115,7 @@ custom_seed = 1
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_liv2m"]
+[sub_resource type="Resource" id="Resource_gk274"]
 script = ExtResource("10_dr3mv")
 iterations = 3
 offset_step = 5.0
@@ -127,7 +127,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_1raak"]
+[sub_resource type="Resource" id="Resource_1vomp"]
 script = ExtResource("11_1xa73")
 ray_direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 ray_length = 30.0
@@ -143,16 +143,13 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3efu2"]
+[sub_resource type="Resource" id="Resource_oq0vl"]
 script = ExtResource("6_oxdnb")
-stack = Array[ExtResource("7_ioqpd")]([SubResource("Resource_tm1ik"), SubResource("Resource_4ha54"), SubResource("Resource_liv2m"), SubResource("Resource_1raak")])
+stack = Array[ExtResource("7_ioqpd")]([SubResource("Resource_13lqi"), SubResource("Resource_hpkia"), SubResource("Resource_gk274"), SubResource("Resource_1vomp")])
 
 [sub_resource type="Resource" id="Resource_tqfyk"]
 script = ExtResource("14_an1xi")
 size = Vector3(3, 3, 3)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8kty"]
-shader = ExtResource("18_kurlb")
 
 [node name="Sandbox3D" type="Node3D"]
 
@@ -215,7 +212,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.431, 2.08165e-12, -136.60
 script = ExtResource("5_lp8qg")
 global_seed = 3
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_chs60")
+modifier_stack = SubResource("Resource_u0gka")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -230,7 +227,7 @@ shape = SubResource("Resource_6qveq")
 
 [node name="Grass" type="Node3D" parent="SubViewportContainer/SubViewport"]
 script = ExtResource("5_lp8qg")
-modifier_stack = SubResource("Resource_3efu2")
+modifier_stack = SubResource("Resource_oq0vl")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -242,11 +239,3 @@ path = "res://addons/proton_scatter/demos/assets/grass_2.tscn"
 transform = Transform3D(2, 0, -5.96046e-08, 0, 2, 0, 5.96046e-08, 0, 2, 0, 0, 0)
 script = ExtResource("13_yut4c")
 shape = SubResource("Resource_tqfyk")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_x8kty")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
