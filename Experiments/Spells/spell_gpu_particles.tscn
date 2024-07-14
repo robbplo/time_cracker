@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwdc1ah3hxksg"]
+
+[ext_resource type="Shader" path="res://Shaders/animate_spritesheet.gdshader" id="1_nvfvm"]
+[ext_resource type="Texture2D" uid="uid://djucnwupxfhxb" path="res://VFX/Spritesheets/flameorb_alpha.png" id="2_mxbly"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_litd8"]
+render_priority = 0
+shader = ExtResource("1_nvfvm")
+shader_parameter/framerate = 16
+shader_parameter/hframes = 8
+shader_parameter/vframes = 8
+shader_parameter/spritesheet = ExtResource("2_mxbly")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ii5k7"]
+material = SubResource("ShaderMaterial_litd8")
+
+[node name="SpellGPUParticles" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31628, 0)
+cast_shadow = 0
+emitting = false
+amount = 1000
+transform_align = 3
+draw_pass_1 = SubResource("QuadMesh_ii5k7")

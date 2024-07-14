@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 
 Config="*res://Engine/Config.gd"
 GlobalTimer="*res://Engine/GlobalTimer.gd"
+PlayerStats="*res://Engine/PlayerStats.gd"
+Debug="*res://Engine/Debug.gd"
 
 [display]
 

@@ -1,19 +1,42 @@
-[gd_scene load_steps=16 format=3 uid="uid://wbdwm2s1b34v"]
+[gd_scene load_steps=24 format=3 uid="uid://wbdwm2s1b34v"]
 
 [ext_resource type="Script" path="res://Experiments/Spells/Spells.gd" id="1_5bb8a"]
 [ext_resource type="AudioStream" uid="uid://mdc7x0h17tfn" path="res://Music/Track_DelendNoIntro112.mp3" id="1_tkckc"]
 [ext_resource type="Script" path="res://Experiments/Spells/force_push.gd" id="4_54giv"]
+[ext_resource type="Script" path="res://Experiments/Spells/Strategies/AreaTargetingStrategy.gd" id="5_4uyc0"]
 [ext_resource type="PackedScene" uid="uid://22hjgugr4bg3" path="res://Entities/Player/player.tscn" id="5_07648"]
-[ext_resource type="Shader" path="res://Shaders/animate_spritesheet.gdshader" id="5_famqx"]
-[ext_resource type="Texture2D" uid="uid://djucnwupxfhxb" path="res://VFX/Spritesheets/flameorb_alpha.png" id="5_nfsuh"]
-[ext_resource type="PackedScene" uid="uid://6ugc0tg5jb2e" path="res://Entities/SmallEnemy/small_enemy.tscn" id="6_xkjjl"]
+[ext_resource type="Script" path="res://Experiments/Spells/Strategies/AreaCollisionStrategy.gd" id="6_tknv1"]
+[ext_resource type="Script" path="res://Experiments/Spells/Strategies/HitStrategy.gd" id="7_iasih"]
+[ext_resource type="Script" path="res://Experiments/Spells/Strategies/DamageHitStrategy.gd" id="8_dkwnc"]
 [ext_resource type="Script" path="res://Experiments/ProceduralAnimation/ProceduralAnimation.gd" id="8_wlpwo"]
 [ext_resource type="PackedScene" uid="uid://damo8c7lkvjjg" path="res://Engine/default_environment.tscn" id="9_6bc5i"]
+[ext_resource type="Script" path="res://Experiments/Spells/Strategies/KnockbackHitStrategy.gd" id="9_l3i07"]
+[ext_resource type="Script" path="res://Experiments/Spells/Strategies/VisualStrategy.gd" id="10_okin0"]
+[ext_resource type="Script" path="res://Experiments/Spells/Strategies/GPUParticleVisualStrategy.gd" id="11_lf8fg"]
+[ext_resource type="PackedScene" uid="uid://dwdc1ah3hxksg" path="res://Experiments/Spells/spell_gpu_particles.tscn" id="12_w30iv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_178cl"]
-size = Vector3(1.5, 1.5, 3)
+[sub_resource type="Resource" id="Resource_wn8ey"]
+script = ExtResource("5_4uyc0")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xidmj"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yps5b"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Resource" id="Resource_tjiwo"]
+script = ExtResource("6_tknv1")
+shape = SubResource("BoxShape3D_yps5b")
+origin = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_mtk0s"]
+script = ExtResource("8_dkwnc")
+damage = 0.5
+
+[sub_resource type="Resource" id="Resource_wejid"]
+script = ExtResource("9_l3i07")
+force = 30.0
+distance_scaling = true
+max_range = 3.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e6nhf"]
 direction = Vector3(0, 0, -1)
 flatness = 0.906
 initial_velocity_min = 10.41
@@ -25,16 +48,9 @@ anim_speed_min = 1.0
 anim_speed_max = 1.5
 anim_offset_max = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_litd8"]
-render_priority = 0
-shader = ExtResource("5_famqx")
-shader_parameter/framerate = 16
-shader_parameter/hframes = 8
-shader_parameter/vframes = 8
-shader_parameter/spritesheet = ExtResource("5_nfsuh")
-
-[sub_resource type="QuadMesh" id="QuadMesh_ii5k7"]
-material = SubResource("ShaderMaterial_litd8")
+[sub_resource type="Resource" id="Resource_h8bgy"]
+script = ExtResource("11_lf8fg")
+process_material = SubResource("ParticleProcessMaterial_e6nhf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrr1f"]
 albedo_color = Color(0.351209, 0.161803, 0.204465, 1)
@@ -76,23 +92,13 @@ text = "yes
 
 [node name="ForcePush" type="Node3D" parent="SubViewportContainer/SubViewport/Player/Spells"]
 script = ExtResource("4_54giv")
+duration = 0.3
+targeting_strategy = SubResource("Resource_wn8ey")
+collision_strategy = SubResource("Resource_tjiwo")
+hit_strategies = Array[ExtResource("7_iasih")]([SubResource("Resource_mtk0s"), SubResource("Resource_wejid")])
+visual_strategies = Array[ExtResource("10_okin0")]([SubResource("Resource_h8bgy")])
 
-[node name="Area3D" type="Area3D" parent="SubViewportContainer/SubViewport/Player/Spells/ForcePush"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Player/Spells/ForcePush/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0015564, -0.983731)
-shape = SubResource("BoxShape3D_178cl")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="SubViewportContainer/SubViewport/Player/Spells/ForcePush"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31628, 0)
-cast_shadow = 0
-emitting = false
-amount = 1000
-transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_xidmj")
-draw_pass_1 = SubResource("QuadMesh_ii5k7")
+[node name="SpellGPUParticles" parent="SubViewportContainer/SubViewport/Player/Spells/ForcePush" instance=ExtResource("12_w30iv")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360657, -0.4995, 1.03558)
@@ -101,8 +107,8 @@ use_collision = true
 size = Vector3(100, 0.001, 100)
 material = SubResource("StandardMaterial3D_gjb5w")
 
-[node name="SmallEnemy" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_xkjjl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61047, 0.490967, 6.56653)
+[node name="SmallEnemy" parent="SubViewportContainer/SubViewport" instance_placeholder="res://Entities/SmallEnemy/small_enemy.tscn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8784, 0.490967, 8.72515)
 damage = 0.0
 attack_range = 0
 
@@ -121,5 +127,3 @@ fov = 90.0
 size = 10.419
 
 [node name="DefaultEnvironment" parent="SubViewportContainer/SubViewport" instance=ExtResource("9_6bc5i")]
-
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Player/Spells/ForcePush/Area3D" to="SubViewportContainer/SubViewport/Player/Spells/ForcePush" method="_on_area_3d_body_entered"]

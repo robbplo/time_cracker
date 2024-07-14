@@ -656,8 +656,8 @@ shape = SubResource("CapsuleShape3D_7e51w")
 tree_root = SubResource("AnimationNodeStateMachine_1knbg")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.525
-parameters/current_position = 0.2428
-parameters/current_delta = 0.006887
+parameters/current_position = 0.21928
+parameters/current_delta = 0.01
 parameters/conditions/Idle = false
 parameters/conditions/is_casting = true
 parameters/conditions/is_moving = false
@@ -672,12 +672,12 @@ parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
 parameters/Idle/current_length = 0.525
-parameters/Idle/current_position = 0.2428
-parameters/Idle/current_delta = 0.006887
+parameters/Idle/current_position = 0.21928
+parameters/Idle/current_delta = 0.01
 parameters/Idle/blend_position = Vector2(-0.0689388, 0.0812855)
 parameters/Idle/0/current_length = 0.525
-parameters/Idle/0/current_position = 0.2428
-parameters/Idle/0/current_delta = 0.006887
+parameters/Idle/0/current_position = 0.21928
+parameters/Idle/0/current_delta = 0.01
 parameters/Idle/1/current_length = null
 parameters/Idle/1/current_position = null
 parameters/Idle/1/current_delta = null
@@ -707,5 +707,5 @@ libraries = {
 }
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63282, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18374, 0)
 current = true

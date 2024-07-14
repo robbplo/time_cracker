@@ -20,6 +20,7 @@ var is_casting = false
 
 func _ready():
 	super._ready()
+	PlayerStats.player = self
 	animation_tree.active = true
 
 func _physics_process(delta: float) -> void:
